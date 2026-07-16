@@ -60,6 +60,12 @@ The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
 separate from newsletter consent.
 
+The newsletter flow includes `/unconfirmed-subscription` for the post-signup
+email prompt and `/subscription-confirmed` for the confirmation destination.
+Configure Buttondown to use those public URLs at the appropriate stages of its
+double-opt-in flow. Both routes intentionally remain outside search indexes and
+the sitemap.
+
 Cloudflare Web Analytics injects its JavaScript automatically at the edge. The
 repository intentionally contains no beacon snippet or analytics token, which
 prevents duplicate Cloudflare tracking. Do not send form values, scorecard

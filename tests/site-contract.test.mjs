@@ -151,6 +151,8 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
     "../src/pages/privacy.astro",
     "../src/pages/legal.astro",
     "../src/pages/404.astro",
+    "../src/pages/subscription-confirmed.astro",
+    "../src/pages/unconfirmed-subscription.astro",
     "../src/components/NewsletterForm.astro",
   ];
   const publicSource = (
@@ -171,6 +173,8 @@ test("required public routes have source files", async () => {
     "privacy.astro",
     "legal.astro",
     "404.astro",
+    "subscription-confirmed.astro",
+    "unconfirmed-subscription.astro",
   ];
 
   await Promise.all(
@@ -178,6 +182,28 @@ test("required public routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("newsletter confirmation routes are noindex utility pages", async () => {
+  const confirmed = await readFile(
+    new URL("../src/pages/subscription-confirmed.astro", import.meta.url),
+    "utf8",
+  );
+  const unconfirmed = await readFile(
+    new URL("../src/pages/unconfirmed-subscription.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(confirmed, /robots="noindex, follow"/);
+  assert.match(confirmed, /What made you subscribe\?/);
+  assert.match(unconfirmed, /robots="noindex, follow"/);
+  assert.match(unconfirmed, /confirm your email address/);
+  assert.doesNotMatch(sitemap, /subscription-confirmed/);
+  assert.doesNotMatch(sitemap, /unconfirmed-subscription/);
 });
 
 test("crawler routes have source files", async () => {

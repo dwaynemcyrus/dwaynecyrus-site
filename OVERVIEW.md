@@ -35,10 +35,12 @@ women standing beside them.
 
 1. A visitor discovers Cyrus and sees the condition named clearly.
 2. The visitor joins Letters from Cyrus as the primary action.
-3. The reader receives essays, personal letters, and field notes that deepen understanding and support better action.
-4. An appropriate man visits the Freeze-to-Command Scorecard page and chooses to complete the Tally scorecard.
-5. Cyrus may review the submission and privately invite selected men to a Freeze Diagnostic Audit when it appears appropriate.
-6. Mentorship may follow outside the public website.
+3. The visitor is prompted to confirm the submitted email address, then sees a
+   clear confirmation and welcome-letter next step.
+4. The reader receives essays, personal letters, and field notes that deepen understanding and support better action.
+5. An appropriate man visits the Freeze-to-Command Scorecard page and chooses to complete the Tally scorecard.
+6. Cyrus may review the submission and privately invite selected men to a Freeze Diagnostic Audit when it appears appropriate.
+7. Mentorship may follow outside the public website.
 
 There is no public call-booking link. Completing the scorecard does not
 guarantee an invitation to a Freeze Diagnostic Audit.
@@ -50,6 +52,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - A plain-language Privacy Policy at `/privacy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
+- A no-index email-confirmation prompt at `/unconfirmed-subscription`.
+- A no-index confirmed-subscription welcome at `/subscription-confirmed`.
 - Two accessible Buttondown newsletter signup forms on the homepage.
 - Central configuration for all service URLs, social links, contact details, legal details, and canonical site data.
 - Cloudflare and Vercel Web Analytics for parallel anonymous/basic page-view
@@ -138,7 +142,8 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/privacy`, `/legal`, and the custom 404 work on mobile and desktop.
+- `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes,
+  and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - All links, form labels, validation states, focus states, keyboard paths, and consent statements work.
 - Unique metadata, sitemap, robots, and truthful structured data are present.

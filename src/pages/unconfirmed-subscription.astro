@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Confirm Your Email — Letters from Cyrus";
+const description =
+  "Check your inbox and confirm your email address to begin receiving Letters from Cyrus.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/unconfirmed-subscription"
+  robots="noindex, follow"
+>
+  <section class="section">
+    <div class="container reading">
+      <p class="eyebrow">Letters from Cyrus</p>
+      <h1>Confirm your email</h1>
+
+      <h2>You Got Mail</h2>
+
+      <p>
+        In a few moments you should have an email notification from me,{" "}
+        <strong>Cyrus</strong>, in your inbox.
+      </p>
+
+      <p>
+        Go check your inbox and confirm your email address in order to begin
+        receiving your letters.
+      </p>
+
+      <p>— Cyrus</p>
+
+      <p>
+        <strong>PS:</strong> Be sure to check your Junk or Spam folder if you cannot
+        find the email.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

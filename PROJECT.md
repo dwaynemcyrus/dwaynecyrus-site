@@ -61,7 +61,13 @@ suppression, numbness, or control over other people.
 | `/scorecard` | Freeze-to-Command Scorecard landing page | Begin the Scorecard |
 | `/privacy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
+| `/unconfirmed-subscription` | Email confirmation prompt | Confirm the submitted email address |
+| `/subscription-confirmed` | Confirmed-subscription welcome | Open and reply to the welcome letter |
 | custom 404 | Recover from an invalid route | Return home |
+
+The two newsletter confirmation routes are transactional utility pages. They
+must use canonical metadata but remain `noindex, follow` and outside the
+sitemap.
 
 Homepage sections must appear in this order:
 
@@ -105,6 +111,7 @@ an Audit invitation.
 - [ ] Astro produces static output with no client UI framework or unnecessary hydration.
 - [ ] The homepage makes joining Letters from Cyrus visually and semantically primary.
 - [ ] Both homepage newsletter forms post to the verified Buttondown endpoint, request only required fields, use unique labelled controls, and show the required consent statement.
+- [ ] The unconfirmed and confirmed subscription routes render the approved flow copy, remain outside the sitemap, and use `noindex, follow`.
 - [ ] Scorecard CTAs use only the centrally configured Tally URL.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
@@ -183,6 +190,8 @@ Planned ownership after scaffolding:
 │   │   ├── index.astro
 │   │   ├── legal.astro
 │   │   ├── privacy.astro
+│   │   ├── subscription-confirmed.astro
+│   │   ├── unconfirmed-subscription.astro
 │   │   └── scorecard.astro
 │   └── styles/
 │       └── global.css        # Reset, tokens, typography, shared layout

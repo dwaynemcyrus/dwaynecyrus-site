@@ -25,6 +25,8 @@ changes that matter to users, integrators, or project operators.
 - Anonymous real-user Web Vitals monitoring through Vercel Speed Insights.
 - Parallel aggregate page-view reporting through Vercel Web Analytics for
   comparison with Cloudflare Web Analytics.
+- Newsletter email-confirmation and confirmed-subscription pages with clear
+  inbox guidance and welcome-letter next steps.
 
 ### Changed
 

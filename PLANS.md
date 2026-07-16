@@ -35,7 +35,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ## Acceptance criteria
 
 - [ ] Every acceptance criterion in `PROJECT.md` is met.
-- [x] The generated site contains only `/`, `/scorecard`, `/privacy`, `/legal`, and the custom 404.
+- [x] The generated site contains `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes, and the custom 404.
 - [x] Newsletter signup is the dominant conversion and scorecard participation remains secondary.
 - [x] Required wording and approved baseline copy from `PROJECT-BRIEF.md` are implemented accurately.
 - [x] Buttondown, Tally, analytics, contact, social, and legal values are centrally configured with safe missing-value behavior.
@@ -149,6 +149,14 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Parallel analytics adds two page-view measurement scripts and may produce different totals because providers use different methods. Remove the Vercel component and package or disable either dashboard service after the comparison.
 - **Commit:** `feat(analytics): add web analytics`
 
+### 14. [x] Chunk: add newsletter confirmation pages
+
+- **Files:** `src/pages/subscription-confirmed.astro`, `src/pages/unconfirmed-subscription.astro`, `tests/site-contract.test.mjs`, `OVERVIEW.md`, `PROJECT.md`, `README.md`, `CHANGELOG.md`, `PLANS.md`
+- **Change:** Add the two newsletter double-opt-in utility pages with route metadata, approved inbox guidance, and a clear welcome-letter response prompt; keep both routes out of search indexes and the sitemap.
+- **Verify:** Run format, lint, Astro/type checks, tests, and the production build; inspect both routes at mobile and desktop sizes and confirm their generated metadata and sitemap exclusion.
+- **Risk/rollback:** Incorrect Buttondown redirect settings could bypass either page even when the routes exist. Revert the focused page commit or correct the provider-side destinations without changing subscription data.
+- **Commit:** `feat(newsletter): add flow pages`
+
 ## Production release inputs
 
 These may remain absent during implementation but must be supplied and
@@ -196,6 +204,7 @@ verified before production deployment:
 - 2026-07-16: Expanded the Privacy Policy with the owner-confirmed Buttondown open/click tracking, indefinite Tally archive retention, and absence of Tally response forwarding, plus provider, transfer, rights, and deletion details.
 - 2026-07-16: Added Vercel Speed Insights once in the shared Astro layout, documented its anonymous Web Vitals collection, and verified one injector on every generated HTML page without personal form values.
 - 2026-07-16: Added Vercel Web Analytics once in the shared document head while retaining Cloudflare edge injection for comparison; updated privacy disclosures and verified one Vercel analytics injector on every generated HTML page.
+- 2026-07-16: Added no-index unconfirmed and confirmed newsletter utility pages, verified their metadata and sitemap exclusion, and checked both routes at desktop and mobile sizes with clean browser consoles and working recovery navigation.
 
 ## Future commerce preparation (not MVP)
 
@@ -213,7 +222,7 @@ verified before production deployment:
 
 ## Completion
 
-- **Checks run:** Format check, lint, Astro/type diagnostics, twelve contract tests, dependency audit, static production build, configured sitemap/metadata build, Vercel Web Analytics and Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
+- **Checks run:** Format check, lint, Astro/type diagnostics, thirteen contract tests, dependency audit, seven-page static production build, configured sitemap/metadata build, Vercel Web Analytics and Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
 - **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, changelog-policy, future-policy-draft, and privacy-disclosure commits are recorded on `feat/initial-build`.
 - **Remaining risks:** Legal review remains outstanding, especially for scorecard consent, intimate response data, indefinite retention, international transfers, and newsletter tracking; live Buttondown/Tally submissions are intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
