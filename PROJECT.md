@@ -333,7 +333,7 @@ Expected public-at-render-time configuration names:
 | Variable | Purpose | Required for release |
 |---|---|---:|
 | `SITE_URL` | Canonical HTTPS origin | Yes |
-| `BUTTONDOWN_FORM_ACTION` | Newsletter form endpoint | Yes |
+| `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Scorecard destination | Yes |
 | `CLOUDFLARE_ANALYTICS_TOKEN` | Web Analytics beacon | Yes |
 | `CONTACT_EMAIL` | Privacy/legal contact | Yes |
@@ -361,8 +361,8 @@ MVP has no first-party persistent data.
 
 ## Known risks and constraints
 
-- Service URLs, analytics token, legal identity/address, contact email, and optional social URLs are not yet supplied.
-- The live Buttondown endpoint and required fields must be verified before testing real subscription behavior.
+- The Tally URL, analytics token, legal identity/address, contact email, and optional social URLs are not yet supplied.
+- The confirmed Buttondown endpoint, metadata fields, and audience tags must be verified with owner-approved test details before release.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
 - Third-party behavior may change; verify current official integration instructions during implementation.
@@ -382,3 +382,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Activate frontend/deployment guides only | The site has UI and hosted delivery but no first-party data layer |
 | 2026-07-16 | Use exact vs baseline copy statuses | Owner approved exact required wording with limited baseline refinements |
 | 2026-07-16 | Use npm and focused quality scripts | Brief expects npm; explicit gates make later work reproducible |
+| 2026-07-16 | Use the confirmed Buttondown form contract | The owner supplied the endpoint, metadata fields, and audience tag IDs |

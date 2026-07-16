@@ -109,7 +109,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Bad canonical domain, placeholder metadata, duplicate analytics, or unintended tracking. Disable the beacon/configured output and revert only this chunk while preserving pages.
 - **Commit:** `feat(seo): add metadata and analytics`
 
-### 9. [ ] Chunk: document operation and release
+### 9. [x] Chunk: document operation and release
 
 - **Files:** `README.md`, `.env.example`, `PROJECT.md`, `PLANS.md`
 - **Change:** Document install, development, checks, build, Buttondown, Tally, Cloudflare Analytics, legal details, Vercel preview/production, configuration ownership, and rollback; synchronize commands and resolved decisions.
@@ -156,6 +156,7 @@ verified before production deployment:
 - 2026-07-16: Added plain-language privacy and legal pages with explicit missing-release states, plus a no-index custom 404 with recovery links.
 - 2026-07-16: Added config-gated sitemap and canonical structured data, generated robots policy, a single Cloudflare beacon, and implementation-level content and route tests.
 - 2026-07-16: Updated both newsletter forms with the confirmed Buttondown endpoint, required audience/name/email metadata, and audience-specific subscriber tag mapping.
+- 2026-07-16: Documented local operation, all quality gates, configuration ownership, external-service checks, privacy/legal review, Vercel preview, and rollback.
 
 ## Completion
 
