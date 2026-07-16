@@ -1,0 +1,96 @@
+---
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Legal Notice — Letters from Cyrus";
+const description =
+  "Legal and contact information for Letters from Cyrus, including the website's educational-purpose disclaimer.";
+const legalFields = [
+  ["Full legal name", siteConfig.legalName],
+  ["Operating name", siteConfig.businessName],
+  ["Postal address", siteConfig.legalAddress],
+  ["Contact email", siteConfig.contactEmail],
+  ["Website domain", siteConfig.websiteDomain],
+  ["Hosting provider", siteConfig.hostingProvider],
+  ["Responsible person", siteConfig.responsiblePerson],
+] as const;
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/legal">
+  <article class="section">
+    <div class="container legal-copy">
+      <p class="eyebrow">Letters from Cyrus</p>
+      <h1>Legal Notice</h1>
+
+      <dl>
+        {
+          legalFields.map(([label, value]) => (
+            <div>
+              <dt>{label}</dt>
+              <dd class:list={{ missing: !value }}>
+                {value || "Required before release"}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <h2>Educational purpose</h2>
+      <p>
+        The material on this website is provided for educational and
+        informational purposes. It is not medical, psychological, legal or
+        financial advice. Nothing on this website creates a therapist-client,
+        doctor-patient or professional advisory relationship.
+      </p>
+
+      <h2>Responsibility for content</h2>
+      <p>
+        Cyrus is responsible for the original material published on this
+        website. External services and websites are responsible for their own
+        content, availability and privacy practices.
+      </p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-copy {
+    max-width: var(--reading-width);
+  }
+
+  dl {
+    margin-block: var(--space-6);
+    border-top: 1px solid var(--color-rule);
+  }
+
+  dl div {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  dt {
+    font-weight: 750;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .missing {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  h2 {
+    margin-top: var(--space-6);
+    font-size: var(--step-1);
+  }
+
+  @media (min-width: 36rem) {
+    dl div {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+</style>

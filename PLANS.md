@@ -93,7 +93,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Implying diagnosis, therapy, automatic newsletter consent, or guaranteed Audit access. Revert the page and compare every section with the brief.
 - **Commit:** `feat(scorecard): add landing page`
 
-### 7. [ ] Chunk: add legal and recovery pages
+### 7. [x] Chunk: add legal and recovery pages
 
 - **Files:** `src/pages/privacy.astro`, `src/pages/legal.astro`, `src/pages/404.astro`
 - **Change:** Add concise plain-language privacy and legal pages using verified configuration fields, include the required source-only Swiss/EU review comment, and add an on-tone custom 404 with valid recovery links.
@@ -153,6 +153,7 @@ verified before production deployment:
 - 2026-07-16: Added accessible newsletter, primary-action, secondary-link, and section-heading components with an honest unconfigured Buttondown state.
 - 2026-07-16: Replaced the scaffold page with the complete nine-section newsletter homepage using the approved brief copy and hierarchy.
 - 2026-07-16: Added the complete scorecard landing page with direct-config CTAs, non-clinical language, five next steps, invitation limits, and separate consent.
+- 2026-07-16: Added plain-language privacy and legal pages with explicit missing-release states, plus a no-index custom 404 with recovery links.
 
 ## Completion
 

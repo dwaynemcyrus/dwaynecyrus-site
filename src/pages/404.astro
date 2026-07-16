@@ -1,0 +1,41 @@
+---
+import SecondaryLink from "../components/SecondaryLink.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Page Not Found — Letters from Cyrus";
+const description = "The requested page could not be found.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/404"
+  robots="noindex, nofollow"
+>
+  <section class="section">
+    <div class="container reading not-found">
+      <p class="eyebrow">404</p>
+      <h1>This page could not be found.</h1>
+      <p class="lede">
+        The address may be incorrect, or the page may have moved.
+      </p>
+      <p class="actions">
+        <SecondaryLink href="/">Return home</SecondaryLink>
+        <SecondaryLink href="/#join">Join the Letters</SecondaryLink>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 55vh;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+</style>

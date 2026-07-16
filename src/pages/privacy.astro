@@ -1,0 +1,130 @@
+---
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Privacy Policy — Letters from Cyrus";
+const description =
+  "How Letters from Cyrus handles newsletter subscriptions, scorecard information and basic website analytics.";
+const identityIsConfigured = Boolean(
+  siteConfig.legalName && siteConfig.legalAddress && siteConfig.contactEmail,
+);
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/privacy">
+  <!-- Review this policy for compliance with applicable Swiss and EU data-protection requirements before launch. -->
+  <article class="section">
+    <div class="container legal-copy">
+      <p class="eyebrow">Letters from Cyrus</p>
+      <h1>Privacy Policy</h1>
+      <p class="muted">Last updated: 16 July 2026</p>
+
+      <h2>Who runs this site</h2>
+      {
+        identityIsConfigured ? (
+          <p>
+            This website is operated by {siteConfig.legalName}, operating as{" "}
+            {siteConfig.businessName}, at {siteConfig.legalAddress}. Privacy
+            questions can be sent to{" "}
+            <a href={`mailto:${siteConfig.contactEmail}`}>
+              {siteConfig.contactEmail}
+            </a>
+            .
+          </p>
+        ) : (
+          <p class="config-note">
+            The legal identity, postal address and privacy contact must be
+            configured and reviewed before this site is released.
+          </p>
+        )
+      }
+
+      <h2>Information collected</h2>
+      <p>The website may collect:</p>
+      <ul>
+        <li>Email addresses submitted through Buttondown.</li>
+        <li>Scorecard answers and contact details submitted through Tally.</li>
+        <li>
+          Basic anonymous website traffic information through Cloudflare Web
+          Analytics.
+        </li>
+        <li>
+          Payment or booking information only if separate services are
+          introduced later.
+        </li>
+      </ul>
+
+      <h2>Why information is used</h2>
+      <ul>
+        <li>To send Letters from Cyrus to people who consented.</li>
+        <li>To deliver scorecard results.</li>
+        <li>To review scorecard submissions.</li>
+        <li>To decide whether a Freeze Diagnostic Audit may be appropriate.</li>
+        <li>To respond to lawful privacy requests.</li>
+        <li>To understand basic website usage.</li>
+      </ul>
+
+      <h2>Service providers</h2>
+      <p>
+        Buttondown, Tally, Cloudflare and Vercel process information required to
+        operate this website and its services. Their handling of information is
+        also governed by their own terms and privacy practices.
+      </p>
+
+      <h2>Newsletter consent</h2>
+      <p>
+        Newsletter subscription is optional. Completing the scorecard does not
+        automatically subscribe you to Letters from Cyrus. If you choose to
+        subscribe, you can unsubscribe through the link in every email.
+      </p>
+
+      <h2>Data retention</h2>
+      <p>
+        Information is kept only for as long as it is reasonably needed for the
+        purpose for which it was collected, legal obligations or legitimate
+        business records.
+      </p>
+
+      <h2>Your choices and rights</h2>
+      <p>
+        You may ask what information is held about you, request a correction,
+        request deletion where applicable, withdraw newsletter consent or raise
+        a privacy concern.
+      </p>
+      {
+        siteConfig.contactEmail ? (
+          <p>
+            Contact:{" "}
+            <a href={`mailto:${siteConfig.contactEmail}`}>
+              {siteConfig.contactEmail}
+            </a>
+          </p>
+        ) : (
+          <p class="config-note">
+            A privacy contact email must be configured before release.
+          </p>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-copy {
+    max-width: var(--reading-width);
+  }
+
+  h2 {
+    margin-top: var(--space-6);
+    font-size: var(--step-1);
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+
+  .config-note {
+    padding: var(--space-3);
+    border: 1px solid var(--color-rule);
+    font-weight: 650;
+  }
+</style>
