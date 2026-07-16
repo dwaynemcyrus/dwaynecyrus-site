@@ -115,12 +115,12 @@ an Audit invitation.
 - [ ] The design is black, white, text-only, editorial, calm, and responsive, with no prohibited imagery or effects.
 - [ ] Each public page has a unique title, description, canonical URL, Open Graph text, and Twitter/X text.
 - [ ] Sitemap, robots, and truthful basic structured data are present; the 404 is excluded from indexing and the sitemap.
-- [ ] Cloudflare Web Analytics is the only page-view analytics service, Vercel Speed Insights is used only for anonymous performance measurement, and neither receives form or scorecard personal data.
+- [ ] Cloudflare and Vercel Web Analytics provide parallel aggregate page-view measurement for comparison, Vercel Speed Insights is used only for anonymous performance measurement, and none receives form or scorecard personal data.
 - [ ] All internal links, fragments, configured external links, and the custom 404 work.
 - [ ] There are no console errors, avoidable layout shifts, fake claims, prohibited routes, or public booking links.
 - [ ] Mobile and desktop flows are verified with keyboard-only navigation.
 - [ ] Lighthouse scores ideally exceed 95 for performance, accessibility, best practices, and SEO without reducing usability.
-- [ ] The implementation README documents installation, development, build, Buttondown, Tally, Cloudflare Analytics, legal details, and Vercel deployment.
+- [ ] The implementation README documents installation, development, build, Buttondown, Tally, Cloudflare and Vercel analytics, legal details, and Vercel deployment.
 
 ## Stack
 
@@ -129,15 +129,16 @@ an Audit invitation.
 - **Package manager:** npm
 - **Database:** None
 - **Hosting:** Vercel; domain/DNS may be managed through Cloudflare
-- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel hosting and Speed Insights
+- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel hosting, Web Analytics and Speed Insights
 
 The expected direct production dependencies are Astro and the official Vercel
-Speed Insights package. The sitemap is a small prerendered endpoint because the
-current official sitemap integration is not compatible with the selected secure
-Astro release. Development tooling may include the official Astro checker,
-TypeScript, Prettier with Astro support, and ESLint with Astro support. Use
-Node's built-in test runner for lightweight contract tests unless a stronger
-need appears. Do not add a browser test framework solely for this small MVP.
+Web Analytics and Speed Insights packages. The sitemap is a small prerendered
+endpoint because the current official sitemap integration is not compatible
+with the selected secure Astro release. Development tooling may include the
+official Astro checker, TypeScript, Prettier with Astro support, and ESLint with
+Astro support. Use Node's built-in test runner for lightweight contract tests
+unless a stronger need appears. Do not add a browser test framework solely for
+this small MVP.
 
 New dependencies or services require a clear reason. Paid services require
 human approval.
@@ -216,15 +217,16 @@ table synchronized with its scripts.
 - **Entry points:** Static routes in `src/pages/`; shared document shell in `src/layouts/BaseLayout.astro`.
 - **Main modules:** Pages own editorial sequence; components own small repeated UI; `src/config/site.ts` owns editable service/legal values; `global.css` owns design tokens and shared styles.
 - **Source of truth:** Product intent and baseline copy come from `PROJECT-BRIEF.md`; approved scope comes from `OVERVIEW.md`; technical decisions come from this contract; external values come from validated configuration/environment inputs.
-- **Public APIs/contracts:** Native Buttondown HTML form submission, direct Tally URL, Cloudflare-managed analytics injection, Vercel Speed Insights script injection, generated public routes/metadata.
+- **Public APIs/contracts:** Native Buttondown HTML form submission, direct Tally URL, Cloudflare-managed analytics injection, Vercel Web Analytics and Speed Insights script injection, generated public routes/metadata.
 - **Patterns to follow:** Static rendering, server/build-time configuration, semantic HTML, native form/link behavior, mobile-first CSS, small transparent Astro components, progressive enhancement, optional links omitted when absent.
 - **Patterns to avoid:** React/Vue/Svelte islands, client-side routing, generic page renderers, CMS/content collections for fixed MVP copy, serverless proxies, local persistence, duplicated service URLs, optimistic form success, Tally embed by default, runtime schema complexity, and speculative abstractions.
 
 `BaseLayout.astro` should own the HTML shell, route metadata, canonical URL,
 skip link, header, and footer. Cloudflare injects Web Analytics at the edge;
 the repository must not add a second beacon. The layout should render one
-Vercel Speed Insights component for anonymous real-user performance
-measurement. Page components must remain readable enough for copy review.
+Vercel Web Analytics component for aggregate page-view comparison and one
+Speed Insights component for anonymous real-user performance measurement. Page
+components must remain readable enough for copy review.
 
 ## Central configuration contract
 
@@ -284,6 +286,14 @@ functional dead controls.
 - Do not send custom IDs, form data, scorecard answers, or personal data.
 - Do not add Google Analytics or a custom analytics dashboard.
 
+### Vercel Web Analytics
+
+- Render `@vercel/analytics/astro` once in the shared document head.
+- Run it alongside Cloudflare Web Analytics temporarily so their aggregate
+  reporting can be compared.
+- Do not send custom IDs, form data, scorecard answers or personal data.
+- Keep its collection and provider role accurate in the Privacy Policy.
+
 ### Vercel Speed Insights
 
 - Render `@vercel/speed-insights/astro` once in the shared layout.
@@ -293,7 +303,7 @@ functional dead controls.
 
 ## Data and security
 
-- **Stored data:** No first-party persistent data. Buttondown stores newsletter subscriptions and open/click engagement; Tally stores scorecard submissions indefinitely in its account archive without another configured response destination; Cloudflare supplies aggregate/basic analytics; Vercel supplies anonymous real-user performance measurements.
+- **Stored data:** No first-party persistent data. Buttondown stores newsletter subscriptions and open/click engagement; Tally stores scorecard submissions indefinitely in its account archive without another configured response destination; Cloudflare and Vercel supply aggregate/basic analytics; Vercel also supplies anonymous real-user performance measurements.
 - **Sensitive data:** Email addresses and scorecard answers are sensitive external-service inputs and must not enter site logs, analytics, test fixtures, or source control.
 - **Authentication/authorization:** None
 - **Validation boundaries:** Validate build-time URLs, email/contact configuration, canonical domain, and legal fields; rely on native email validation plus verified Buttondown requirements; validate that optional social URLs are HTTPS before rendering.
@@ -420,4 +430,5 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Generate the sitemap in the project | The current official integration is incompatible with the secure Astro release |
 | 2026-07-16 | Let Cloudflare inject analytics | The owner confirmed Web Analytics is injected automatically at the edge |
 | 2026-07-16 | Add Vercel Speed Insights | The owner requested anonymous real-user performance monitoring for the Astro site |
+| 2026-07-16 | Run two page-view analytics services | The owner wants to compare the aggregate reporting provided by Cloudflare and Vercel |
 | 2026-07-16 | Use confirmed operator details | The owner supplied the legal identity, address, responsible person, and social profiles |

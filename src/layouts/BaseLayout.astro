@@ -2,6 +2,7 @@
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { siteConfig } from "../config/site";
+import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import "../styles/global.css";
 
@@ -65,6 +66,7 @@ const structuredData = siteConfig.siteUrl
       )
     }
     <title>{title}</title>
+    <Analytics />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>

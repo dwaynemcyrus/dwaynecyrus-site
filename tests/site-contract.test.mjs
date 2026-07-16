@@ -188,13 +188,15 @@ test("crawler routes have source files", async () => {
   );
 });
 
-test("analytics integrations have one clear owner", async () => {
+test("analytics integrations are explicit and singular", async () => {
   const layout = await readFile(
     new URL("../src/layouts/BaseLayout.astro", import.meta.url),
     "utf8",
   );
 
   assert.doesNotMatch(layout, /cloudflareinsights|data-cf-beacon/);
+  assert.match(layout, /import Analytics from "@vercel\/analytics\/astro"/);
+  assert.equal(layout.match(/<Analytics\s*\/>/g)?.length, 1);
   assert.match(
     layout,
     /import SpeedInsights from "@vercel\/speed-insights\/astro"/,
@@ -212,6 +214,7 @@ test("privacy policy states confirmed data practices", async () => {
   assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
   assert.match(privacy, /Scorecard submissions are kept indefinitely/);
   assert.match(privacy, /Tally responses are not forwarded/);
+  assert.match(privacy, /Vercel Web\s+Analytics/);
   assert.match(privacy, /Vercel Speed\s+Insights/);
   assert.match(privacy, /not associated with an individual visitor/);
   assert.doesNotMatch(privacy, /Payment or booking information/);

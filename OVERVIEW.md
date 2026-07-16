@@ -52,7 +52,9 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - A custom, useful 404 page.
 - Two accessible Buttondown newsletter signup forms on the homepage.
 - Central configuration for all service URLs, social links, contact details, legal details, and canonical site data.
-- Cloudflare Web Analytics for anonymous/basic page-view measurement.
+- Cloudflare and Vercel Web Analytics for parallel anonymous/basic page-view
+  measurement while their reporting is compared.
+- Vercel Speed Insights for anonymous real-user performance measurement.
 - Accurate separation between scorecard participation and newsletter consent.
 - Clear explanation of what happens after scorecard completion, including that an Audit invitation is discretionary and not guaranteed.
 - Header and footer navigation defined in the brief, with optional social links rendered only when valid URLs exist.
@@ -79,15 +81,16 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 ## 6. Product behavior
 
 - **User accounts:** No
-- **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard answers/contact details are submitted to Tally; Cloudflare supplies basic website analytics.
+- **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard answers/contact details are submitted to Tally; Cloudflare and Vercel supply basic website analytics; Vercel also supplies anonymous performance measurements.
 - **Payments:** No
-- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel; Cloudflare may also manage domain/DNS.
+- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel hosting, Web Analytics and Speed Insights; Cloudflare may also manage domain/DNS.
 - **Notifications or email:** Letters from Cyrus is sent through Buttondown two to three times each week. Tally may use an email address to deliver scorecard results. Scorecard participation must not automatically subscribe a person to the newsletter.
 - **Administrative tools:** None in the website. Buttondown, Tally, and manual records remain external.
 
 Measurement ownership:
 
-- Visitors and page views: Cloudflare Web Analytics
+- Visitors and page views: Cloudflare and Vercel Web Analytics
+- Real-user website performance: Vercel Speed Insights
 - Confirmed subscribers: Buttondown
 - Scorecard starts and completions: Tally
 - Audit invitations, purchases, and mentorship conversions: manual records outside the website
@@ -109,7 +112,7 @@ sans-serif for body and interface text.
 
 - **Deadline or milestones:** No deadline supplied. The milestone is the smallest complete, polished MVP passing all acceptance checks.
 - **Budget or service limits:** No monetary budget supplied. Keep dependencies and third-party services minimal; adding a paid service requires owner approval.
-- **Required technologies:** Astro, TypeScript where useful, static output, semantic HTML, plain CSS, npm-compatible tooling, Vercel deployment, Buttondown, Tally, and Cloudflare Web Analytics.
+- **Required technologies:** Astro, TypeScript where useful, static output, semantic HTML, plain CSS, npm-compatible tooling, Vercel deployment, Buttondown, Tally, Cloudflare Web Analytics, Vercel Web Analytics and Vercel Speed Insights.
 - **Forbidden technologies:** React, Vue, client-side UI frameworks, databases, authentication, CMS, component libraries, unnecessary JavaScript, external animation libraries, Google Analytics, Google Fonts, Meta Pixel, Hotjar, and cookie-heavy tracking. Do not add Tailwind unless an existing repository already uses it; this repository currently has no implementation to preserve.
 - **Privacy, legal, or compliance needs:** Plain-language privacy and legal pages; accurate provider disclosure; separate newsletter consent; no cookie banner unless an introduced service requires one; final policy review for applicable Swiss and EU data-protection requirements before launch.
 - **Security concerns:** Do not expose secrets, log form contents, append personal data to URLs, send personal data to analytics, or invent legal/service configuration. Use HTTPS service endpoints and validate production configuration.
@@ -118,7 +121,8 @@ Known production inputs not yet supplied:
 
 - Verified Buttondown field, tag, confirmation, and redirect behavior
 - Verified Tally consent and result-delivery behavior
-- Cloudflare Web Analytics verification on the deployed domain
+- Cloudflare and Vercel Web Analytics verification on the deployed domain
+- Vercel Speed Insights verification on the deployed domain
 - Owner and appropriate Swiss/EU privacy/legal review
 
 These are launch inputs, not reasons to invent data or expand scope.

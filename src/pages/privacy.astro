@@ -92,6 +92,14 @@ const identityIsConfigured = Boolean(
           does not collect or use visitors' personal data.
         </li>
         <li>
+          Anonymous, aggregated page-view information through Vercel Web
+          Analytics, including the requested page, referrer, filtered query
+          parameters, approximate location, browser, device and operating
+          system. Vercel states that these records are not associated with an
+          individual visitor or IP address and cannot reconstruct a browsing
+          session across websites.
+        </li>
+        <li>
           Anonymous real-user performance measurements through Vercel Speed
           Insights, including the requested route, browser and device details,
           approximate country, network speed and Web Vitals. Vercel states that
@@ -177,7 +185,7 @@ const identityIsConfigured = Boolean(
         </li>
         <li>
           <a href="https://vercel.com/legal/privacy-notice">Vercel</a> hosts and delivers
-          the website and provides anonymous Speed Insights performance measurement.
+          the website and provides anonymous Web Analytics and Speed Insights measurement.
         </li>
       </ul>
       <p>
@@ -194,11 +202,13 @@ const identityIsConfigured = Boolean(
       <p>
         This website does not use advertising cookies or behavioural advertising
         tools. Cloudflare Web Analytics is used for aggregated website
-        measurement, and Vercel Speed Insights measures anonymous website
-        performance. Newsletter emails use Buttondown's open-tracking pixel and
-        tracked links as described above. The separately hosted Tally scorecard
-        may use browser storage or other technology needed for its form features
-        under Tally's own privacy notice.
+        measurement. Vercel Web Analytics measures anonymous page views without
+        third-party cookies and uses a request-derived visitor hash that Vercel
+        says is discarded after 24 hours. Vercel Speed Insights measures
+        anonymous website performance. Newsletter emails use Buttondown's
+        open-tracking pixel and tracked links as described above. The separately
+        hosted Tally scorecard may use browser storage or other technology
+        needed for its form features under Tally's own privacy notice.
       </p>
 
       <h2>Data retention</h2>

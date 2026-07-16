@@ -23,6 +23,8 @@ changes that matter to users, integrators, or project operators.
   documentation.
 - Running changelog and Semantic Versioning release policy.
 - Anonymous real-user Web Vitals monitoring through Vercel Speed Insights.
+- Parallel aggregate page-view reporting through Vercel Web Analytics for
+  comparison with Cloudflare Web Analytics.
 
 ### Changed
 

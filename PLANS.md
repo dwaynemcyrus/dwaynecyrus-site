@@ -135,11 +135,19 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 
 ### 12. [x] Chunk: add Vercel Speed Insights
 
-- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy.astro`, `tests/site-contract.test.mjs`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
+- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy.astro`, `tests/site-contract.test.mjs`, `OVERVIEW.md`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
 - **Change:** Add the official Astro Speed Insights component once in the shared layout, document its operation, and disclose anonymous real-user performance measurement accurately.
 - **Verify:** Run format, lint, Astro/type checks, tests, and the production build; inspect generated pages for one Speed Insights injector and no personal form values in its configuration.
 - **Risk/rollback:** Duplicate scripts or inaccurate privacy disclosure. Revert this focused chunk and disable Speed Insights in the Vercel project if necessary.
 - **Commit:** `feat(analytics): add speed insights`
+
+### 13. [x] Chunk: add Vercel Web Analytics
+
+- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy.astro`, `tests/site-contract.test.mjs`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
+- **Change:** Add the official Astro Web Analytics component once in the shared document head, retain Cloudflare edge injection for a temporary provider comparison, and disclose both services accurately.
+- **Verify:** Run format, lint, Astro/type checks, tests, and the production build; inspect every generated page for one Vercel Analytics injector and no personal form values in its configuration.
+- **Risk/rollback:** Parallel analytics adds two page-view measurement scripts and may produce different totals because providers use different methods. Remove the Vercel component and package or disable either dashboard service after the comparison.
+- **Commit:** `feat(analytics): add web analytics`
 
 ## Production release inputs
 
@@ -153,6 +161,7 @@ verified before production deployment:
 - [ ] Tally result delivery and separate optional consent behavior
 - [x] Tally archive retention and absence of response forwarding
 - [x] Cloudflare Web Analytics injection method confirmed; no repository token required
+- [ ] Vercel Web Analytics and Speed Insights enabled and verified on a deployed domain
 - [x] Contact email
 - [x] Legal name, operator name, publishable address, and responsible person
 - [x] X, YouTube, and Substack URLs
@@ -186,6 +195,7 @@ verified before production deployment:
 - 2026-07-16: Prepared a non-public purchase, delivery, and refund policy draft for future digital educational products. It remains outside the Astro page tree and does not expand the MVP or create a public route.
 - 2026-07-16: Expanded the Privacy Policy with the owner-confirmed Buttondown open/click tracking, indefinite Tally archive retention, and absence of Tally response forwarding, plus provider, transfer, rights, and deletion details.
 - 2026-07-16: Added Vercel Speed Insights once in the shared Astro layout, documented its anonymous Web Vitals collection, and verified one injector on every generated HTML page without personal form values.
+- 2026-07-16: Added Vercel Web Analytics once in the shared document head while retaining Cloudflare edge injection for comparison; updated privacy disclosures and verified one Vercel analytics injector on every generated HTML page.
 
 ## Future commerce preparation (not MVP)
 
@@ -203,7 +213,7 @@ verified before production deployment:
 
 ## Completion
 
-- **Checks run:** Format check, lint, Astro/type diagnostics, twelve contract tests, dependency audit, static production build, configured sitemap/metadata build, Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
+- **Checks run:** Format check, lint, Astro/type diagnostics, twelve contract tests, dependency audit, static production build, configured sitemap/metadata build, Vercel Web Analytics and Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
 - **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, changelog-policy, future-policy-draft, and privacy-disclosure commits are recorded on `feat/initial-build`.
 - **Remaining risks:** Legal review remains outstanding, especially for scorecard consent, intimate response data, indefinite retention, international transfers, and newsletter tracking; live Buttondown/Tally submissions are intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.

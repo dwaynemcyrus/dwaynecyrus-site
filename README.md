@@ -62,8 +62,14 @@ separate from newsletter consent.
 
 Cloudflare Web Analytics injects its JavaScript automatically at the edge. The
 repository intentionally contains no beacon snippet or analytics token, which
-prevents duplicate tracking. Do not send form values, scorecard answers or
-other personal data to analytics.
+prevents duplicate Cloudflare tracking. Do not send form values, scorecard
+answers or other personal data to analytics.
+
+Vercel Web Analytics is also included once in the shared Astro layout so its
+anonymous aggregate page-view reporting can be compared with Cloudflare's.
+Enable Web Analytics for the project in the Vercel dashboard; the integration
+requires no repository secret. Both services must remain disclosed while both
+are enabled.
 
 Vercel Speed Insights is included once in the shared Astro layout to collect
 anonymous real-user Web Vitals for every page. Enable Speed Insights for the
@@ -97,8 +103,9 @@ Do not submit real visitor data during automated or preview testing.
 The Privacy Policy discloses that Buttondown open and click tracking are
 enabled, Tally scorecard submissions remain in the account archive
 indefinitely, and Tally responses are not forwarded to another response
-destination. It also discloses Cloudflare Web Analytics and Vercel Speed
-Insights. Reconfirm these settings whenever any service is changed.
+destination. It also discloses Cloudflare Web Analytics, Vercel Web Analytics
+and Vercel Speed Insights. Reconfirm these settings whenever any service is
+changed.
 
 The Privacy Policy and Legal Notice contain the confirmed operator details but
 remain implementation drafts. Obtain appropriate Swiss/EU review before a
