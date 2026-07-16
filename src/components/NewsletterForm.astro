@@ -1,0 +1,121 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  id: string;
+  buttonLabel: "Join the Letters" | "Join Letters from Cyrus";
+}
+
+const { id, buttonLabel } = Astro.props;
+const emailId = `${id}-email`;
+const isConfigured = Boolean(siteConfig.buttondownFormAction);
+---
+
+<div class="newsletter-form-wrap">
+  <form
+    class="newsletter-form"
+    method={isConfigured ? "post" : undefined}
+    action={isConfigured ? siteConfig.buttondownFormAction : undefined}
+    aria-describedby={`${id}-consent ${id}-status`}
+  >
+    <div class="field">
+      <label for={emailId}>Email address</label>
+      <input
+        id={emailId}
+        name="email"
+        type="email"
+        autocomplete="email"
+        inputmode="email"
+        placeholder="you@example.com"
+        required
+        disabled={!isConfigured}
+      />
+    </div>
+    <button class="button" type="submit" disabled={!isConfigured}
+      >{buttonLabel}</button
+    >
+  </form>
+  <p id={`${id}-consent`} class="consent">
+    By subscribing, you agree to receive Letters from Cyrus two to three times
+    each week. Unsubscribe at any time. <a href="/privacy"
+      >Read the Privacy Policy.</a
+    >
+  </p>
+  <p
+    id={`${id}-status`}
+    class:list={["form-status", { configured: isConfigured }]}
+  >
+    {
+      isConfigured
+        ? "Your subscription is handled securely by Buttondown."
+        : "Newsletter signup will be available when Buttondown is configured."
+    }
+  </p>
+</div>
+
+<style>
+  .newsletter-form-wrap {
+    max-width: 46rem;
+  }
+
+  .newsletter-form {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .field {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  label {
+    font-size: var(--step--1);
+    font-weight: 750;
+  }
+
+  input {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.72rem 0.85rem;
+    border: 1px solid var(--color-ink);
+    border-radius: var(--radius);
+    background: var(--color-paper);
+  }
+
+  input:disabled {
+    border-color: var(--color-rule);
+    background: var(--color-soft);
+    cursor: not-allowed;
+  }
+
+  button:disabled {
+    border-color: var(--color-muted);
+    background: var(--color-muted);
+    cursor: not-allowed;
+  }
+
+  .consent,
+  .form-status {
+    margin-block: var(--space-2) 0;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+
+  .form-status.configured {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 36rem) {
+    .newsletter-form {
+      grid-template-columns: minmax(16rem, 1fr) auto;
+      align-items: end;
+    }
+  }
+</style>

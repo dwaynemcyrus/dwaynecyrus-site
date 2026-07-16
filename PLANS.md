@@ -69,7 +69,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Navigation wrapping, focus obscuration, invalid metadata, or premature third-party requests. Revert the shell chunk and keep configuration intact.
 - **Commit:** `feat(layout): add editorial shell`
 
-### 4. [ ] Chunk: add shared conversion UI
+### 4. [x] Chunk: add shared conversion UI
 
 - **Files:** `src/components/NewsletterForm.astro`, `src/components/PrimaryButton.astro`, `src/components/SecondaryLink.astro`, `src/components/SectionHeader.astro`
 - **Change:** Add semantic CTA primitives and reusable Buttondown form with unique IDs, visible label, native email validation, exact consent wording, privacy link, and contextual button labels.
@@ -150,6 +150,7 @@ verified before production deployment:
 - 2026-07-16: Scaffolded Astro 7.0.9 with pinned npm tooling; format, lint, Astro checks, Node tests, and the static build pass.
 - 2026-07-16: Added typed central configuration, release-readiness validation, locked-copy helpers, and six passing contract tests.
 - 2026-07-16: Added the semantic base layout, true-white editorial tokens, responsive static navigation, metadata shell, and optional-link footer.
+- 2026-07-16: Added accessible newsletter, primary-action, secondary-link, and section-heading components with an honest unconfigured Buttondown state.
 
 ## Completion
 
