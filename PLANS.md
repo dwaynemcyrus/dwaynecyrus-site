@@ -104,9 +104,9 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ### 8. [x] Chunk: finish discovery and analytics
 
 - **Files:** `astro.config.mjs`, `src/layouts/BaseLayout.astro`, `src/pages/robots.txt.ts`, `tests/site-contract.test.mjs`
-- **Change:** Complete canonical URLs, route-specific Open Graph/Twitter text, truthful JSON-LD, sitemap, robots, 404 indexing rules, and the minimal Cloudflare Web Analytics beacon controlled by configuration.
-- **Verify:** Configured checks and build pass; inspect generated HTML, sitemap, and robots; 404 is excluded; no OG image is referenced; beacon loads once and sends no personal/custom data; expected third-party request timing is documented.
-- **Risk/rollback:** Bad canonical domain, placeholder metadata, duplicate analytics, or unintended tracking. Disable the beacon/configured output and revert only this chunk while preserving pages.
+- **Change:** Complete canonical URLs, route-specific Open Graph/Twitter text, truthful JSON-LD, sitemap, robots, 404 indexing rules, and the Cloudflare Web Analytics boundary.
+- **Verify:** Configured checks and build pass; inspect generated HTML, sitemap, and robots; 404 is excluded; no OG image or repository analytics beacon is referenced; expected third-party request timing is documented.
+- **Risk/rollback:** Bad canonical domain, placeholder metadata, duplicate analytics, or unintended tracking. Disable Cloudflare Web Analytics and revert only this chunk while preserving pages.
 - **Commit:** `feat(seo): add metadata and analytics`
 
 ### 9. [x] Chunk: document operation and release
@@ -142,7 +142,7 @@ verified before production deployment:
 - [ ] Buttondown form action and exact field/redirect behavior
 - [x] Tally form URL
 - [ ] Tally result delivery and separate optional consent behavior
-- [ ] Cloudflare Web Analytics token
+- [x] Cloudflare Web Analytics injection method confirmed; no repository token required
 - [x] Contact email
 - [ ] Legal name, operating name, publishable address, and responsible person
 - [ ] Optional X, YouTube, and Substack URLs
@@ -171,12 +171,13 @@ verified before production deployment:
 - 2026-07-16: Added a running root changelog and owner-controlled Semantic Versioning policy; the development version remains `0.1.0`.
 - 2026-07-16: Added the owner-confirmed canonical origin, website domain, and public contact email as centrally configured defaults with environment overrides.
 - 2026-07-16: Replaced the incompatible sitemap integration with a prerendered project endpoint so the confirmed domain emits a real sitemap without downgrading Astro or accepting dependency advisories.
+- 2026-07-16: Removed the redundant analytics token and beacon after the owner confirmed Cloudflare injects Web Analytics automatically at the edge.
 
 ## Completion
 
-- **Checks run:** Format check, lint, Astro/type diagnostics, ten contract tests, dependency audit, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
+- **Checks run:** Format check, lint, Astro/type diagnostics, eleven contract tests, dependency audit, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
 - **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, and changelog-policy commits are recorded on `feat/initial-build`.
-- **Remaining risks:** Missing analytics and legal configuration and legal review; live Buttondown/Tally submissions intentionally untested; physical-keyboard and Lighthouse release checks remain.
+- **Remaining risks:** Missing legal configuration and legal review; live Buttondown/Tally submissions intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
 
 Commit subjects must be at most 44 characters. Commit body lines must be

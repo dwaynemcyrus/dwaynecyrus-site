@@ -25,7 +25,6 @@ const completeEnvironment = {
   BUTTONDOWN_FORM_ACTION:
     "https://buttondown.com/api/emails/embed-subscribe/example",
   TALLY_SCORECARD_URL: "https://tally.so/r/example",
-  CLOUDFLARE_ANALYTICS_TOKEN: "public-token",
   CONTACT_EMAIL: "privacy@example.com",
   X_URL: "https://x.com/example",
   YOUTUBE_URL: "https://youtube.com/@example",
@@ -175,6 +174,15 @@ test("crawler routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("analytics injection is left to Cloudflare", async () => {
+  const layout = await readFile(
+    new URL("../src/layouts/BaseLayout.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(layout, /cloudflareinsights|data-cf-beacon/);
 });
 
 test("newsletter form preserves Buttondown metadata and audience tags", async () => {

@@ -51,7 +51,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
 - Two accessible Buttondown newsletter signup forms on the homepage.
-- Central configuration for all service URLs, social links, contact details, legal details, canonical site data, and the Cloudflare analytics token.
+- Central configuration for all service URLs, social links, contact details, legal details, and canonical site data.
 - Cloudflare Web Analytics for anonymous/basic page-view measurement.
 - Accurate separation between scorecard participation and newsletter consent.
 - Clear explanation of what happens after scorecard completion, including that an Audit invitation is discretionary and not guaranteed.
@@ -119,7 +119,7 @@ Known production inputs not yet supplied:
 - Canonical site URL and domain
 - Buttondown form action and verified field requirements
 - Tally scorecard URL and verified consent/result-delivery behavior
-- Cloudflare Web Analytics token
+- Cloudflare Web Analytics enabled for automatic edge injection; no repository token or snippet is required
 - Contact email
 - Legal name, operating name, postal address, and responsible person
 - Optional X, YouTube, and Substack URLs

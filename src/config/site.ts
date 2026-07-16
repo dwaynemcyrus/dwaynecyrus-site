@@ -19,7 +19,6 @@ export interface SiteConfig {
   siteUrl: string;
   buttondownFormAction: string;
   tallyScorecardUrl: string;
-  cloudflareAnalyticsToken: string;
   contactEmail: string;
   xUrl: string;
   youtubeUrl: string;
@@ -35,7 +34,6 @@ export interface SiteConfig {
 type Environment = Record<string, string | undefined>;
 
 const REQUIRED_RELEASE_FIELDS = [
-  "cloudflareAnalyticsToken",
   "legalName",
   "legalAddress",
   "responsiblePerson",
@@ -78,7 +76,6 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
       DEFAULT_BUTTONDOWN_FORM_ACTION,
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
-    cloudflareAnalyticsToken: value(environment, "CLOUDFLARE_ANALYTICS_TOKEN"),
     contactEmail: value(environment, "CONTACT_EMAIL") || DEFAULT_CONTACT_EMAIL,
     xUrl: value(environment, "X_URL"),
     youtubeUrl: value(environment, "YOUTUBE_URL"),

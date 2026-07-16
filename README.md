@@ -60,9 +60,10 @@ The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
 separate from newsletter consent.
 
-Set `CLOUDFLARE_ANALYTICS_TOKEN` to enable the Cloudflare Web Analytics beacon.
-When it is empty, no analytics script is rendered. Do not add form values,
-scorecard answers or other personal data to analytics.
+Cloudflare Web Analytics injects its JavaScript automatically at the edge. The
+repository intentionally contains no beacon snippet or analytics token, which
+prevents duplicate tracking. Do not send form values, scorecard answers or
+other personal data to analytics.
 
 The confirmed `https://dwaynecyrus.com` origin controls canonical URLs,
 structured data, the sitemap and the sitemap line in `robots.txt`. `SITE_URL`

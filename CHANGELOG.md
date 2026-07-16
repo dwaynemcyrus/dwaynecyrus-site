@@ -29,6 +29,8 @@ changes that matter to users, integrators, or project operators.
   `dwaynecyrus.com` and `hey@dwaynecyrus.com`.
 - Sitemap generation now uses a project-owned static endpoint compatible with
   the secure Astro release.
+- Cloudflare Web Analytics is now left to automatic edge injection, removing
+  the redundant repository token and beacon configuration.
 
 ## Release policy
 

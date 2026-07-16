@@ -216,13 +216,14 @@ table synchronized with its scripts.
 - **Entry points:** Static routes in `src/pages/`; shared document shell in `src/layouts/BaseLayout.astro`.
 - **Main modules:** Pages own editorial sequence; components own small repeated UI; `src/config/site.ts` owns editable service/legal values; `global.css` owns design tokens and shared styles.
 - **Source of truth:** Product intent and baseline copy come from `PROJECT-BRIEF.md`; approved scope comes from `OVERVIEW.md`; technical decisions come from this contract; external values come from validated configuration/environment inputs.
-- **Public APIs/contracts:** Native Buttondown HTML form submission, direct Tally URL, Cloudflare analytics beacon, generated public routes/metadata.
+- **Public APIs/contracts:** Native Buttondown HTML form submission, direct Tally URL, Cloudflare-managed analytics injection, generated public routes/metadata.
 - **Patterns to follow:** Static rendering, server/build-time configuration, semantic HTML, native form/link behavior, mobile-first CSS, small transparent Astro components, progressive enhancement, optional links omitted when absent.
 - **Patterns to avoid:** React/Vue/Svelte islands, client-side routing, generic page renderers, CMS/content collections for fixed MVP copy, serverless proxies, local persistence, duplicated service URLs, optimistic form success, Tally embed by default, runtime schema complexity, and speculative abstractions.
 
 `BaseLayout.astro` should own the HTML shell, route metadata, canonical URL,
-skip link, header, footer, and the single Cloudflare beacon. Page components
-must remain readable enough for copy review.
+skip link, header, and footer. Cloudflare injects Web Analytics at the edge;
+the repository must not add a second beacon. Page components must remain
+readable enough for copy review.
 
 ## Central configuration contract
 
@@ -234,7 +235,6 @@ authorName
 siteUrl
 buttondownFormAction
 tallyScorecardUrl
-cloudflareAnalyticsToken
 contactEmail
 xUrl
 youtubeUrl
@@ -271,8 +271,8 @@ never become `#`, fake facts, or apparently functional dead controls.
 
 ### Cloudflare Web Analytics
 
-- Load the current minimal beacon once from the base layout.
-- Read its token from validated configuration.
+- Enable Web Analytics in Cloudflare so it injects the current snippet at the edge.
+- Do not render a beacon or analytics token from the repository.
 - Do not send custom IDs, form data, scorecard answers, or personal data.
 - Do not add Google Analytics or a custom analytics dashboard.
 
@@ -353,7 +353,6 @@ Expected public-at-render-time configuration names:
 | `SITE_URL` | Optional override for the confirmed canonical HTTPS origin | No |
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
-| `CLOUDFLARE_ANALYTICS_TOKEN` | Web Analytics beacon | Yes |
 | `CONTACT_EMAIL` | Optional override for the confirmed privacy/legal contact | No |
 | `X_URL` | Optional footer link | No |
 | `YOUTUBE_URL` | Optional footer link | No |
@@ -379,7 +378,7 @@ MVP has no first-party persistent data.
 
 ## Known risks and constraints
 
-- The analytics token, legal identity/address, and optional social URLs are not yet supplied.
+- The legal identity/address and optional social URLs are not yet supplied.
 - The confirmed Buttondown endpoint, metadata fields, and audience tags must be verified with owner-approved test details before release.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
@@ -405,3 +404,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Maintain a root changelog from `0.1.0` | The owner requires continuous notable-change tracking and explicit approval for major versions |
 | 2026-07-16 | Use the confirmed public domain and contact | The owner supplied the canonical domain and public email address |
 | 2026-07-16 | Generate the sitemap in the project | The current official integration is incompatible with the secure Astro release |
+| 2026-07-16 | Let Cloudflare inject analytics | The owner confirmed Web Analytics is injected automatically at the edge |
