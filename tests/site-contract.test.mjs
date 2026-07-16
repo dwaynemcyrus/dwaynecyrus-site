@@ -261,6 +261,17 @@ test("newsletter form preserves Buttondown metadata and audience tags", async ()
   assert.match(source, /name = "tag"/);
 });
 
+test("homepage scorecard links use the configured Tally URL", async () => {
+  const home = await readFile(
+    new URL("../src/pages/index.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(home, /const scorecardUrl = siteConfig\.tallyScorecardUrl/);
+  assert.equal(home.match(/<SecondaryLink href=\{scorecardUrl\}/g)?.length, 2);
+  assert.doesNotMatch(home, /<SecondaryLink href="\/scorecard"/);
+});
+
 test("dependency contract excludes client UI frameworks", async () => {
   const packageJson = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf8"),

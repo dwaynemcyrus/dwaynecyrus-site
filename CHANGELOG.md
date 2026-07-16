@@ -46,6 +46,8 @@ changes that matter to users, integrators, or project operators.
 
 - Footer copyright, social profiles, and site navigation now align in one
   balanced row on wider screens.
+- Homepage scorecard calls to action now open the live Tally scorecard directly
+  instead of routing through the scorecard information page.
 
 ## Release policy
 

@@ -2,12 +2,14 @@
 import NewsletterForm from "../components/NewsletterForm.astro";
 import SecondaryLink from "../components/SecondaryLink.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import { siteConfig } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title =
   "Letters from Cyrus — Emotional Command, Manhood, Marriage and Fatherhood";
 const description =
   "Letters for men carrying silent weight—and for the women who stand with them. Essays and field notes on emotional command, righteous manhood, marriage and fatherhood.";
+const scorecardUrl = siteConfig.tallyScorecardUrl;
 ---
 
 <BaseLayout title={title} description={description} canonicalPath="/">
@@ -166,7 +168,7 @@ const description =
           You will receive a clearer picture of where you are now and what may
           need your attention next.
         </p>
-        <SecondaryLink href="/scorecard">Take the Scorecard</SecondaryLink>
+        <SecondaryLink href={scorecardUrl}>Take the Scorecard</SecondaryLink>
       </div>
     </div>
   </section>
@@ -186,7 +188,8 @@ const description =
           If I believe a Freeze Diagnostic Audit may serve you, I may invite you
           to one.
         </p>
-        <SecondaryLink href="/scorecard">Begin with the Scorecard</SecondaryLink
+        <SecondaryLink href={scorecardUrl}
+          >Begin with the Scorecard</SecondaryLink
         >
       </div>
     </div>
