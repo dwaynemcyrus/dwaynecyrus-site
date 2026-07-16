@@ -173,6 +173,21 @@ verified before production deployment:
 - 2026-07-16: Replaced the incompatible sitemap integration with a prerendered project endpoint so the confirmed domain emits a real sitemap without downgrading Astro or accepting dependency advisories.
 - 2026-07-16: Removed the redundant analytics token and beacon after the owner confirmed Cloudflare injects Web Analytics automatically at the edge.
 - 2026-07-16: Added the confirmed operator identity, Basel postal address, responsible person, and social profiles; Privacy and Legal now render those values from central configuration.
+- 2026-07-16: Prepared a non-public purchase, delivery, and refund policy draft for future digital educational products. It remains outside the Astro page tree and does not expand the MVP or create a public route.
+
+## Future commerce preparation (not MVP)
+
+- [x] Keep the initial fulfillment/refund policy draft outside `src/pages`.
+- [ ] Confirm the first product, delivery method, access period, sales regions,
+  currency, taxes, checkout provider, and customer-support timing.
+- [ ] Approve a voluntary refund position and any product-specific exceptions.
+- [ ] Add legally reviewed checkout terms, express digital-delivery consent
+  where required, and an electronic order-confirmation record.
+- [ ] Update privacy disclosures for payment, course, support, and recordkeeping
+  providers before collecting purchase data.
+- [ ] Treat commerce as a separately approved scope change; update
+  `OVERVIEW.md`, `PROJECT.md`, routes, tests, and release checks before making
+  any sales page or policy public.
 
 ## Completion
 
