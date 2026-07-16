@@ -21,7 +21,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **In scope:** Astro scaffold, central configuration, shared layout/components, homepage, scorecard, privacy, legal, custom 404, metadata, sitemap, robots, Cloudflare analytics, documentation, and verification.
 - **Out of scope:** Production deployment, DNS changes, live external submissions without authorization, and every non-goal in `OVERVIEW.md` and `PROJECT.md`.
 - **Assumptions:** Direct Tally link; npm; documentation-only starting repository; current stable compatible Astro/Node versions selected during scaffolding.
-- **Current branch:** `docs/project-setup`
+- **Current branch:** `feat/initial-build`
 
 ## Preconditions
 
@@ -45,7 +45,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 
 ## Plan
 
-### 1. [ ] Chunk: scaffold Astro foundation
+### 1. [x] Chunk: scaffold Astro foundation
 
 - **Files:** `package.json`, `package-lock.json`, `astro.config.mjs`, `tsconfig.json`, `.gitignore`, `.prettierignore`, `eslint.config.js`
 - **Change:** Scaffold the smallest static Astro project; select compatible current stable versions; add official sitemap, Astro checks, format, lint, Node test, build, and preview scripts; preserve all project documents.
@@ -146,6 +146,8 @@ verified before production deployment:
 - 2026-07-16: Selected frontend and deployment guides; data guide is inactive.
 - 2026-07-16: Owner explicitly approved the overview; setup documents are ready to commit.
 - 2026-07-16: Committed the reusable rules/guides and approved project definition in two focused setup commits.
+- 2026-07-16: Began the Astro foundation on `feat/initial-build`; the generated visual mockup was rejected and is not a project asset.
+- 2026-07-16: Scaffolded Astro 7.0.9 with pinned npm tooling; format, lint, Astro checks, Node tests, and the static build pass.
 
 ## Completion
 

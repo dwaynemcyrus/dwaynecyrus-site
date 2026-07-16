@@ -157,7 +157,6 @@ It is ready for handoff or release when:
 
 ### Needs a decision
 
-- `[NEEDS DECISION]` The owner must explicitly approve this overview before website implementation begins.
 - None. Git is initialized on the focused `docs/project-setup` branch, and the owner approved this overview on 2026-07-16.
 
 Production credentials and legal details listed above are required before
