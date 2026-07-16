@@ -31,6 +31,8 @@ changes that matter to users, integrators, or project operators.
   the secure Astro release.
 - Cloudflare Web Analytics is now left to automatic edge injection, removing
   the redundant repository token and beacon configuration.
+- Privacy, Legal Notice, footer navigation, and social links now use the
+  confirmed Dwayne M Cyrus operator identity and contact details.
 
 ## Release policy
 

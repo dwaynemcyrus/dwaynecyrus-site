@@ -116,13 +116,10 @@ sans-serif for body and interface text.
 
 Known production inputs not yet supplied:
 
-- Canonical site URL and domain
-- Buttondown form action and verified field requirements
-- Tally scorecard URL and verified consent/result-delivery behavior
-- Cloudflare Web Analytics enabled for automatic edge injection; no repository token or snippet is required
-- Contact email
-- Legal name, operating name, postal address, and responsible person
-- Optional X, YouTube, and Substack URLs
+- Verified Buttondown field, tag, confirmation, and redirect behavior
+- Verified Tally consent and result-delivery behavior
+- Cloudflare Web Analytics verification on the deployed domain
+- Owner and appropriate Swiss/EU privacy/legal review
 
 These are launch inputs, not reasons to invent data or expand scope.
 

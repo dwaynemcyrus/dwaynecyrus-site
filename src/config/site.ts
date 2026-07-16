@@ -1,21 +1,33 @@
 export {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_LEGAL_ADDRESS,
+  DEFAULT_LEGAL_NAME,
+  DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
+  DEFAULT_SUBSTACK_URL,
   DEFAULT_TALLY_SCORECARD_URL,
   DEFAULT_WEBSITE_DOMAIN,
+  DEFAULT_X_URL,
+  DEFAULT_YOUTUBE_URL,
 } from "./site-defaults.ts";
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_LEGAL_ADDRESS,
+  DEFAULT_LEGAL_NAME,
+  DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
+  DEFAULT_SUBSTACK_URL,
   DEFAULT_TALLY_SCORECARD_URL,
   DEFAULT_WEBSITE_DOMAIN,
+  DEFAULT_X_URL,
+  DEFAULT_YOUTUBE_URL,
 } from "./site-defaults.ts";
 
 export interface SiteConfig {
-  siteName: "Letters from Cyrus";
-  authorName: "Cyrus";
+  siteName: "Dwayne Cyrus";
+  authorName: "Dwayne M Cyrus";
   siteUrl: string;
   buttondownFormAction: string;
   tallyScorecardUrl: string;
@@ -32,12 +44,6 @@ export interface SiteConfig {
 }
 
 type Environment = Record<string, string | undefined>;
-
-const REQUIRED_RELEASE_FIELDS = [
-  "legalName",
-  "legalAddress",
-  "responsiblePerson",
-] as const satisfies readonly (keyof SiteConfig)[];
 
 const HTTPS_URL_FIELDS = [
   "siteUrl",
@@ -68,8 +74,8 @@ export function isEmailAddress(input: string): boolean {
 
 export function createSiteConfig(environment: Environment = {}): SiteConfig {
   return {
-    siteName: "Letters from Cyrus",
-    authorName: "Cyrus",
+    siteName: "Dwayne Cyrus",
+    authorName: "Dwayne M Cyrus",
     siteUrl: value(environment, "SITE_URL") || DEFAULT_SITE_URL,
     buttondownFormAction:
       value(environment, "BUTTONDOWN_FORM_ACTION") ||
@@ -77,25 +83,22 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
     contactEmail: value(environment, "CONTACT_EMAIL") || DEFAULT_CONTACT_EMAIL,
-    xUrl: value(environment, "X_URL"),
-    youtubeUrl: value(environment, "YOUTUBE_URL"),
-    substackUrl: value(environment, "SUBSTACK_URL"),
-    legalName: value(environment, "LEGAL_NAME"),
-    businessName: value(environment, "BUSINESS_NAME") || "Letters from Cyrus",
-    legalAddress: value(environment, "LEGAL_ADDRESS"),
+    xUrl: value(environment, "X_URL") || DEFAULT_X_URL,
+    youtubeUrl: value(environment, "YOUTUBE_URL") || DEFAULT_YOUTUBE_URL,
+    substackUrl: value(environment, "SUBSTACK_URL") || DEFAULT_SUBSTACK_URL,
+    legalName: value(environment, "LEGAL_NAME") || DEFAULT_LEGAL_NAME,
+    businessName: value(environment, "BUSINESS_NAME") || "Dwayne M Cyrus",
+    legalAddress: value(environment, "LEGAL_ADDRESS") || DEFAULT_LEGAL_ADDRESS,
     websiteDomain:
       value(environment, "WEBSITE_DOMAIN") || DEFAULT_WEBSITE_DOMAIN,
     hostingProvider: value(environment, "HOSTING_PROVIDER") || "Vercel",
-    responsiblePerson: value(environment, "RESPONSIBLE_PERSON"),
+    responsiblePerson:
+      value(environment, "RESPONSIBLE_PERSON") || DEFAULT_RESPONSIBLE_PERSON,
   };
 }
 
 export function getReleaseConfigIssues(config: SiteConfig): string[] {
   const issues: string[] = [];
-
-  for (const field of REQUIRED_RELEASE_FIELDS) {
-    if (!config[field]) issues.push(`${field} is required for release`);
-  }
 
   for (const field of HTTPS_URL_FIELDS) {
     const fieldValue = config[field];

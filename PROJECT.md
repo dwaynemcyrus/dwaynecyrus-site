@@ -249,9 +249,10 @@ responsiblePerson
 
 Stable identity values may live directly in the typed module. Environment-
 specific values should be read from documented build-time environment
-variables. Blank optional social URLs omit their links. Missing required
-production values must fail a documented release-readiness check or build,
-never become `#`, fake facts, or apparently functional dead controls.
+variables. Confirmed social URLs may use validated defaults with documented
+overrides. Invalid production overrides must fail a documented
+release-readiness check or build, never become `#`, fake facts, or apparently
+functional dead controls.
 
 ## Integration rules
 
@@ -354,15 +355,15 @@ Expected public-at-render-time configuration names:
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
 | `CONTACT_EMAIL` | Optional override for the confirmed privacy/legal contact | No |
-| `X_URL` | Optional footer link | No |
-| `YOUTUBE_URL` | Optional footer link | No |
-| `SUBSTACK_URL` | Optional footer link | No |
-| `LEGAL_NAME` | Legal notice/privacy identity | Yes |
-| `BUSINESS_NAME` | Operating name | Yes |
-| `LEGAL_ADDRESS` | Publishable postal address | Yes |
+| `X_URL` | Optional override for the confirmed X profile | No |
+| `YOUTUBE_URL` | Optional override for the confirmed YouTube profile | No |
+| `SUBSTACK_URL` | Optional override for the confirmed Substack profile | No |
+| `LEGAL_NAME` | Optional override for the confirmed legal identity | No |
+| `BUSINESS_NAME` | Optional override for the confirmed operator name | No |
+| `LEGAL_ADDRESS` | Optional override for the confirmed postal address | No |
 | `WEBSITE_DOMAIN` | Optional override for the confirmed legal/canonical domain | No |
 | `HOSTING_PROVIDER` | Hosting disclosure; expected Vercel | Yes |
-| `RESPONSIBLE_PERSON` | Legal notice responsible person | Yes |
+| `RESPONSIBLE_PERSON` | Optional override for the confirmed responsible person | No |
 
 These values are rendered into the static site and are not secrets, but
 they still require correct environment ownership and validation. Never put
@@ -378,7 +379,6 @@ MVP has no first-party persistent data.
 
 ## Known risks and constraints
 
-- The legal identity/address and optional social URLs are not yet supplied.
 - The confirmed Buttondown endpoint, metadata fields, and audience tags must be verified with owner-approved test details before release.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
@@ -405,3 +405,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Use the confirmed public domain and contact | The owner supplied the canonical domain and public email address |
 | 2026-07-16 | Generate the sitemap in the project | The current official integration is incompatible with the secure Astro release |
 | 2026-07-16 | Let Cloudflare inject analytics | The owner confirmed Web Analytics is injected automatically at the edge |
+| 2026-07-16 | Use confirmed operator details | The owner supplied the legal identity, address, responsible person, and social profiles |

@@ -22,9 +22,8 @@ const identityIsConfigured = Boolean(
       {
         identityIsConfigured ? (
           <p>
-            This website is operated by {siteConfig.legalName}, operating as{" "}
-            {siteConfig.businessName}, at {siteConfig.legalAddress}. Privacy
-            questions can be sent to{" "}
+            This website is operated by {siteConfig.legalName},{" "}
+            {siteConfig.legalAddress}. Privacy questions can be sent to{" "}
             <a href={`mailto:${siteConfig.contactEmail}`}>
               {siteConfig.contactEmail}
             </a>

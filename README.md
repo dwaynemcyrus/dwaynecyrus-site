@@ -70,9 +70,9 @@ structured data, the sitemap and the sitemap line in `robots.txt`. `SITE_URL`
 remains available as an explicit override and must be an HTTPS origin with no
 path. The confirmed public contact is `hey@dwaynecyrus.com`.
 
-Optional social links are omitted when their variables are empty. Missing legal
-identity and address values display an explicit release warning until they are
-configured.
+The confirmed legal identity, postal address, responsible person and social
+profiles are built in. Their environment variables remain available as
+explicit overrides.
 
 ## External-service verification
 
@@ -89,9 +89,9 @@ Do not submit real visitor data during automated or preview testing.
 
 ## Privacy and legal review
 
-The Privacy Policy and Legal Notice are implementation drafts. Supply every
-legal/contact variable and obtain appropriate Swiss/EU review before a public
-release. The website is educational and does not provide medical,
+The Privacy Policy and Legal Notice contain the confirmed operator details but
+remain implementation drafts. Obtain appropriate Swiss/EU review before a
+public release. The website is educational and does not provide medical,
 psychological, legal or financial advice.
 
 ## Vercel delivery

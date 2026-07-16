@@ -5,9 +5,15 @@ import test from "node:test";
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_LEGAL_ADDRESS,
+  DEFAULT_LEGAL_NAME,
+  DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
+  DEFAULT_SUBSTACK_URL,
   DEFAULT_TALLY_SCORECARD_URL,
   DEFAULT_WEBSITE_DOMAIN,
+  DEFAULT_X_URL,
+  DEFAULT_YOUTUBE_URL,
   createSiteConfig,
   getReleaseConfigIssues,
   isEmailAddress,
@@ -47,15 +53,21 @@ test("site config trims values and passes with complete release input", () => {
   assert.deepEqual(getReleaseConfigIssues(config), []);
 });
 
-test("missing release fields remain visible instead of being invented", () => {
+test("confirmed release fields are available by default", () => {
   const config = createSiteConfig();
   const issues = getReleaseConfigIssues(config);
 
-  assert.ok(issues.includes("legalName is required for release"));
+  assert.deepEqual(issues, []);
   assert.equal(config.siteUrl, DEFAULT_SITE_URL);
   assert.equal(config.contactEmail, DEFAULT_CONTACT_EMAIL);
   assert.equal(config.websiteDomain, DEFAULT_WEBSITE_DOMAIN);
-  assert.equal(config.businessName, "Letters from Cyrus");
+  assert.equal(config.legalName, DEFAULT_LEGAL_NAME);
+  assert.equal(config.legalAddress, DEFAULT_LEGAL_ADDRESS);
+  assert.equal(config.responsiblePerson, DEFAULT_RESPONSIBLE_PERSON);
+  assert.equal(config.xUrl, DEFAULT_X_URL);
+  assert.equal(config.youtubeUrl, DEFAULT_YOUTUBE_URL);
+  assert.equal(config.substackUrl, DEFAULT_SUBSTACK_URL);
+  assert.equal(config.businessName, "Dwayne M Cyrus");
   assert.equal(config.hostingProvider, "Vercel");
   assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
   assert.equal(config.tallyScorecardUrl, DEFAULT_TALLY_SCORECARD_URL);

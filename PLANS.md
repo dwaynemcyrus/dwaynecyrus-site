@@ -144,8 +144,8 @@ verified before production deployment:
 - [ ] Tally result delivery and separate optional consent behavior
 - [x] Cloudflare Web Analytics injection method confirmed; no repository token required
 - [x] Contact email
-- [ ] Legal name, operating name, publishable address, and responsible person
-- [ ] Optional X, YouTube, and Substack URLs
+- [x] Legal name, operator name, publishable address, and responsible person
+- [x] X, YouTube, and Substack URLs
 - [ ] Owner and appropriate Swiss/EU privacy/legal review
 
 ## Progress notes
@@ -172,12 +172,13 @@ verified before production deployment:
 - 2026-07-16: Added the owner-confirmed canonical origin, website domain, and public contact email as centrally configured defaults with environment overrides.
 - 2026-07-16: Replaced the incompatible sitemap integration with a prerendered project endpoint so the confirmed domain emits a real sitemap without downgrading Astro or accepting dependency advisories.
 - 2026-07-16: Removed the redundant analytics token and beacon after the owner confirmed Cloudflare injects Web Analytics automatically at the edge.
+- 2026-07-16: Added the confirmed operator identity, Basel postal address, responsible person, and social profiles; Privacy and Legal now render those values from central configuration.
 
 ## Completion
 
 - **Checks run:** Format check, lint, Astro/type diagnostics, eleven contract tests, dependency audit, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
 - **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, and changelog-policy commits are recorded on `feat/initial-build`.
-- **Remaining risks:** Missing legal configuration and legal review; live Buttondown/Tally submissions intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
+- **Remaining risks:** Legal review remains outstanding; live Buttondown/Tally submissions are intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
 
 Commit subjects must be at most 44 characters. Commit body lines must be
