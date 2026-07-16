@@ -188,13 +188,18 @@ test("crawler routes have source files", async () => {
   );
 });
 
-test("analytics injection is left to Cloudflare", async () => {
+test("analytics integrations have one clear owner", async () => {
   const layout = await readFile(
     new URL("../src/layouts/BaseLayout.astro", import.meta.url),
     "utf8",
   );
 
   assert.doesNotMatch(layout, /cloudflareinsights|data-cf-beacon/);
+  assert.match(
+    layout,
+    /import SpeedInsights from "@vercel\/speed-insights\/astro"/,
+  );
+  assert.equal(layout.match(/<SpeedInsights\s*\/>/g)?.length, 1);
 });
 
 test("privacy policy states confirmed data practices", async () => {
@@ -207,6 +212,8 @@ test("privacy policy states confirmed data practices", async () => {
   assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
   assert.match(privacy, /Scorecard submissions are kept indefinitely/);
   assert.match(privacy, /Tally responses are not forwarded/);
+  assert.match(privacy, /Vercel Speed\s+Insights/);
+  assert.match(privacy, /not associated with an individual visitor/);
   assert.doesNotMatch(privacy, /Payment or booking information/);
 });
 

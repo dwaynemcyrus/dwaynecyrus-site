@@ -2,6 +2,7 @@
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { siteConfig } from "../config/site";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import "../styles/global.css";
 
 interface Props {
@@ -72,5 +73,6 @@ const structuredData = siteConfig.siteUrl
       <slot />
     </main>
     <SiteFooter />
+    <SpeedInsights />
   </body>
 </html>

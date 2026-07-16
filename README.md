@@ -65,6 +65,11 @@ repository intentionally contains no beacon snippet or analytics token, which
 prevents duplicate tracking. Do not send form values, scorecard answers or
 other personal data to analytics.
 
+Vercel Speed Insights is included once in the shared Astro layout to collect
+anonymous real-user Web Vitals for every page. Enable Speed Insights for the
+project in the Vercel dashboard; the integration requires no repository secret.
+Do not pass form values, scorecard answers or other personal data to it.
+
 The confirmed `https://dwaynecyrus.com` origin controls canonical URLs,
 structured data, the sitemap and the sitemap line in `robots.txt`. `SITE_URL`
 remains available as an explicit override and must be an HTTPS origin with no
@@ -92,7 +97,8 @@ Do not submit real visitor data during automated or preview testing.
 The Privacy Policy discloses that Buttondown open and click tracking are
 enabled, Tally scorecard submissions remain in the account archive
 indefinitely, and Tally responses are not forwarded to another response
-destination. Reconfirm these settings whenever either service is changed.
+destination. It also discloses Cloudflare Web Analytics and Vercel Speed
+Insights. Reconfirm these settings whenever any service is changed.
 
 The Privacy Policy and Legal Notice contain the confirmed operator details but
 remain implementation drafts. Obtain appropriate Swiss/EU review before a

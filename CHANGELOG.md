@@ -22,6 +22,7 @@ changes that matter to users, integrators, or project operators.
 - Developer setup, external-service verification, release, and rollback
   documentation.
 - Running changelog and Semantic Versioning release policy.
+- Anonymous real-user Web Vitals monitoring through Vercel Speed Insights.
 
 ### Changed
 
