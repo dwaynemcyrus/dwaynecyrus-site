@@ -101,9 +101,9 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Publishing incomplete or inaccurate legal details. Keep preview states unmistakable and block release until the owner supplies/reviews values.
 - **Commit:** `feat(pages): add legal and 404`
 
-### 8. [ ] Chunk: finish discovery and analytics
+### 8. [x] Chunk: finish discovery and analytics
 
-- **Files:** `astro.config.mjs`, `src/layouts/BaseLayout.astro`, `public/robots.txt`, `tests/site-contract.test.mjs`
+- **Files:** `astro.config.mjs`, `src/layouts/BaseLayout.astro`, `src/pages/robots.txt.ts`, `tests/site-contract.test.mjs`
 - **Change:** Complete canonical URLs, route-specific Open Graph/Twitter text, truthful JSON-LD, sitemap, robots, 404 indexing rules, and the minimal Cloudflare Web Analytics beacon controlled by configuration.
 - **Verify:** Configured checks and build pass; inspect generated HTML, sitemap, and robots; 404 is excluded; no OG image is referenced; beacon loads once and sends no personal/custom data; expected third-party request timing is documented.
 - **Risk/rollback:** Bad canonical domain, placeholder metadata, duplicate analytics, or unintended tracking. Disable the beacon/configured output and revert only this chunk while preserving pages.
@@ -154,6 +154,7 @@ verified before production deployment:
 - 2026-07-16: Replaced the scaffold page with the complete nine-section newsletter homepage using the approved brief copy and hierarchy.
 - 2026-07-16: Added the complete scorecard landing page with direct-config CTAs, non-clinical language, five next steps, invitation limits, and separate consent.
 - 2026-07-16: Added plain-language privacy and legal pages with explicit missing-release states, plus a no-index custom 404 with recovery links.
+- 2026-07-16: Added config-gated sitemap and canonical structured data, generated robots policy, a single Cloudflare beacon, and implementation-level content and route tests.
 
 ## Completion
 

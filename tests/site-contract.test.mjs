@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
@@ -93,6 +93,58 @@ test("content helpers report missing and prohibited copy", () => {
   assert.deepEqual(
     findProhibitedCopy(prohibitedPublicCopy.join(" | ")),
     prohibitedPublicCopy,
+  );
+});
+
+test("implemented pages contain locked copy and exclude prohibited copy", async () => {
+  const sourceFiles = [
+    "../src/pages/index.astro",
+    "../src/pages/scorecard.astro",
+    "../src/components/NewsletterForm.astro",
+  ];
+  const source = (
+    await Promise.all(
+      sourceFiles.map((path) =>
+        readFile(new URL(path, import.meta.url), "utf8"),
+      ),
+    )
+  ).join("\n");
+  const visibleCopy = source.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+
+  assert.deepEqual(findMissingCopy(visibleCopy), []);
+
+  const publicSourceFiles = [
+    "../src/pages/index.astro",
+    "../src/pages/scorecard.astro",
+    "../src/pages/privacy.astro",
+    "../src/pages/legal.astro",
+    "../src/pages/404.astro",
+    "../src/components/NewsletterForm.astro",
+  ];
+  const publicSource = (
+    await Promise.all(
+      publicSourceFiles.map((path) =>
+        readFile(new URL(path, import.meta.url), "utf8"),
+      ),
+    )
+  ).join("\n");
+
+  assert.deepEqual(findProhibitedCopy(publicSource), []);
+});
+
+test("required public routes have source files", async () => {
+  const routes = [
+    "index.astro",
+    "scorecard.astro",
+    "privacy.astro",
+    "legal.astro",
+    "404.astro",
+  ];
+
+  await Promise.all(
+    routes.map((route) =>
+      access(new URL(`../src/pages/${route}`, import.meta.url)),
+    ),
   );
 });
 

@@ -15,6 +15,27 @@ const { title, description, canonicalPath, robots } = Astro.props;
 const canonicalUrl = siteConfig.siteUrl
   ? new URL(canonicalPath, siteConfig.siteUrl).toString()
   : undefined;
+const structuredData = siteConfig.siteUrl
+  ? {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": `${siteConfig.siteUrl}/#website`,
+          url: siteConfig.siteUrl,
+          name: siteConfig.siteName,
+          description,
+          publisher: { "@id": `${siteConfig.siteUrl}/#person` },
+        },
+        {
+          "@type": "Person",
+          "@id": `${siteConfig.siteUrl}/#person`,
+          name: siteConfig.authorName,
+          url: siteConfig.siteUrl,
+        },
+      ],
+    }
+  : undefined;
 ---
 
 <!doctype html>
@@ -33,6 +54,27 @@ const canonicalUrl = siteConfig.siteUrl
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {
+      structuredData && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
+    {
+      siteConfig.cloudflareAnalyticsToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({
+            token: siteConfig.cloudflareAnalyticsToken,
+          })}
+        />
+      )
+    }
     <title>{title}</title>
   </head>
   <body>
