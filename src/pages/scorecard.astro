@@ -1,0 +1,187 @@
+---
+import PrimaryButton from "../components/PrimaryButton.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Freeze-to-Command Scorecard — Cyrus";
+const description =
+  "A private scorecard for marriage- and father-minded men who want to recognise patterns of emotional shutdown, withdrawal and failed repair.";
+const scorecardUrl = siteConfig.tallyScorecardUrl;
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/scorecard">
+  <section class="section">
+    <div class="container hero">
+      <div class="hero-copy">
+        <p class="eyebrow">The Freeze-to-Command Scorecard</p>
+        <h1>See the pattern before it costs you more.</h1>
+        <p class="lede">
+          A private assessment for men who are married, fathers or preparing
+          seriously for either.
+        </p>
+      </div>
+      <div class="cta-block">
+        {
+          scorecardUrl ? (
+            <PrimaryButton href={scorecardUrl}>
+              Begin the Scorecard
+            </PrimaryButton>
+          ) : (
+            <span class="button unavailable" aria-disabled="true">
+              Begin the Scorecard
+            </span>
+          )
+        }
+        {
+          !scorecardUrl && (
+            <p class="config-note">
+              The scorecard link will be available when Tally is configured.
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="What emotional freeze can look like" />
+      <div class="reading">
+        <p>Emotional freeze does not always look like fear.</p>
+        <p>
+          It can look like silence, withdrawal, irritation, overwork, avoidance,
+          contained rage or the inability to return after conflict.
+        </p>
+        <p>
+          A man may still be productive while becoming increasingly absent from
+          himself, his marriage and his family.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="What the scorecard will help you identify" />
+      <ul class="reading points">
+        <li>Where you shut down under pressure</li>
+        <li>How conflict changes your behaviour</li>
+        <li>Whether you withdraw instead of making repair</li>
+        <li>How emotional pressure affects your leadership</li>
+        <li>
+          Where you may be repeating patterns your family has learned to survive
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="What happens next" />
+      <div class="reading">
+        <ol class="numbered-list">
+          <li>You complete the scorecard.</li>
+          <li>
+            You receive the results or report described in the Tally form.
+          </li>
+          <li>Cyrus reviews submissions that may require deeper support.</li>
+          <li>
+            If Cyrus believes a Freeze Diagnostic Audit may benefit you, you may
+            receive a private invitation.
+          </li>
+          <li>
+            Completing the scorecard does not guarantee an Audit invitation.
+          </li>
+        </ol>
+        <p class="notice">
+          There is no public call-booking link. Invitations are based on the
+          scorecard results and whether the Audit appears appropriate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="Your email and the letters remain separate" />
+      <div class="reading">
+        <p>
+          An email address may be required to deliver your scorecard results.
+        </p>
+        <p>
+          Receiving results does not automatically subscribe you to Letters from
+          Cyrus.
+        </p>
+        <p>
+          Newsletter consent is optional and handled separately inside the Tally
+          form. If you subscribe, you can unsubscribe from the newsletter at any
+          time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container section-grid section-grid--two">
+      <h2>Answer honestly. Clarity begins there.</h2>
+      <div class="cta-block">
+        {
+          scorecardUrl ? (
+            <PrimaryButton href={scorecardUrl}>
+              Begin the Scorecard
+            </PrimaryButton>
+          ) : (
+            <span class="button unavailable" aria-disabled="true">
+              Begin the Scorecard
+            </span>
+          )
+        }
+        {
+          !scorecardUrl && (
+            <p class="config-note">
+              The scorecard link will be available when Tally is configured.
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cta-block {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-2);
+  }
+
+  .unavailable {
+    border-color: var(--color-muted);
+    background: var(--color-muted);
+    cursor: not-allowed;
+  }
+
+  .config-note {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .points {
+    display: grid;
+    gap: var(--space-3);
+    padding-left: 1.2rem;
+  }
+
+  .notice {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-ink);
+    font-weight: 750;
+  }
+
+  .final-cta {
+    background: var(--color-soft);
+  }
+</style>

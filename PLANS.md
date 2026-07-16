@@ -85,7 +85,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Copy drift or visual hierarchy making the scorecard primary. Revert the single page or restore exact source copy from the brief.
 - **Commit:** `feat(home): build newsletter page`
 
-### 6. [ ] Chunk: build scorecard landing page
+### 6. [x] Chunk: build scorecard landing page
 
 - **Files:** `src/pages/scorecard.astro`
 - **Change:** Implement the scorecard hero, emotional-freeze explanation, identification points, numbered next steps, exact non-guarantee/no-booking statement, separate consent explanation, and two direct Tally CTAs.
@@ -152,6 +152,7 @@ verified before production deployment:
 - 2026-07-16: Added the semantic base layout, true-white editorial tokens, responsive static navigation, metadata shell, and optional-link footer.
 - 2026-07-16: Added accessible newsletter, primary-action, secondary-link, and section-heading components with an honest unconfigured Buttondown state.
 - 2026-07-16: Replaced the scaffold page with the complete nine-section newsletter homepage using the approved brief copy and hierarchy.
+- 2026-07-16: Added the complete scorecard landing page with direct-config CTAs, non-clinical language, five next steps, invitation limits, and separate consent.
 
 ## Completion
 
