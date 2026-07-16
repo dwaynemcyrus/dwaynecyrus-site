@@ -41,6 +41,8 @@ changes that matter to users, integrators, or project operators.
 - The Privacy Policy now explains newsletter open/click tracking, indefinite
   scorecard archiving, provider data locations, transfer safeguards, and
   privacy choices in greater detail.
+- Persistent footer navigation now omits the standalone Scorecard page while
+  keeping that page available as a public campaign destination.
 
 ### Fixed
 

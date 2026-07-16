@@ -335,7 +335,7 @@ privacy, cookie/storage, performance, and necessity review.
 - **Accessibility target:** WCAG 2.2 AA
 - **Design system location:** `src/styles/global.css` CSS custom properties; no external component or design-system package
 - **Performance targets:** Zero hydrated UI framework JavaScript; zero content images and custom-font requests; no avoidable layout shift; only required third-party requests; Lighthouse categories ideally 95+.
-- **Critical product rules:** Newsletter conversion remains primary; scorecard remains secondary; no public booking; no guaranteed Audit invitation; no clinical claims; no fake proof or urgency; newsletter and scorecard consent remain separate; optional social links never become dead links.
+- **Critical product rules:** Newsletter conversion remains primary; homepage scorecard calls to action open Tally directly; the public scorecard information route remains outside persistent footer navigation; no public booking; no guaranteed Audit invitation; no clinical claims; no fake proof or urgency; newsletter and scorecard consent remain separate; optional social links never become dead links.
 
 Visual implementation:
 
@@ -441,3 +441,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Add Vercel Speed Insights | The owner requested anonymous real-user performance monitoring for the Astro site |
 | 2026-07-16 | Run two page-view analytics services | The owner wants to compare the aggregate reporting provided by Cloudflare and Vercel |
 | 2026-07-16 | Use confirmed operator details | The owner supplied the legal identity, address, responsible person, and social profiles |
+| 2026-07-16 | Omit Scorecard from the footer | The homepage already explains the scorecard and links directly to Tally; the standalone page remains available for future campaigns |

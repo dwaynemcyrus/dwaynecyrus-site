@@ -61,7 +61,10 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - Vercel Speed Insights for anonymous real-user performance measurement.
 - Accurate separation between scorecard participation and newsletter consent.
 - Clear explanation of what happens after scorecard completion, including that an Audit invitation is discretionary and not guaranteed.
-- Header and footer navigation defined in the brief, with optional social links rendered only when valid URLs exist.
+- Focused footer navigation for Home, Privacy, and Legal, with optional social
+  links rendered only when valid URLs exist. The public `/scorecard` route is
+  intentionally omitted from persistent navigation while homepage scorecard
+  calls to action open Tally directly.
 - Unique titles, descriptions, canonical URLs, Open Graph and Twitter/X text metadata, an XML sitemap, `robots.txt`, and truthful basic structured data.
 - A responsive, black-and-white, text-only editorial design using native system fonts.
 - Semantic HTML, keyboard access, a skip link, visible focus states, labelled forms, accessible validation, sufficient contrast, and reduced-motion support.

@@ -272,6 +272,20 @@ test("homepage scorecard links use the configured Tally URL", async () => {
   assert.doesNotMatch(home, /<SecondaryLink href="\/scorecard"/);
 });
 
+test("scorecard page stays public but outside footer navigation", async () => {
+  const footer = await readFile(
+    new URL("../src/components/SiteFooter.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(footer, /href="\/scorecard"/);
+  assert.match(sitemap, /"\/scorecard"/);
+});
+
 test("dependency contract excludes client UI frameworks", async () => {
   const packageJson = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf8"),
