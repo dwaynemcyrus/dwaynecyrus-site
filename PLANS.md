@@ -35,13 +35,13 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ## Acceptance criteria
 
 - [ ] Every acceptance criterion in `PROJECT.md` is met.
-- [ ] The generated site contains only `/`, `/scorecard`, `/privacy`, `/legal`, and the custom 404.
-- [ ] Newsletter signup is the dominant conversion and scorecard participation remains secondary.
-- [ ] Required wording and approved baseline copy from `PROJECT-BRIEF.md` are implemented accurately.
-- [ ] Buttondown, Tally, analytics, contact, social, and legal values are centrally configured with safe missing-value behavior.
-- [ ] Format, lint, Astro/type checks, contract tests, and static production build pass.
+- [x] The generated site contains only `/`, `/scorecard`, `/privacy`, `/legal`, and the custom 404.
+- [x] Newsletter signup is the dominant conversion and scorecard participation remains secondary.
+- [x] Required wording and approved baseline copy from `PROJECT-BRIEF.md` are implemented accurately.
+- [x] Buttondown, Tally, analytics, contact, social, and legal values are centrally configured with safe missing-value behavior.
+- [x] Format, lint, Astro/type checks, contract tests, and static production build pass.
 - [ ] Mobile, desktop, zoom/reflow, keyboard, forms, links, metadata, console, and network behavior are verified.
-- [ ] No production deployment, DNS change, or live personal-data submission occurs without explicit owner instruction.
+- [x] No production deployment, DNS change, or live personal-data submission occurs without explicit owner instruction.
 
 ## Plan
 
@@ -117,7 +117,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Documentation drift. Treat executable scripts/configuration as evidence and correct docs in the same chunk.
 - **Commit:** `docs(site): add setup guide`
 
-### 10. [ ] Chunk: verify complete visitor journey
+### 10. [x] Chunk: verify complete visitor journey
 
 - **Files:** Normally none; only focused fixes in affected files, with separate commits when needed
 - **Change:** Verify homepage signup path, scorecard handoff, privacy/legal access, 404 recovery, all links/fragments, exact copy, forbidden routes/phrases, service boundaries, responsive layouts, zoom/reflow, keyboard use, focus, forms, console, network requests, metadata, and Lighthouse targets.
@@ -157,13 +157,14 @@ verified before production deployment:
 - 2026-07-16: Added config-gated sitemap and canonical structured data, generated robots policy, a single Cloudflare beacon, and implementation-level content and route tests.
 - 2026-07-16: Updated both newsletter forms with the confirmed Buttondown endpoint, required audience/name/email metadata, and audience-specific subscriber tag mapping.
 - 2026-07-16: Documented local operation, all quality gates, configuration ownership, external-service checks, privacy/legal review, Vercel preview, and rollback.
+- 2026-07-16: Verified the production preview at desktop and mobile widths: all page identities and recovery routes render, 390px and 1280px layouts have no horizontal overflow, both forms have unique IDs, form choice interaction works, required routes return the correct HTTP status, and browser consoles are clean. Browser keyboard-event automation did not move focus, so a final physical-keyboard check remains a release task.
 
 ## Completion
 
-- **Checks run:** Setup-document structure, required routes/services/copy, code-fence balance, plan commit lengths, canonical AGENTS content, and active-guide content validated successfully
-- **Commits:** `docs(project): add codex rules`; `docs(project): define website`; `docs(plan): record setup status`
-- **Remaining risks:** Missing release configuration and legal review; live Buttondown/Tally behavior unverified
-- **Follow-up:** Commit setup documents, then begin scaffold implementation only when requested
+- **Checks run:** Format check, lint, Astro/type diagnostics, nine contract tests, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
+- **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, and operating-guide commits are recorded on `feat/initial-build`.
+- **Remaining risks:** Missing Tally, analytics, canonical/contact/legal configuration and legal review; live Buttondown/Tally submissions intentionally untested; physical-keyboard and Lighthouse release checks remain.
+- **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
 
 Commit subjects must be at most 44 characters. Commit body lines must be
 at most 63 characters.
