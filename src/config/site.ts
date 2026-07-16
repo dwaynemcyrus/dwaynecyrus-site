@@ -1,3 +1,18 @@
+export {
+  DEFAULT_BUTTONDOWN_FORM_ACTION,
+  DEFAULT_CONTACT_EMAIL,
+  DEFAULT_SITE_URL,
+  DEFAULT_TALLY_SCORECARD_URL,
+  DEFAULT_WEBSITE_DOMAIN,
+} from "./site-defaults.ts";
+import {
+  DEFAULT_BUTTONDOWN_FORM_ACTION,
+  DEFAULT_CONTACT_EMAIL,
+  DEFAULT_SITE_URL,
+  DEFAULT_TALLY_SCORECARD_URL,
+  DEFAULT_WEBSITE_DOMAIN,
+} from "./site-defaults.ts";
+
 export interface SiteConfig {
   siteName: "Letters from Cyrus";
   authorName: "Cyrus";
@@ -19,17 +34,10 @@ export interface SiteConfig {
 
 type Environment = Record<string, string | undefined>;
 
-export const DEFAULT_BUTTONDOWN_FORM_ACTION =
-  "https://buttondown.com/api/emails/embed-subscribe/lettersfromcyrus";
-export const DEFAULT_TALLY_SCORECARD_URL = "https://tally.so/r/1A5J5b";
-
 const REQUIRED_RELEASE_FIELDS = [
-  "siteUrl",
   "cloudflareAnalyticsToken",
-  "contactEmail",
   "legalName",
   "legalAddress",
-  "websiteDomain",
   "responsiblePerson",
 ] as const satisfies readonly (keyof SiteConfig)[];
 
@@ -64,21 +72,22 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
   return {
     siteName: "Letters from Cyrus",
     authorName: "Cyrus",
-    siteUrl: value(environment, "SITE_URL"),
+    siteUrl: value(environment, "SITE_URL") || DEFAULT_SITE_URL,
     buttondownFormAction:
       value(environment, "BUTTONDOWN_FORM_ACTION") ||
       DEFAULT_BUTTONDOWN_FORM_ACTION,
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
     cloudflareAnalyticsToken: value(environment, "CLOUDFLARE_ANALYTICS_TOKEN"),
-    contactEmail: value(environment, "CONTACT_EMAIL"),
+    contactEmail: value(environment, "CONTACT_EMAIL") || DEFAULT_CONTACT_EMAIL,
     xUrl: value(environment, "X_URL"),
     youtubeUrl: value(environment, "YOUTUBE_URL"),
     substackUrl: value(environment, "SUBSTACK_URL"),
     legalName: value(environment, "LEGAL_NAME"),
     businessName: value(environment, "BUSINESS_NAME") || "Letters from Cyrus",
     legalAddress: value(environment, "LEGAL_ADDRESS"),
-    websiteDomain: value(environment, "WEBSITE_DOMAIN"),
+    websiteDomain:
+      value(environment, "WEBSITE_DOMAIN") || DEFAULT_WEBSITE_DOMAIN,
     hostingProvider: value(environment, "HOSTING_PROVIDER") || "Vercel",
     responsiblePerson: value(environment, "RESPONSIBLE_PERSON"),
   };

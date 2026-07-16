@@ -8,7 +8,7 @@ export const GET: APIRoute = () => {
   const lines = ["User-agent: *", "Allow: /"];
 
   if (siteConfig.siteUrl) {
-    lines.push(`Sitemap: ${new URL("sitemap-index.xml", siteConfig.siteUrl)}`);
+    lines.push(`Sitemap: ${new URL("sitemap.xml", siteConfig.siteUrl)}`);
   }
 
   return new globalThis.Response(`${lines.join("\n")}\n`, {

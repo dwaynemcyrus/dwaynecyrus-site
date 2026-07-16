@@ -4,7 +4,10 @@ import test from "node:test";
 
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
+  DEFAULT_CONTACT_EMAIL,
+  DEFAULT_SITE_URL,
   DEFAULT_TALLY_SCORECARD_URL,
+  DEFAULT_WEBSITE_DOMAIN,
   createSiteConfig,
   getReleaseConfigIssues,
   isEmailAddress,
@@ -49,8 +52,10 @@ test("missing release fields remain visible instead of being invented", () => {
   const config = createSiteConfig();
   const issues = getReleaseConfigIssues(config);
 
-  assert.ok(issues.includes("siteUrl is required for release"));
   assert.ok(issues.includes("legalName is required for release"));
+  assert.equal(config.siteUrl, DEFAULT_SITE_URL);
+  assert.equal(config.contactEmail, DEFAULT_CONTACT_EMAIL);
+  assert.equal(config.websiteDomain, DEFAULT_WEBSITE_DOMAIN);
   assert.equal(config.businessName, "Letters from Cyrus");
   assert.equal(config.hostingProvider, "Vercel");
   assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
@@ -63,6 +68,9 @@ test("missing release fields remain visible instead of being invented", () => {
     issues.includes("tallyScorecardUrl is required for release"),
     false,
   );
+  assert.equal(issues.includes("siteUrl is required for release"), false);
+  assert.equal(issues.includes("contactEmail is required for release"), false);
+  assert.equal(issues.includes("websiteDomain is required for release"), false);
 });
 
 test("URLs, email addresses, and domains are validated at the boundary", () => {
@@ -156,6 +164,14 @@ test("required public routes have source files", async () => {
 
   await Promise.all(
     routes.map((route) =>
+      access(new URL(`../src/pages/${route}`, import.meta.url)),
+    ),
+  );
+});
+
+test("crawler routes have source files", async () => {
+  await Promise.all(
+    ["robots.txt.ts", "sitemap.xml.ts"].map((route) =>
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );

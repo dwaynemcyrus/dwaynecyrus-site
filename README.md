@@ -64,11 +64,14 @@ Set `CLOUDFLARE_ANALYTICS_TOKEN` to enable the Cloudflare Web Analytics beacon.
 When it is empty, no analytics script is rendered. Do not add form values,
 scorecard answers or other personal data to analytics.
 
-`SITE_URL` controls canonical URLs, structured data, the sitemap and the sitemap
-line in `robots.txt`. It must be the final HTTPS origin with no path.
+The confirmed `https://dwaynecyrus.com` origin controls canonical URLs,
+structured data, the sitemap and the sitemap line in `robots.txt`. `SITE_URL`
+remains available as an explicit override and must be an HTTPS origin with no
+path. The confirmed public contact is `hey@dwaynecyrus.com`.
 
-Optional social links are omitted when their variables are empty. Legal and
-contact values display an explicit release warning until they are configured.
+Optional social links are omitted when their variables are empty. Missing legal
+identity and address values display an explicit release warning until they are
+configured.
 
 ## External-service verification
 

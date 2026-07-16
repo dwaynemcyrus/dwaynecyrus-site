@@ -23,6 +23,13 @@ changes that matter to users, integrators, or project operators.
   documentation.
 - Running changelog and Semantic Versioning release policy.
 
+### Changed
+
+- Canonical site identity and public contact now default to
+  `dwaynecyrus.com` and `hey@dwaynecyrus.com`.
+- Sitemap generation now uses a project-owned static endpoint compatible with
+  the secure Astro release.
+
 ## Release policy
 
 - New projects begin at `0.1.0`.

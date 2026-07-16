@@ -12,9 +12,9 @@ This technical contract derives from the completed overview and
 - **Blocking decisions:** None
 - **Current development version:** `0.1.0`
 
-The missing service URLs and legal details listed below block production
-release, but they do not block building the static site with clear
-development configuration states.
+The missing analytics and legal details listed below block production release,
+but they do not block building the static site with clear development
+configuration states.
 
 ## Identity
 
@@ -131,12 +131,13 @@ an Audit invitation.
 - **Hosting:** Vercel; domain/DNS may be managed through Cloudflare
 - **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel
 
-Expected direct dependencies are Astro and the official Astro sitemap
-integration. Development tooling may include the official Astro checker,
-TypeScript, Prettier with Astro support, and ESLint with Astro support.
-Use Node's built-in test runner for lightweight contract tests unless a
-stronger need appears. Do not add a browser test framework solely for this
-small MVP.
+The only expected direct production dependency is Astro. The sitemap is a
+small prerendered endpoint because the current official sitemap integration
+is not compatible with the selected secure Astro release. Development tooling
+may include the official Astro checker, TypeScript, Prettier with Astro
+support, and ESLint with Astro support. Use Node's built-in test runner for
+lightweight contract tests unless a stronger need appears. Do not add a browser
+test framework solely for this small MVP.
 
 New dependencies or services require a clear reason. Paid services require
 human approval.
@@ -349,18 +350,18 @@ Expected public-at-render-time configuration names:
 
 | Variable | Purpose | Required for release |
 |---|---|---:|
-| `SITE_URL` | Canonical HTTPS origin | Yes |
+| `SITE_URL` | Optional override for the confirmed canonical HTTPS origin | No |
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
 | `CLOUDFLARE_ANALYTICS_TOKEN` | Web Analytics beacon | Yes |
-| `CONTACT_EMAIL` | Privacy/legal contact | Yes |
+| `CONTACT_EMAIL` | Optional override for the confirmed privacy/legal contact | No |
 | `X_URL` | Optional footer link | No |
 | `YOUTUBE_URL` | Optional footer link | No |
 | `SUBSTACK_URL` | Optional footer link | No |
 | `LEGAL_NAME` | Legal notice/privacy identity | Yes |
 | `BUSINESS_NAME` | Operating name | Yes |
 | `LEGAL_ADDRESS` | Publishable postal address | Yes |
-| `WEBSITE_DOMAIN` | Legal/canonical domain | Yes |
+| `WEBSITE_DOMAIN` | Optional override for the confirmed legal/canonical domain | No |
 | `HOSTING_PROVIDER` | Hosting disclosure; expected Vercel | Yes |
 | `RESPONSIBLE_PERSON` | Legal notice responsible person | Yes |
 
@@ -378,7 +379,7 @@ MVP has no first-party persistent data.
 
 ## Known risks and constraints
 
-- The analytics token, legal identity/address, contact email, and optional social URLs are not yet supplied.
+- The analytics token, legal identity/address, and optional social URLs are not yet supplied.
 - The confirmed Buttondown endpoint, metadata fields, and audience tags must be verified with owner-approved test details before release.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
@@ -402,3 +403,5 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Use the confirmed Buttondown form contract | The owner supplied the endpoint, metadata fields, and audience tag IDs |
 | 2026-07-16 | Use the confirmed Tally scorecard URL | The owner supplied the direct scorecard destination |
 | 2026-07-16 | Maintain a root changelog from `0.1.0` | The owner requires continuous notable-change tracking and explicit approval for major versions |
+| 2026-07-16 | Use the confirmed public domain and contact | The owner supplied the canonical domain and public email address |
+| 2026-07-16 | Generate the sitemap in the project | The current official integration is incompatible with the secure Astro release |
