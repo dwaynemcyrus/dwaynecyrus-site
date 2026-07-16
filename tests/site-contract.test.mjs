@@ -4,6 +4,7 @@ import test from "node:test";
 
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
+  DEFAULT_TALLY_SCORECARD_URL,
   createSiteConfig,
   getReleaseConfigIssues,
   isEmailAddress,
@@ -53,8 +54,13 @@ test("missing release fields remain visible instead of being invented", () => {
   assert.equal(config.businessName, "Letters from Cyrus");
   assert.equal(config.hostingProvider, "Vercel");
   assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
+  assert.equal(config.tallyScorecardUrl, DEFAULT_TALLY_SCORECARD_URL);
   assert.equal(
     issues.includes("buttondownFormAction is required for release"),
+    false,
+  );
+  assert.equal(
+    issues.includes("tallyScorecardUrl is required for release"),
     false,
   );
 });

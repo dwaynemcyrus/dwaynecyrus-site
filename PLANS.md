@@ -132,7 +132,8 @@ verified before production deployment:
 
 - [ ] Canonical site URL and website domain
 - [ ] Buttondown form action and exact field/redirect behavior
-- [ ] Tally form URL, result delivery, and separate optional consent behavior
+- [x] Tally form URL
+- [ ] Tally result delivery and separate optional consent behavior
 - [ ] Cloudflare Web Analytics token
 - [ ] Contact email
 - [ ] Legal name, operating name, publishable address, and responsible person
@@ -158,6 +159,7 @@ verified before production deployment:
 - 2026-07-16: Updated both newsletter forms with the confirmed Buttondown endpoint, required audience/name/email metadata, and audience-specific subscriber tag mapping.
 - 2026-07-16: Documented local operation, all quality gates, configuration ownership, external-service checks, privacy/legal review, Vercel preview, and rollback.
 - 2026-07-16: Verified the production preview at desktop and mobile widths: all page identities and recovery routes render, 390px and 1280px layouts have no horizontal overflow, both forms have unique IDs, form choice interaction works, required routes return the correct HTTP status, and browser consoles are clean. Browser keyboard-event automation did not move focus, so a final physical-keyboard check remains a release task.
+- 2026-07-16: Added the owner-confirmed direct Tally scorecard URL as the default centrally configured destination while retaining an environment override.
 
 ## Completion
 

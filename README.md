@@ -44,8 +44,9 @@ remains available as an explicit override. The form sends:
 - `email`
 - `tag`, selected from the confirmed audience tag IDs in the form script
 
-Set `TALLY_SCORECARD_URL` to the direct HTTPS scorecard URL. Completing Tally
-must remain separate from newsletter consent.
+The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
+remains available as an explicit override. Completing Tally must remain
+separate from newsletter consent.
 
 Set `CLOUDFLARE_ANALYTICS_TOKEN` to enable the Cloudflare Web Analytics beacon.
 When it is empty, no analytics script is rendered. Do not add form values,

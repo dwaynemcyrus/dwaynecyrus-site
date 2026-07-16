@@ -334,7 +334,7 @@ Expected public-at-render-time configuration names:
 |---|---|---:|
 | `SITE_URL` | Canonical HTTPS origin | Yes |
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
-| `TALLY_SCORECARD_URL` | Scorecard destination | Yes |
+| `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
 | `CLOUDFLARE_ANALYTICS_TOKEN` | Web Analytics beacon | Yes |
 | `CONTACT_EMAIL` | Privacy/legal contact | Yes |
 | `X_URL` | Optional footer link | No |
@@ -361,7 +361,7 @@ MVP has no first-party persistent data.
 
 ## Known risks and constraints
 
-- The Tally URL, analytics token, legal identity/address, contact email, and optional social URLs are not yet supplied.
+- The analytics token, legal identity/address, contact email, and optional social URLs are not yet supplied.
 - The confirmed Buttondown endpoint, metadata fields, and audience tags must be verified with owner-approved test details before release.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
@@ -383,3 +383,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Use exact vs baseline copy statuses | Owner approved exact required wording with limited baseline refinements |
 | 2026-07-16 | Use npm and focused quality scripts | Brief expects npm; explicit gates make later work reproducible |
 | 2026-07-16 | Use the confirmed Buttondown form contract | The owner supplied the endpoint, metadata fields, and audience tag IDs |
+| 2026-07-16 | Use the confirmed Tally scorecard URL | The owner supplied the direct scorecard destination |
