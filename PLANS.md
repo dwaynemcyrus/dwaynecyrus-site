@@ -53,7 +53,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Dependency or configuration incompatibility. Remove only files introduced by this chunk or revert its focused commit; never delete project documents.
 - **Commit:** `chore(site): scaffold astro project`
 
-### 2. [ ] Chunk: add config and content checks
+### 2. [x] Chunk: add config and content checks
 
 - **Files:** `.env.example`, `src/config/site.ts`, `scripts/validate-content.mjs`, `tests/site-contract.test.mjs`
 - **Change:** Add typed central configuration, distinguish stable values from environment inputs, validate URLs/email/release fields, omit optional social links when absent, and add exact-copy/exclusion/route contract checks derived from the brief.
@@ -148,6 +148,7 @@ verified before production deployment:
 - 2026-07-16: Committed the reusable rules/guides and approved project definition in two focused setup commits.
 - 2026-07-16: Began the Astro foundation on `feat/initial-build`; the generated visual mockup was rejected and is not a project asset.
 - 2026-07-16: Scaffolded Astro 7.0.9 with pinned npm tooling; format, lint, Astro checks, Node tests, and the static build pass.
+- 2026-07-16: Added typed central configuration, release-readiness validation, locked-copy helpers, and six passing contract tests.
 
 ## Completion
 
