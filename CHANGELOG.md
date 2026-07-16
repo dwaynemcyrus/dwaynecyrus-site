@@ -37,6 +37,11 @@ changes that matter to users, integrators, or project operators.
   scorecard archiving, provider data locations, transfer safeguards, and
   privacy choices in greater detail.
 
+### Fixed
+
+- Footer copyright, social profiles, and site navigation now align in one
+  balanced row on wider screens.
+
 ## Release policy
 
 - New projects begin at `0.1.0`.

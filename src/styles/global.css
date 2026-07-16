@@ -283,8 +283,26 @@ li {
 
 .footer-inner {
   display: grid;
+  grid-template-areas:
+    "copyright"
+    "social"
+    "navigation";
   gap: var(--space-5);
   padding-block: var(--space-6);
+}
+
+.footer-copyright {
+  grid-area: copyright;
+  margin: 0;
+}
+
+.footer-links {
+  grid-area: navigation;
+}
+
+.social-links {
+  grid-area: social;
+  justify-content: center;
 }
 
 .footer-links,
@@ -309,10 +327,17 @@ li {
   .editorial-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
 
+@media (min-width: 64rem) {
   .footer-inner {
-    grid-template-columns: 1fr auto;
-    align-items: end;
+    grid-template-areas: "copyright social navigation";
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .footer-links {
+    justify-content: flex-end;
   }
 }
 

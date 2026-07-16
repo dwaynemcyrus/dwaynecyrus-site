@@ -12,27 +12,25 @@ const currentYear = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-inner container">
-    <div>
-      <p>© {currentYear} {siteConfig.businessName}.</p>
-    </div>
-    <div>
-      <ul class="footer-links" aria-label="Footer navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/scorecard">Scorecard</a></li>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/legal">Legal Notice</a></li>
-      </ul>
-      {
-        socialLinks.length > 0 && (
-          <ul class="social-links" aria-label="Social profiles">
-            {socialLinks.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        )
-      }
-    </div>
+    <p class="footer-copyright">
+      © {currentYear}{" "}{siteConfig.businessName}.
+    </p>
+    {
+      socialLinks.length > 0 && (
+        <ul class="social-links" aria-label="Social profiles">
+          {socialLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <ul class="footer-links" aria-label="Footer navigation">
+      <li><a href="/">Home</a></li>
+      <li><a href="/scorecard">Scorecard</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/legal">Legal Notice</a></li>
+    </ul>
   </div>
 </footer>
