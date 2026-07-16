@@ -1,0 +1,25 @@
+---
+const isHome = Astro.url.pathname === "/";
+const isScorecard = Astro.url.pathname === "/scorecard";
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="brand" href="/" aria-label="Cyrus, home">Cyrus</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li>
+          <a href="/#letters" aria-current={isHome ? "page" : undefined}
+            >Letters</a
+          >
+        </li>
+        <li>
+          <a href="/scorecard" aria-current={isScorecard ? "page" : undefined}
+            >Scorecard</a
+          >
+        </li>
+      </ul>
+      <a class="button" href="/#join">Join the Letters</a>
+    </nav>
+  </div>
+</header>

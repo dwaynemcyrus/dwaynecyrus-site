@@ -61,7 +61,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Overly strict validation may block safe local previews or overly loose validation may permit bad production output. Keep development and production readiness explicit and independently testable.
 - **Commit:** `feat(config): add site contract`
 
-### 3. [ ] Chunk: build shared editorial shell
+### 3. [x] Chunk: build shared editorial shell
 
 - **Files:** `src/styles/global.css`, `src/layouts/BaseLayout.astro`, `src/components/SiteHeader.astro`, `src/components/SiteFooter.astro`
 - **Change:** Add tokens, system typography, reading widths, responsive shell, skip link, metadata contract, header navigation, footer/legal links, optional social-link omission, and the single analytics integration point.
@@ -149,6 +149,7 @@ verified before production deployment:
 - 2026-07-16: Began the Astro foundation on `feat/initial-build`; the generated visual mockup was rejected and is not a project asset.
 - 2026-07-16: Scaffolded Astro 7.0.9 with pinned npm tooling; format, lint, Astro checks, Node tests, and the static build pass.
 - 2026-07-16: Added typed central configuration, release-readiness validation, locked-copy helpers, and six passing contract tests.
+- 2026-07-16: Added the semantic base layout, true-white editorial tokens, responsive static navigation, metadata shell, and optional-link footer.
 
 ## Completion
 
