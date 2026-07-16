@@ -10,6 +10,7 @@ This technical contract derives from the completed overview and
 - **Additional source documents:** `PROJECT-BRIEF.md`
 - **Contract last reviewed:** 2026-07-16
 - **Blocking decisions:** None
+- **Current development version:** `0.1.0`
 
 The missing service URLs and legal details listed below block production
 release, but they do not block building the static site with clear
@@ -326,6 +327,22 @@ meaning-preserving editorial changes.
 Production deployment, release promotion, DNS changes, rollback execution,
 and release tags require explicit owner instruction.
 
+## Versioning and changelog
+
+- **Version scheme:** Semantic Versioning
+- **Version source:** `package.json`
+- **Changelog:** Root `CHANGELOG.md`, maintained under `[Unreleased]`
+- **Initial development version:** `0.1.0`
+- **Patch/minor authority:** Codex may select the appropriate version only
+  during an explicitly owner-requested release.
+- **Major authority:** Moving to `1.0.0` or changing any later major version
+  requires explicit owner approval.
+
+Changelog entries describe meaningful user, integration, security,
+configuration, dependency, or operational changes. They do not duplicate
+every commit. Version changes, tags, pushes, deployments, and published
+releases are separate actions and require their own authorization.
+
 ## Environment variables
 
 Expected public-at-render-time configuration names:
@@ -384,3 +401,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Use npm and focused quality scripts | Brief expects npm; explicit gates make later work reproducible |
 | 2026-07-16 | Use the confirmed Buttondown form contract | The owner supplied the endpoint, metadata fields, and audience tag IDs |
 | 2026-07-16 | Use the confirmed Tally scorecard URL | The owner supplied the direct scorecard destination |
+| 2026-07-16 | Maintain a root changelog from `0.1.0` | The owner requires continuous notable-change tracking and explicit approval for major versions |

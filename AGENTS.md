@@ -119,6 +119,29 @@ cherry-pick.
 
 Before committing, inspect the staged diff and rerun the relevant checks.
 
+## Changelog and versioning
+
+Maintain `CHANGELOG.md` at the repository root using Keep a Changelog
+headings and Semantic Versioning.
+
+- Add meaningful changes to `[Unreleased]` in the same verified chunk.
+- Include user-visible behavior, APIs, data/schema, security, configuration,
+  dependencies, deprecations, removals, and operational changes.
+- Use `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, or `Security`.
+- Do not mirror every commit. Omit formatting, tests, documentation, and
+  internal refactors unless they materially affect users or operators.
+- Describe outcomes in plain language rather than commit implementation.
+- Keep entries current; do not postpone all changelog work until release.
+
+Only change a version during a release explicitly requested by the human.
+During an approved release, Codex may select a patch or minor version from
+the change impact, move `[Unreleased]` entries into a dated version section,
+and update all version sources together.
+
+New projects begin at `0.1.0`. Moving to `1.0.0` or changing any later major
+version always requires explicit human approval. A version change never
+authorizes a tag, push, deployment, or published release by itself.
+
 ## Planning
 
 Use a short plan in the conversation for ordinary multi-step work. Use
@@ -174,6 +197,7 @@ Work is complete only when:
 - acceptance criteria are met
 - relevant checks pass
 - documentation matches changed behavior
+- `CHANGELOG.md` contains every notable unreleased change
 - no debug code, secrets, or accidental files remain
 - the final diff contains only intended changes
 - verified chunks have focused commits

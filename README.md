@@ -30,6 +30,18 @@ npm run build
 `npm run build` writes the static site to `dist/`. Use `npm run preview` to
 review that production output locally.
 
+## Changelog and releases
+
+Notable work is recorded continuously in `CHANGELOG.md` under
+`[Unreleased]`. The changelog summarizes changes that matter to visitors,
+integrators, or site operators; it does not repeat every Git commit.
+
+Version changes happen only during an owner-requested release. Codex may
+select a patch or minor version based on the change impact. Moving to
+`1.0.0` or any later major version always requires explicit owner approval.
+A version bump does not authorize tagging, pushing, deploying, or publishing
+a release unless those actions are also requested.
+
 ## Configuration
 
 Copy `.env.example` to `.env` for local configuration. The `.env` file is
@@ -95,3 +107,4 @@ Git commit that introduced the problem.
 - `OVERVIEW.md` is the approved product definition.
 - `PROJECT.md` is the implementation contract.
 - `PLANS.md` records build progress and remaining release inputs.
+- `CHANGELOG.md` records notable unreleased and released changes.

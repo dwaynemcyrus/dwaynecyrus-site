@@ -125,6 +125,14 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Late fixes could combine unrelated concerns. Split fixes by cause and commit each verified correction separately.
 - **Commit:** `test(site): verify visitor journey`
 
+### 11. [x] Chunk: add changelog policy
+
+- **Files:** `CHANGELOG.md`, `AGENTS.md`, `README.md`, `PROJECT.md`, `PLANS.md`
+- **Change:** Add a running root changelog, define notable-change timing, adopt Semantic Versioning, allow patch/minor selection only during an owner-requested release, and require explicit owner approval for `1.0.0` or any later major version.
+- **Verify:** Documentation references agree; the changelog contains `[Unreleased]`; `package.json` remains at `0.1.0`; format, lint, Astro/type checks, tests, and production build pass.
+- **Risk/rollback:** Excessive entries can turn the changelog into duplicate Git history, while missing entries weaken release notes. Keep only meaningful user, integration, security, configuration, dependency, and operational changes.
+- **Commit:** `docs(project): add changelog policy`
+
 ## Production release inputs
 
 These may remain absent during implementation but must be supplied and
@@ -160,11 +168,12 @@ verified before production deployment:
 - 2026-07-16: Documented local operation, all quality gates, configuration ownership, external-service checks, privacy/legal review, Vercel preview, and rollback.
 - 2026-07-16: Verified the production preview at desktop and mobile widths: all page identities and recovery routes render, 390px and 1280px layouts have no horizontal overflow, both forms have unique IDs, form choice interaction works, required routes return the correct HTTP status, and browser consoles are clean. Browser keyboard-event automation did not move focus, so a final physical-keyboard check remains a release task.
 - 2026-07-16: Added the owner-confirmed direct Tally scorecard URL as the default centrally configured destination while retaining an environment override.
+- 2026-07-16: Added a running root changelog and owner-controlled Semantic Versioning policy; the development version remains `0.1.0`.
 
 ## Completion
 
 - **Checks run:** Format check, lint, Astro/type diagnostics, nine contract tests, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
-- **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, and operating-guide commits are recorded on `feat/initial-build`.
+- **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, and changelog-policy commits are recorded on `feat/initial-build`.
 - **Remaining risks:** Missing Tally, analytics, canonical/contact/legal configuration and legal review; live Buttondown/Tally submissions intentionally untested; physical-keyboard and Lighthouse release checks remain.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
 
