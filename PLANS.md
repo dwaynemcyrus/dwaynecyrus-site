@@ -5,8 +5,8 @@ active because the build will touch more than five files and spans project
 setup, frontend, third-party integrations, legal content, metadata, and
 deployment readiness.
 
-The owner approved `OVERVIEW.md` on 2026-07-16. Implementation may begin in
-a later turn after the setup documents are committed.
+The owner approved `OVERVIEW.md` on 2026-07-16, and the setup documents are
+committed. Implementation may begin in a later turn when requested.
 
 ## Outcome
 
@@ -30,7 +30,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - [x] Source brief preserved.
 - [x] Overview, project contract, active guides, and this plan drafted.
 - [x] Owner explicitly approved `OVERVIEW.md` on 2026-07-16.
-- [ ] Setup documents are committed before implementation begins.
+- [x] Setup documents are committed before implementation begins.
 
 ## Acceptance criteria
 
@@ -145,11 +145,12 @@ verified before production deployment:
 - 2026-07-16: Initialized Git at the project root and created `docs/project-setup`.
 - 2026-07-16: Selected frontend and deployment guides; data guide is inactive.
 - 2026-07-16: Owner explicitly approved the overview; setup documents are ready to commit.
+- 2026-07-16: Committed the reusable rules/guides and approved project definition in two focused setup commits.
 
 ## Completion
 
 - **Checks run:** Setup-document structure, required routes/services/copy, code-fence balance, plan commit lengths, canonical AGENTS content, and active-guide content validated successfully
-- **Commits:** `docs(project): add codex rules`; `docs(project): define website`
+- **Commits:** `docs(project): add codex rules`; `docs(project): define website`; `docs(plan): record setup status`
 - **Remaining risks:** Missing release configuration and legal review; live Buttondown/Tally behavior unverified
 - **Follow-up:** Commit setup documents, then begin scaffold implementation only when requested
 
