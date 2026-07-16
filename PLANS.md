@@ -140,8 +140,10 @@ verified before production deployment:
 
 - [x] Canonical site URL and website domain
 - [ ] Buttondown form action and exact field/redirect behavior
+- [x] Buttondown open and click tracking settings
 - [x] Tally form URL
 - [ ] Tally result delivery and separate optional consent behavior
+- [x] Tally archive retention and absence of response forwarding
 - [x] Cloudflare Web Analytics injection method confirmed; no repository token required
 - [x] Contact email
 - [x] Legal name, operator name, publishable address, and responsible person
@@ -174,6 +176,7 @@ verified before production deployment:
 - 2026-07-16: Removed the redundant analytics token and beacon after the owner confirmed Cloudflare injects Web Analytics automatically at the edge.
 - 2026-07-16: Added the confirmed operator identity, Basel postal address, responsible person, and social profiles; Privacy and Legal now render those values from central configuration.
 - 2026-07-16: Prepared a non-public purchase, delivery, and refund policy draft for future digital educational products. It remains outside the Astro page tree and does not expand the MVP or create a public route.
+- 2026-07-16: Expanded the Privacy Policy with the owner-confirmed Buttondown open/click tracking, indefinite Tally archive retention, and absence of Tally response forwarding, plus provider, transfer, rights, and deletion details.
 
 ## Future commerce preparation (not MVP)
 
@@ -191,9 +194,9 @@ verified before production deployment:
 
 ## Completion
 
-- **Checks run:** Format check, lint, Astro/type diagnostics, eleven contract tests, dependency audit, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
-- **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, and changelog-policy commits are recorded on `feat/initial-build`.
-- **Remaining risks:** Legal review remains outstanding; live Buttondown/Tally submissions are intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
+- **Checks run:** Format check, lint, Astro/type diagnostics, twelve contract tests, dependency audit, static production build, configured sitemap/metadata build, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
+- **Commits:** Focused setup, scaffold, configuration, layout, forms, homepage, scorecard, legal/recovery, SEO/analytics, Buttondown details, operating-guide, changelog-policy, future-policy-draft, and privacy-disclosure commits are recorded on `feat/initial-build`.
+- **Remaining risks:** Legal review remains outstanding, especially for scorecard consent, intimate response data, indefinite retention, international transfers, and newsletter tracking; live Buttondown/Tally submissions are intentionally untested; Cloudflare injection on the deployed domain, physical-keyboard behavior, and Lighthouse targets remain unverified.
 - **Follow-up:** Supply the production release inputs, complete owner/legal review, verify external services with approved test details, then authorize a Vercel preview deployment.
 
 Commit subjects must be at most 44 characters. Commit body lines must be

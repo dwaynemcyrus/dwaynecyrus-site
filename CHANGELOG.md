@@ -33,6 +33,9 @@ changes that matter to users, integrators, or project operators.
   the redundant repository token and beacon configuration.
 - Privacy, Legal Notice, footer navigation, and social links now use the
   confirmed Dwayne M Cyrus operator identity and contact details.
+- The Privacy Policy now explains newsletter open/click tracking, indefinite
+  scorecard archiving, provider data locations, transfer safeguards, and
+  privacy choices in greater detail.
 
 ## Release policy
 

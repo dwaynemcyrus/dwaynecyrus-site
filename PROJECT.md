@@ -261,6 +261,8 @@ functional dead controls.
 - Use native HTML `POST` submission to the verified configured endpoint.
 - Prefer email address only; add fields only when the live Buttondown configuration requires them.
 - Confirm field names and redirect/success behavior before release.
+- Open and click tracking are enabled and must be disclosed accurately in the
+  Privacy Policy whenever the setting changes.
 - Do not proxy the form, log its contents, or claim success before Buttondown confirms it.
 
 ### Tally
@@ -268,6 +270,10 @@ functional dead controls.
 - Prefer a direct same-tab link using only `tallyScorecardUrl`.
 - Do not load Tally scripts before CTA activation.
 - Do not duplicate its optional newsletter-consent checkbox on the website.
+- Keep scorecard submissions indefinitely in the Tally account archive unless
+  a valid deletion request or legal requirement changes that handling.
+- Do not forward Tally responses to email, spreadsheets, automation tools, a
+  CRM, or another response destination without a new privacy review.
 - An embed requires a demonstrated accessibility/UX benefit and explicit approval after privacy and performance review.
 
 ### Cloudflare Web Analytics
@@ -279,7 +285,7 @@ functional dead controls.
 
 ## Data and security
 
-- **Stored data:** No first-party persistent data. Buttondown stores newsletter submissions; Tally stores scorecard submissions; Cloudflare supplies aggregate/basic analytics.
+- **Stored data:** No first-party persistent data. Buttondown stores newsletter subscriptions and open/click engagement; Tally stores scorecard submissions indefinitely in its account archive without another configured response destination; Cloudflare supplies aggregate/basic analytics.
 - **Sensitive data:** Email addresses and scorecard answers are sensitive external-service inputs and must not enter site logs, analytics, test fixtures, or source control.
 - **Authentication/authorization:** None
 - **Validation boundaries:** Validate build-time URLs, email/contact configuration, canonical domain, and legal fields; rely on native email validation plus verified Buttondown requirements; validate that optional social URLs are HTTPS before rendering.

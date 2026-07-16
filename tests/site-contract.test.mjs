@@ -197,6 +197,19 @@ test("analytics injection is left to Cloudflare", async () => {
   assert.doesNotMatch(layout, /cloudflareinsights|data-cf-beacon/);
 });
 
+test("privacy policy states confirmed data practices", async () => {
+  const privacy = await readFile(
+    new URL("../src/pages/privacy.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(privacy, /Buttondown open tracking is enabled/);
+  assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
+  assert.match(privacy, /Scorecard submissions are kept indefinitely/);
+  assert.match(privacy, /Tally responses are not forwarded/);
+  assert.doesNotMatch(privacy, /Payment or booking information/);
+});
+
 test("newsletter form preserves Buttondown metadata and audience tags", async () => {
   const source = await readFile(
     new URL("../src/components/NewsletterForm.astro", import.meta.url),

@@ -89,9 +89,16 @@ Do not submit real visitor data during automated or preview testing.
 
 ## Privacy and legal review
 
+The Privacy Policy discloses that Buttondown open and click tracking are
+enabled, Tally scorecard submissions remain in the account archive
+indefinitely, and Tally responses are not forwarded to another response
+destination. Reconfirm these settings whenever either service is changed.
+
 The Privacy Policy and Legal Notice contain the confirmed operator details but
 remain implementation drafts. Obtain appropriate Swiss/EU review before a
-public release. The website is educational and does not provide medical,
+public release, with particular attention to scorecard consent, intimate
+response data, indefinite retention, international transfers and newsletter
+engagement tracking. The website is educational and does not provide medical,
 psychological, legal or financial advice.
 
 ## Vercel delivery

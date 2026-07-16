@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Privacy Policy — Letters from Cyrus";
 const description =
-  "How Letters from Cyrus handles newsletter subscriptions, scorecard information and basic website analytics.";
+  "How Letters from Cyrus handles newsletter subscriptions, email engagement, scorecard responses and website analytics.";
 const identityIsConfigured = Boolean(
   siteConfig.legalName && siteConfig.legalAddress && siteConfig.contactEmail,
 );
@@ -21,14 +21,20 @@ const identityIsConfigured = Boolean(
       <h2>Who runs this site</h2>
       {
         identityIsConfigured ? (
-          <p>
-            This website is operated by {siteConfig.legalName},{" "}
-            {siteConfig.legalAddress}. Privacy questions can be sent to{" "}
-            <a href={`mailto:${siteConfig.contactEmail}`}>
-              {siteConfig.contactEmail}
-            </a>
-            .
-          </p>
+          <>
+            <p>
+              This website is operated by {siteConfig.legalName},{" "}
+              {siteConfig.legalAddress}. Privacy questions can be sent to{" "}
+              <a href={`mailto:${siteConfig.contactEmail}`}>
+                {siteConfig.contactEmail}
+              </a>
+              .
+            </p>
+            <p>
+              Dwayne M Cyrus is responsible for deciding why and how personal
+              information described in this policy is processed.
+            </p>
+          </>
         ) : (
           <p class="config-note">
             The legal identity, postal address and privacy contact must be
@@ -38,35 +44,90 @@ const identityIsConfigured = Boolean(
       }
 
       <h2>Information collected</h2>
-      <p>The website may collect:</p>
-      <ul>
-        <li>Email addresses submitted through Buttondown.</li>
-        <li>Scorecard answers and contact details submitted through Tally.</li>
-        <li>
-          Basic anonymous website traffic information through Cloudflare Web
-          Analytics.
-        </li>
-        <li>
-          Payment or booking information only if separate services are
-          introduced later.
-        </li>
-      </ul>
-
-      <h2>Why information is used</h2>
-      <ul>
-        <li>To send Letters from Cyrus to people who consented.</li>
-        <li>To deliver scorecard results.</li>
-        <li>To review scorecard submissions.</li>
-        <li>To decide whether a Freeze Diagnostic Audit may be appropriate.</li>
-        <li>To respond to lawful privacy requests.</li>
-        <li>To understand basic website usage.</li>
-      </ul>
-
-      <h2>Service providers</h2>
       <p>
-        Buttondown, Tally, Cloudflare and Vercel process information required to
-        operate this website and its services. Their handling of information is
-        also governed by their own terms and privacy practices.
+        The information collected depends on how you use the website and its
+        services.
+      </p>
+
+      <h3>Newsletter</h3>
+      <ul>
+        <li>
+          The audience choice, first name, last name and email address you
+          submit when joining Letters from Cyrus.
+        </li>
+        <li>
+          Subscription details such as your IP address, referral information and
+          subscription time, as recorded by Buttondown.
+        </li>
+        <li>
+          Email engagement information. Buttondown open tracking is enabled and
+          uses a tracking pixel to record when an email is opened. Buttondown
+          click tracking is also enabled and records when a link in an email is
+          selected. These records may include technical details such as IP
+          address and email-client information.
+        </li>
+      </ul>
+
+      <h3>Scorecard</h3>
+      <ul>
+        <li>
+          The answers and contact details you choose to submit through Tally.
+        </li>
+        <li>
+          Your answers may include personal information about your emotional
+          life, relationships, family, beliefs and other circumstances you
+          choose to describe.
+        </li>
+        <li>
+          Tally-generated submission and respondent identifiers and basic form
+          activity needed to operate and protect the form.
+        </li>
+      </ul>
+
+      <h3>Website use</h3>
+      <ul>
+        <li>
+          Privacy-focused, aggregated page-view and performance information
+          through Cloudflare Web Analytics. Cloudflare states that this service
+          does not collect or use visitors' personal data.
+        </li>
+        <li>
+          Technical request, security and diagnostic information that Cloudflare
+          or Vercel may process when they deliver and protect the website, such
+          as IP address, device or browser information, requested page and
+          request time.
+        </li>
+      </ul>
+
+      <h2>How and why information is used</h2>
+      <p>Information is used only as reasonably needed to:</p>
+      <ul>
+        <li>
+          Manage subscriptions and send Letters from Cyrus to people who asked
+          to receive them.
+        </li>
+        <li>
+          Measure newsletter opens and link selections to understand engagement
+          and improve the letters.
+        </li>
+        <li>Deliver and explain scorecard results.</li>
+        <li>Review scorecard submissions and their context over time.</li>
+        <li>
+          Decide through human review whether a private Freeze Diagnostic Audit
+          invitation may be appropriate. Completing the scorecard does not
+          guarantee an invitation.
+        </li>
+        <li>Operate, secure and understand basic use of the website.</li>
+        <li>
+          Respond to privacy requests and meet applicable legal obligations.
+        </li>
+      </ul>
+      <p>
+        Depending on the activity and the law that applies, processing may be
+        based on your consent, your request for a service, the legitimate need
+        to operate and protect the service, or a legal obligation. You may
+        withdraw consent at any time, but this does not affect processing that
+        was lawful before withdrawal.
       </p>
 
       <h2>Newsletter consent</h2>
@@ -76,18 +137,106 @@ const identityIsConfigured = Boolean(
         subscribe, you can unsubscribe through the link in every email.
       </p>
 
-      <h2>Data retention</h2>
+      <h2>Automated score and human review</h2>
       <p>
-        Information is kept only for as long as it is reasonably needed for the
-        purpose for which it was collected, legal obligations or legitimate
-        business records.
+        The scorecard may calculate or display a result from the answers you
+        provide. It does not make a decision with legal or similarly significant
+        effects. Any decision about a possible private Audit invitation is made
+        by Cyrus through human review and remains discretionary.
+      </p>
+
+      <h2>Service providers and data locations</h2>
+      <p>
+        The following providers process information needed to deliver the
+        website and its services:
+      </p>
+      <ul>
+        <li>
+          <a href="https://buttondown.com/legal/privacy">Buttondown</a> manages newsletter
+          subscriptions, email delivery and engagement measurement. Buttondown is
+          based in the United States and uses subprocessors to provide its service.
+        </li>
+        <li>
+          <a href="https://tally.so/help/privacy-policy">Tally</a> hosts the scorecard
+          and stores responses on behalf of Dwayne M Cyrus. Tally is based in Belgium
+          and states that form data is stored in Europe. Tally responses are not forwarded
+          by Dwayne M Cyrus to email, spreadsheets, automation tools, a CRM or another
+          response destination.
+        </li>
+        <li>
+          <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>
+          {" "}provides website delivery, security and privacy-focused Web
+          Analytics.
+        </li>
+        <li>
+          <a href="https://vercel.com/legal/privacy-notice">Vercel</a> hosts and delivers
+          the website.
+        </li>
+      </ul>
+      <p>
+        Some providers and their subprocessors may process information outside
+        Switzerland or the European Economic Area, including in the United
+        States. Buttondown states that transfers from Switzerland to a country
+        without an adequate level of protection are governed by the European
+        Commission's Standard Contractual Clauses with the modifications
+        required by Swiss data-protection law. Provider privacy notices describe
+        their processing and other transfer safeguards in more detail.
+      </p>
+
+      <h2>Cookies and similar technologies</h2>
+      <p>
+        This website does not use advertising cookies or behavioural advertising
+        tools. Cloudflare Web Analytics is used for aggregated website
+        measurement. Newsletter emails use Buttondown's open-tracking pixel and
+        tracked links as described above. The separately hosted Tally scorecard
+        may use browser storage or other technology needed for its form features
+        under Tally's own privacy notice.
+      </p>
+
+      <h2>Data retention</h2>
+      <ul>
+        <li>
+          Newsletter subscription and engagement information is kept in
+          Buttondown while the subscription is active and afterwards as needed
+          to honour an unsubscribe request, maintain appropriate records,
+          resolve issues or meet legal obligations.
+        </li>
+        <li>
+          Scorecard submissions are kept indefinitely in the Tally archive so
+          Cyrus can review a submission and its history over time. A respondent
+          may request deletion. Tally states that responses deleted from the
+          account are permanently removed from its backups within 90 days,
+          unless the account trash is emptied sooner.
+        </li>
+        <li>
+          Website security, request and aggregate analytics information is kept
+          according to Cloudflare's and Vercel's applicable service settings and
+          retention practices.
+        </li>
+      </ul>
+      <p>
+        Information may be kept longer when required by law, needed to resolve a
+        dispute or necessary to establish, exercise or defend a legal claim.
       </p>
 
       <h2>Your choices and rights</h2>
       <p>
-        You may ask what information is held about you, request a correction,
-        request deletion where applicable, withdraw newsletter consent or raise
-        a privacy concern.
+        Depending on the law that applies, you may ask whether information about
+        you is being processed, request access or a copy, correct inaccurate
+        information, request deletion or restriction, object to processing,
+        request portability where applicable, or withdraw consent. Some requests
+        may be limited when information must be kept by law or there is another
+        lawful reason to continue processing.
+      </p>
+      <p>
+        To protect personal information, reasonable steps may be taken to verify
+        your identity. When possible, send the request from the email address
+        connected with your subscription or scorecard submission. You may also
+        raise a concern with the data-protection authority that applies to you,
+        including the{" "}
+        <a href="https://www.edoeb.admin.ch/edoeb/en/home.html">
+          Swiss Federal Data Protection and Information Commissioner</a
+        >.
       </p>
       {
         siteConfig.contactEmail ? (
@@ -103,6 +252,28 @@ const identityIsConfigured = Boolean(
           </p>
         )
       }
+
+      <h2>Security</h2>
+      <p>
+        Reasonable technical and organisational measures are used to protect
+        information, and the service providers describe additional security
+        measures in their documentation. No internet transmission or storage
+        system can be guaranteed to be completely secure.
+      </p>
+
+      <h2>External links</h2>
+      <p>
+        This website and the letters may link to websites not controlled by
+        Dwayne M Cyrus. Those services are responsible for their own content and
+        privacy practices.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        This policy may be updated when the website, providers or legal
+        requirements change. The updated date at the top of the page will show
+        when the latest version took effect.
+      </p>
     </div>
   </article>
 </BaseLayout>
@@ -115,6 +286,11 @@ const identityIsConfigured = Boolean(
   h2 {
     margin-top: var(--space-6);
     font-size: var(--step-1);
+  }
+
+  h3 {
+    margin-top: var(--space-4);
+    font-size: var(--step-0);
   }
 
   li + li {
