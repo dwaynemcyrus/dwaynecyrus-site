@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Dependencies and generated output
+node_modules/
+dist/
+.astro/
+coverage/
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+
+# Local deployment state
+.vercel/
