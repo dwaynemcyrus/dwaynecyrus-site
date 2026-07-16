@@ -3,6 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
+  DEFAULT_BUTTONDOWN_FORM_ACTION,
   createSiteConfig,
   getReleaseConfigIssues,
   isEmailAddress,
@@ -44,12 +45,18 @@ test("site config trims values and passes with complete release input", () => {
 });
 
 test("missing release fields remain visible instead of being invented", () => {
-  const issues = getReleaseConfigIssues(createSiteConfig());
+  const config = createSiteConfig();
+  const issues = getReleaseConfigIssues(config);
 
   assert.ok(issues.includes("siteUrl is required for release"));
   assert.ok(issues.includes("legalName is required for release"));
-  assert.equal(createSiteConfig().businessName, "Letters from Cyrus");
-  assert.equal(createSiteConfig().hostingProvider, "Vercel");
+  assert.equal(config.businessName, "Letters from Cyrus");
+  assert.equal(config.hostingProvider, "Vercel");
+  assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
+  assert.equal(
+    issues.includes("buttondownFormAction is required for release"),
+    false,
+  );
 });
 
 test("URLs, email addresses, and domains are validated at the boundary", () => {
@@ -146,6 +153,21 @@ test("required public routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("newsletter form preserves Buttondown metadata and audience tags", async () => {
+  const source = await readFile(
+    new URL("../src/components/NewsletterForm.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(source, /name="metadata__gender"/);
+  assert.match(source, /name="metadata__first_name"/);
+  assert.match(source, /name="metadata__last_name"/);
+  assert.match(source, /name="email"/);
+  assert.match(source, /sub_tag_44xcvqncep9mm890nrr7skdczv/);
+  assert.match(source, /sub_tag_7pzyd0fh9q8jfscxt76vkfzseg/);
+  assert.match(source, /name = "tag"/);
 });
 
 test("dependency contract excludes client UI frameworks", async () => {

@@ -155,6 +155,7 @@ verified before production deployment:
 - 2026-07-16: Added the complete scorecard landing page with direct-config CTAs, non-clinical language, five next steps, invitation limits, and separate consent.
 - 2026-07-16: Added plain-language privacy and legal pages with explicit missing-release states, plus a no-index custom 404 with recovery links.
 - 2026-07-16: Added config-gated sitemap and canonical structured data, generated robots policy, a single Cloudflare beacon, and implementation-level content and route tests.
+- 2026-07-16: Updated both newsletter forms with the confirmed Buttondown endpoint, required audience/name/email metadata, and audience-specific subscriber tag mapping.
 
 ## Completion
 

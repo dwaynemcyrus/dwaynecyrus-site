@@ -19,9 +19,11 @@ export interface SiteConfig {
 
 type Environment = Record<string, string | undefined>;
 
+export const DEFAULT_BUTTONDOWN_FORM_ACTION =
+  "https://buttondown.com/api/emails/embed-subscribe/lettersfromcyrus";
+
 const REQUIRED_RELEASE_FIELDS = [
   "siteUrl",
-  "buttondownFormAction",
   "tallyScorecardUrl",
   "cloudflareAnalyticsToken",
   "contactEmail",
@@ -63,7 +65,9 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
     siteName: "Letters from Cyrus",
     authorName: "Cyrus",
     siteUrl: value(environment, "SITE_URL"),
-    buttondownFormAction: value(environment, "BUTTONDOWN_FORM_ACTION"),
+    buttondownFormAction:
+      value(environment, "BUTTONDOWN_FORM_ACTION") ||
+      DEFAULT_BUTTONDOWN_FORM_ACTION,
     tallyScorecardUrl: value(environment, "TALLY_SCORECARD_URL"),
     cloudflareAnalyticsToken: value(environment, "CLOUDFLARE_ANALYTICS_TOKEN"),
     contactEmail: value(environment, "CONTACT_EMAIL"),
