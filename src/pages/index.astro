@@ -1,17 +1,222 @@
 ---
-const title = "Letters from Cyrus";
+import NewsletterForm from "../components/NewsletterForm.astro";
+import SecondaryLink from "../components/SecondaryLink.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title =
+  "Letters from Cyrus — Emotional Command, Manhood, Marriage and Fatherhood";
+const description =
+  "Letters for men carrying silent weight—and for the women who stand with them. Essays and field notes on emotional command, righteous manhood, marriage and fatherhood.";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-    </main>
-  </body>
-</html>
+<BaseLayout title={title} description={description} canonicalPath="/">
+  <section id="join" class="section">
+    <div class="container hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Letters from Cyrus</p>
+        <h1>
+          Letters for men carrying silent weight—and for the women who stand
+          with them.
+        </h1>
+        <p class="lede">
+          Essays, personal letters and practical field notes on emotional
+          command, righteous manhood, marriage, fatherhood and the inner work
+          required to lead well.
+        </p>
+        <p class="frequency">Sent two to three times each week.</p>
+      </div>
+      <NewsletterForm id="hero-signup" buttonLabel="Join the Letters" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader
+        heading="A man can carry everything and still disappear from his own life."
+      />
+      <div class="reading">
+        <p>He works. He provides. He keeps moving.</p>
+        <p>
+          But under pressure, he shuts down. He withdraws from difficult
+          conversations. He contains anger until it leaks into the room. He
+          avoids what he does not know how to face.
+        </p>
+        <p>
+          From the outside, he may still look responsible. Inside his home,
+          everyone feels the distance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <div>
+        <SectionHeader
+          heading="What stays unresolved inside a man does not remain his alone."
+        />
+        <div class="reading">
+          <p>His wife feels it.</p>
+          <p>His children organise themselves around it.</p>
+          <p>
+            Silence becomes tension. Withdrawal becomes uncertainty. Anger
+            becomes something everyone learns to anticipate.
+          </p>
+          <p>
+            What a man refuses to confront can become part of what his family
+            must survive—and later recover from.
+          </p>
+        </div>
+      </div>
+      <blockquote class="manifesto">
+        Move from emotional shutdown to calm, steady leadership—so your children
+        never have to recover from you.
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="Command begins inside the man." />
+      <div class="reading">
+        <p>
+          I believe a man must submit to God, master his inner world, carry his
+          responsibilities with integrity and turn suffering into service
+          through truth, discipline and wisdom.
+        </p>
+        <p>Emotional command is not pretending that nothing affects you.</p>
+        <p>
+          It is the ability to remain present, understand the signal, tell the
+          truth, make repair and act rightly under pressure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader
+        heading="Written for the men carrying it—and the women standing beside them."
+      />
+      <div class="reading">
+        <p>
+          These letters are primarily for married men, fathers and men preparing
+          seriously for marriage or fatherhood.
+        </p>
+        <p>
+          They are also for the women trying to understand why a good man may
+          withdraw, freeze or become difficult to reach.
+        </p>
+        <p>
+          Understanding the pattern does not make a woman responsible for fixing
+          it. The man must return and take command of himself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="letters" class="section">
+    <div class="container">
+      <SectionHeader heading="What arrives each week" />
+      <ol class="editorial-list">
+        <li>
+          <h3>Anchor Essay</h3>
+          <p>
+            A substantial essay examining one central idea about manhood,
+            emotional command, marriage, fatherhood, suffering or
+            responsibility.
+          </p>
+        </li>
+        <li>
+          <h3>Personal Letter</h3>
+          <p>
+            A direct letter drawn from experience, observation, story,
+            Scripture, conversation or a question worth confronting.
+          </p>
+        </li>
+        <li>
+          <h3>Field Note</h3>
+          <p>
+            A practical two-to-three-minute read that helps you apply the week’s
+            central idea.
+          </p>
+        </li>
+      </ol>
+      <p class="section-close">
+        No empty motivation. No soft excuses. The purpose is clearer
+        understanding followed by better action.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader
+        eyebrow="The Freeze-to-Command Scorecard"
+        heading="Find out where emotional freeze is governing your life."
+      />
+      <div class="reading">
+        <p>
+          The Freeze-to-Command Scorecard helps marriage- and father-minded men
+          recognise patterns of shutdown, avoidance, anger, disconnection and
+          failed repair.
+        </p>
+        <p>
+          You will receive a clearer picture of where you are now and what may
+          need your attention next.
+        </p>
+        <SecondaryLink href="/scorecard">Take the Scorecard</SecondaryLink>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-grid section-grid--two">
+      <SectionHeader heading="For men who need more than letters" />
+      <div class="reading">
+        <p>
+          I work privately with a limited number of men who are ready to
+          confront emotional shutdown, regain command of themselves and become
+          steadier leaders within their homes.
+        </p>
+        <p>Private work does not begin with a public booking link.</p>
+        <p>
+          It begins with the Freeze-to-Command Scorecard. I review the results.
+          If I believe a Freeze Diagnostic Audit may serve you, I may invite you
+          to one.
+        </p>
+        <SecondaryLink href="/scorecard">Begin with the Scorecard</SecondaryLink
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-signup">
+    <div class="container section-grid section-grid--two">
+      <div class="reading">
+        <h2>Enter the work through the letters.</h2>
+        <p class="lede">
+          Start with the ideas. See yourself more clearly. Take better action.
+        </p>
+      </div>
+      <NewsletterForm id="final-signup" buttonLabel="Join Letters from Cyrus" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .frequency,
+  .section-close {
+    margin-top: var(--space-5);
+    font-weight: 750;
+  }
+
+  .editorial-list {
+    margin-top: var(--space-6);
+  }
+
+  .final-signup {
+    background: var(--color-soft);
+  }
+</style>

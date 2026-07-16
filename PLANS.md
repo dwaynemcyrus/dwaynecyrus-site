@@ -77,7 +77,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 - **Risk/rollback:** Duplicate IDs, incorrect Buttondown field names, inaccessible errors, or false success messaging. Keep endpoint field names provisional until verified and revert this component-only commit if needed.
 - **Commit:** `feat(forms): add newsletter signup`
 
-### 5. [ ] Chunk: build newsletter homepage
+### 5. [x] Chunk: build newsletter homepage
 
 - **Files:** `src/pages/index.astro`
 - **Change:** Implement all nine homepage sections in the approved order using exact and baseline copy from the brief; place newsletter forms first and last; keep scorecard and private-work CTAs secondary; add stable `#join` and `#letters` targets.
@@ -151,6 +151,7 @@ verified before production deployment:
 - 2026-07-16: Added typed central configuration, release-readiness validation, locked-copy helpers, and six passing contract tests.
 - 2026-07-16: Added the semantic base layout, true-white editorial tokens, responsive static navigation, metadata shell, and optional-link footer.
 - 2026-07-16: Added accessible newsletter, primary-action, secondary-link, and section-heading components with an honest unconfigured Buttondown state.
+- 2026-07-16: Replaced the scaffold page with the complete nine-section newsletter homepage using the approved brief copy and hierarchy.
 
 ## Completion
 
