@@ -286,6 +286,20 @@ test("scorecard page stays public but outside footer navigation", async () => {
   assert.match(sitemap, /"\/scorecard"/);
 });
 
+test("legacy scorecard route redirects to Tally", async () => {
+  const vercelConfig = JSON.parse(
+    await readFile(new URL("../vercel.json", import.meta.url), "utf8"),
+  );
+
+  assert.deepEqual(vercelConfig.redirects, [
+    {
+      source: "/f2c-scorecard",
+      destination: "https://tally.so/r/1A5J5b",
+      permanent: true,
+    },
+  ]);
+});
+
 test("dependency contract excludes client UI frameworks", async () => {
   const packageJson = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf8"),
