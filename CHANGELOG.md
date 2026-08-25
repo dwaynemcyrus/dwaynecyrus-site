@@ -43,8 +43,6 @@ changes that matter to users, integrators, or project operators.
   privacy choices in greater detail.
 - Persistent footer navigation now omits the standalone Scorecard page while
   keeping that page available as a public campaign destination.
-- Requests to `/f2c-scorecard` now redirect permanently to the hosted Tally
-  scorecard.
 
 ### Fixed
 
