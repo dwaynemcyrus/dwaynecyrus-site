@@ -61,6 +61,7 @@ suppression, numbness, or control over other people.
 |---|---|---|
 | `/` | Homepage and newsletter landing page | Join the Letters |
 | `/scorecard` | Freeze-to-Command Scorecard landing page | Begin the Scorecard |
+| `/f2c-scorecard` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
 | `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
 | `/privacy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
@@ -118,6 +119,8 @@ an Audit invitation.
 - [ ] Both homepage newsletter forms post to the verified Buttondown endpoint, request only required fields, use unique labelled controls, and show the required consent statement.
 - [ ] The unconfirmed and confirmed subscription routes render the approved flow copy, remain outside the sitemap, and use `noindex, follow`.
 - [ ] Scorecard CTAs use only the centrally configured Tally URL.
+- [ ] `/f2c-scorecard` uses the owner-approved, centrally configured standard
+  Tally embed and offers a direct-link fallback when JavaScript is unavailable.
 - [ ] Ebook purchase CTAs use only the centrally configured Stripe Checkout URL.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
@@ -258,6 +261,7 @@ authorName
 siteUrl
 buttondownFormAction
 tallyScorecardUrl
+f2cScorecardEmbedUrl
 hiddenLoadCheckoutUrl
 contactEmail
 xUrl
@@ -298,7 +302,12 @@ functional dead controls.
   a valid deletion request or legal requirement changes that handling.
 - Do not forward Tally responses to email, spreadsheets, automation tools, a
   CRM, or another response destination without a new privacy review.
-- An embed requires a demonstrated accessibility/UX benefit and explicit approval after privacy and performance review.
+- The owner approved a standard inline embed at `/f2c-scorecard` on
+  2026-08-27. It may load Tally's embed runtime and iframe only on that route
+  to allow form completion without leaving the site. Keep a direct-link
+  fallback for people browsing without JavaScript, do not add form-event
+  listeners or forward Tally data, and disclose the route-specific third-party
+  request in the Privacy Policy.
 
 ### Stripe Checkout
 
@@ -412,6 +421,7 @@ Expected public-at-render-time configuration names:
 | `SITE_URL` | Optional override for the confirmed canonical HTTPS origin | No |
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
+| `F2C_SCORECARD_EMBED_URL` | Optional override for the approved Tally standard embed URL | No |
 | `HIDDEN_LOAD_CHECKOUT_URL` | Optional override for the confirmed Stripe Checkout destination | No |
 | `CONTACT_EMAIL` | Optional override for the confirmed privacy/legal contact | No |
 | `X_URL` | Optional override for the confirmed X profile | No |
@@ -471,3 +481,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Run two page-view analytics services | The owner wants to compare the aggregate reporting provided by Cloudflare and Vercel |
 | 2026-07-16 | Use confirmed operator details | The owner supplied the legal identity, address, responsible person, and social profiles |
 | 2026-08-27 | Add the ebook sales route | The owner approved a static sales page using an existing external Stripe Checkout link; payment data stays outside the site |
+| 2026-08-27 | Add the embedded scorecard route | The owner supplied and approved Tally's standard embed URL for `/f2c-scorecard`; the direct scorecard route remains available as a no-JavaScript fallback |

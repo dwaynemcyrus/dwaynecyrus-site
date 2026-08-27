@@ -51,6 +51,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
+- A focused embedded Tally scorecard at `/f2c-scorecard` using the
+  owner-supplied standard embed URL.
 - A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
 - A plain-language Privacy Policy at `/privacy`.
@@ -177,7 +179,9 @@ It is ready for handoff or release when:
 
 ### Assumptions
 
-- `[ASSUMPTION]` A direct link to Tally is the default because the brief prefers it unless embedding provides a clear benefit without meaningful complexity.
+- `[ASSUMPTION]` A direct link to Tally remains the default. The owner approved
+  a standard Tally embed for the dedicated `/f2c-scorecard` completion route
+  on 2026-08-27.
 - `[ASSUMPTION]` The initial implementation will start from this documentation-only repository and use npm, because no existing Astro project or lockfile is present.
 - `[ASSUMPTION]` Missing legal and service values may use unmistakable development placeholders or build-time omissions, but a production build must not publish fake or dead values.
 

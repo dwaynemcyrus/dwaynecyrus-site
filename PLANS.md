@@ -250,6 +250,29 @@ verified before production deployment:
   legal, tax, delivery, or support details prove unsuitable for launch.
 - **Commit:** `feat(ebook): add sales page`
 
+## Embedded scorecard page
+
+### 16. [ ] Chunk: add the Tally scorecard embed
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/f2c-scorecard.astro`, `src/pages/privacy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `README.md`,
+  `CHANGELOG.md`
+- **Change:** Add the owner-supplied Tally standard inline embed at
+  `/f2c-scorecard`, with left-aligned transparent styling, dynamic height, and
+  form-event forwarding. Keep the direct configured scorecard link available
+  as a no-JavaScript fallback; scope Tally's iframe and embed runtime to this
+  route, without listening to or forwarding form events.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the form route at mobile and desktop widths, verify the iframe title,
+  keyboard path and fallback, and confirm no form submission or personal-data
+  test is performed.
+- **Risk/rollback:** The embed introduces a Tally runtime and third-party
+  request before a visitor activates a CTA. Revert the focused feature commit
+  to return to the direct-link-only route.
+- **Commit:** `feat(scorecard): add Tally embed`
+
 ## Completion
 
 - **Checks run:** Format check, lint, Astro/type diagnostics, thirteen contract tests, dependency audit, seven-page static production build, configured sitemap/metadata build, Vercel Web Analytics and Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.
