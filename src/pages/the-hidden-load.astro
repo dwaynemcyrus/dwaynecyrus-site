@@ -1,0 +1,141 @@
+---
+import PrimaryButton from "../components/PrimaryButton.astro";
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Why Do I Keep Doing This? — Dwayne Cyrus";
+const description =
+  "A short fieldguide for men, especially husbands and fathers, who keep losing emotion command under pressure.";
+const checkoutUrl = siteConfig.hiddenLoadCheckoutUrl;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/the-hidden-load"
+>
+  <article class="ebook-page">
+    <header class="ebook-hero">
+      <img
+        class="book-mockup"
+        src="/images/wkd-book-cover.png"
+        width="1122"
+        height="1402"
+        alt="Black book cover titled Why Do I Keep Doing This? by Dwayne Cyrus"
+      />
+      <div class="ebook-copy">
+        <h1>Why Do I Keep Doing This?</h1>
+        <p class="lede">
+          A short fieldguide for men, especially husbands and fathers, who keep
+          losing emotion command under pressure.
+        </p>
+        <div class="cta-block">
+          <PrimaryButton href={checkoutUrl}>
+            Buy the eBook — $21 USD
+          </PrimaryButton>
+        </div>
+      </div>
+    </header>
+
+    <div class="ebook-copy body-copy">
+      <p>You know what happened.</p>
+
+      <p>You may even know why you reacted the way you did.</p>
+
+      <p>
+        But somehow, <strong>under pressure</strong>, you still end up doing the
+        same thing again.
+      </p>
+
+      <p>
+        Shutting down. Losing control. Withdrawing. Exploding. Avoiding the
+        conversation. Regretting it afterward.
+      </p>
+
+      <p>
+        <em>Why Do I Keep Doing This?</em> is a practical field guide for understanding
+        what is actually happening in those moments and begin to regain command of
+        yourself.
+      </p>
+
+      <p>Inside, you’ll learn:</p>
+
+      <ul>
+        <li>why insight alone does not change recurring behavior</li>
+        <li>what happens when pressure overrides your normal judgment</li>
+        <li>how to recognize the pattern before it takes over</li>
+        <li>what to do after the next difficult moment</li>
+      </ul>
+
+      <p>
+        This book is designed to be read, used, and returned to when you need
+        it.
+      </p>
+
+      <div class="cta-block cta-block--final">
+        <PrimaryButton href={checkoutUrl}>
+          Buy the eBook — $21 USD
+        </PrimaryButton>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .ebook-page {
+    width: min(100% - 2rem, var(--reading-width));
+    margin-inline: auto;
+    padding-block: var(--space-7);
+  }
+
+  .ebook-hero {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-6);
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .book-mockup {
+    width: min(100%, 22rem);
+    height: auto;
+  }
+
+  .ebook-copy {
+    width: 100%;
+  }
+
+  .ebook-hero h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .lede {
+    margin-bottom: var(--space-5);
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+
+  .cta-block {
+    display: grid;
+    justify-items: start;
+  }
+
+  .body-copy {
+    padding-top: var(--space-7);
+  }
+
+  .body-copy p,
+  .body-copy li {
+    max-width: none;
+  }
+
+  .body-copy ul {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: 1.2rem;
+  }
+
+  .cta-block--final {
+    margin-top: var(--space-6);
+  }
+</style>

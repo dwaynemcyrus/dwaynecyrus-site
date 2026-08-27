@@ -50,6 +50,8 @@ suppression, numbness, or control over other people.
 - Give appropriate men a clear, non-clinical route to the Tally scorecard.
 - Explain scorecard result delivery, Cyrus's review, possible private Audit invitation, and the absence of any guarantee.
 - Keep newsletter consent separate from scorecard participation.
+- Offer *Why Do I Keep Doing This?* as a static, one-column ebook sales page
+  with direct Stripe Checkout calls to action.
 - Provide accurate, plain-language privacy and legal information.
 - Deliver an extremely light, accessible, responsive static website.
 
@@ -59,6 +61,7 @@ suppression, numbness, or control over other people.
 |---|---|---|
 | `/` | Homepage and newsletter landing page | Join the Letters |
 | `/scorecard` | Freeze-to-Command Scorecard landing page | Begin the Scorecard |
+| `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
 | `/privacy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
 | `/unconfirmed-subscription` | Email confirmation prompt | Confirm the submitted email address |
@@ -94,9 +97,11 @@ Scorecard sections must appear in this order:
 
 - About, mentorship, blog, archive, public booking, application, contact-form, public Audit, community, course, media, gallery, portfolio, account, or dashboard pages
 - CMS, database, authentication, storage, first-party API, or administrative tools
-- Payments, bookings, or private-service management on the site
+- On-site payments, bookings, or private-service management; ebook checkout is
+  handled by Stripe outside the site
 - Testimonials, subscriber counts, results, credentials, or urgency not supplied and verified
-- Pop-ups, exit-intent forms, carousels, content images, custom fonts, or decorative visual effects
+- Pop-ups, exit-intent forms, carousels, content images beyond the ebook's one
+  product mockup, custom fonts, or decorative visual effects
 - Custom analytics, Google Analytics, Meta Pixel, Hotjar, or cookie-heavy tracking
 
 Do not add “coming soon” links that imply prohibited routes. There is no
@@ -113,13 +118,17 @@ an Audit invitation.
 - [ ] Both homepage newsletter forms post to the verified Buttondown endpoint, request only required fields, use unique labelled controls, and show the required consent statement.
 - [ ] The unconfirmed and confirmed subscription routes render the approved flow copy, remain outside the sitemap, and use `noindex, follow`.
 - [ ] Scorecard CTAs use only the centrally configured Tally URL.
+- [ ] Ebook purchase CTAs use only the centrally configured Stripe Checkout URL.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
 - [ ] The Audit invitation process, non-guarantee, and no-public-booking rule are explicit.
 - [ ] `/privacy` and `/legal` use verified configuration values and contain no invented facts.
 - [ ] Optional social links are omitted when their URLs are absent; production contains no dead placeholder links.
 - [ ] Navigation, headings, landmarks, skip link, focus states, forms, validation, contrast, touch targets, zoom/reflow, and reduced-motion behavior meet the accessibility target.
-- [ ] The design is black, white, text-only, editorial, calm, and responsive, with no prohibited imagery or effects.
+- [ ] The design is black, white, text-led, editorial, calm, and responsive,
+  with no prohibited imagery or effects.
+- [ ] The ebook page uses its single owner-supplied book mockup without adding other
+  imagery, client-side scripts, or on-site payment controls.
 - [ ] Each public page has a unique title, description, canonical URL, Open Graph text, and Twitter/X text.
 - [ ] Sitemap, robots, and truthful basic structured data are present; the 404 is excluded from indexing and the sitemap.
 - [ ] Cloudflare and Vercel Web Analytics provide parallel aggregate page-view measurement for comparison, Vercel Speed Insights is used only for anonymous performance measurement, and none receives form or scorecard personal data.
@@ -136,7 +145,8 @@ an Audit invitation.
 - **Package manager:** npm
 - **Database:** None
 - **Hosting:** Vercel; domain/DNS may be managed through Cloudflare
-- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel hosting, Web Analytics and Speed Insights
+- **External services:** Buttondown, Tally, Stripe Checkout, Cloudflare Web
+  Analytics, Vercel hosting, Web Analytics and Speed Insights
 
 The expected direct production dependencies are Astro and the official Vercel
 Web Analytics and Speed Insights packages. The sitemap is a small prerendered
@@ -191,6 +201,7 @@ Planned ownership after scaffolding:
 │   │   ├── legal.astro
 │   │   ├── privacy.astro
 │   │   ├── subscription-confirmed.astro
+│   │   ├── the-hidden-load.astro
 │   │   ├── unconfirmed-subscription.astro
 │   │   └── scorecard.astro
 │   └── styles/
@@ -247,6 +258,7 @@ authorName
 siteUrl
 buttondownFormAction
 tallyScorecardUrl
+hiddenLoadCheckoutUrl
 contactEmail
 xUrl
 youtubeUrl
@@ -288,6 +300,16 @@ functional dead controls.
   CRM, or another response destination without a new privacy review.
 - An embed requires a demonstrated accessibility/UX benefit and explicit approval after privacy and performance review.
 
+### Stripe Checkout
+
+- Use one centrally configured HTTPS URL for the hosted checkout.
+- Keep checkout as a direct same-tab link. Do not load Stripe scripts, collect
+  payment details, or create orders from the website.
+- Do not send checkout URLs, purchase details, or personal data to analytics.
+- The product page must not claim a delivery time, refund policy, tax treatment,
+  access period, or sales-region availability until those details are confirmed.
+- Do not link to `/fulfillment` until a reviewed public page exists there.
+
 ### Cloudflare Web Analytics
 
 - Enable Web Analytics in Cloudflare so it injects the current snippet at the edge.
@@ -312,7 +334,7 @@ functional dead controls.
 
 ## Data and security
 
-- **Stored data:** No first-party persistent data. Buttondown stores newsletter subscriptions and open/click engagement; Tally stores scorecard submissions indefinitely in its account archive without another configured response destination; Cloudflare and Vercel supply aggregate/basic analytics; Vercel also supplies anonymous real-user performance measurements.
+- **Stored data:** No first-party persistent data. Buttondown stores newsletter subscriptions and open/click engagement; Tally stores scorecard submissions indefinitely in its account archive without another configured response destination; Stripe handles ebook checkout externally; Cloudflare and Vercel supply aggregate/basic analytics; Vercel also supplies anonymous real-user performance measurements.
 - **Sensitive data:** Email addresses and scorecard answers are sensitive external-service inputs and must not enter site logs, analytics, test fixtures, or source control.
 - **Authentication/authorization:** None
 - **Validation boundaries:** Validate build-time URLs, email/contact configuration, canonical domain, and legal fields; rely on native email validation plus verified Buttondown requirements; validate that optional social URLs are HTTPS before rendering.
@@ -334,8 +356,11 @@ privacy, cookie/storage, performance, and necessity review.
 - **Supported platforms/viewports:** Mobile-first from 320 CSS pixels; verify common mobile (~390px), tablet (~768px), desktop (~1280px), 200% zoom, and 400% reflow in current evergreen browsers.
 - **Accessibility target:** WCAG 2.2 AA
 - **Design system location:** `src/styles/global.css` CSS custom properties; no external component or design-system package
-- **Performance targets:** Zero hydrated UI framework JavaScript; zero content images and custom-font requests; no avoidable layout shift; only required third-party requests; Lighthouse categories ideally 95+.
-- **Critical product rules:** Newsletter conversion remains primary; scorecard remains secondary; no public booking; no guaranteed Audit invitation; no clinical claims; no fake proof or urgency; newsletter and scorecard consent remain separate; optional social links never become dead links.
+- **Performance targets:** Zero hydrated UI framework JavaScript; one static
+  ebook product image and zero other content-image or custom-font requests; no
+  avoidable layout shift; only required third-party requests; Lighthouse
+  categories ideally 95+.
+- **Critical product rules:** Newsletter conversion remains primary; scorecard remains secondary; the ebook sales page is a direct hosted-checkout route, not an on-site payment flow; no public booking; no guaranteed Audit invitation; no clinical claims; no fake proof or urgency; newsletter and scorecard consent remain separate; optional social links never become dead links.
 
 Visual implementation:
 
@@ -387,6 +412,7 @@ Expected public-at-render-time configuration names:
 | `SITE_URL` | Optional override for the confirmed canonical HTTPS origin | No |
 | `BUTTONDOWN_FORM_ACTION` | Optional override for the confirmed newsletter endpoint | No |
 | `TALLY_SCORECARD_URL` | Optional override for the confirmed scorecard destination | No |
+| `HIDDEN_LOAD_CHECKOUT_URL` | Optional override for the confirmed Stripe Checkout destination | No |
 | `CONTACT_EMAIL` | Optional override for the confirmed privacy/legal contact | No |
 | `X_URL` | Optional override for the confirmed X profile | No |
 | `YOUTUBE_URL` | Optional override for the confirmed YouTube profile | No |
@@ -416,6 +442,9 @@ MVP has no first-party persistent data.
 - The live Tally form must be checked for result delivery and separate optional newsletter consent.
 - Privacy and legal content requires owner and appropriate Swiss/EU review before release.
 - Third-party behavior may change; verify current official integration instructions during implementation.
+- Ebook delivery, refund, tax, sales-region, support, and consumer-law terms are
+  not yet confirmed. Keep the external Stripe Checkout route unlinked from any
+  unfinished fulfilment policy and complete legal review before release.
 - The emotionally serious copy must name consequences without shaming readers or shifting responsibility to women.
 - The minimal visual direction can be weakened by unnecessary decoration; restraint is a requirement, not an unfinished state.
 - External-service outages remain outside the static site's control; links/forms must fail honestly without false local success states.
@@ -441,3 +470,4 @@ MVP has no first-party persistent data.
 | 2026-07-16 | Add Vercel Speed Insights | The owner requested anonymous real-user performance monitoring for the Astro site |
 | 2026-07-16 | Run two page-view analytics services | The owner wants to compare the aggregate reporting provided by Cloudflare and Vercel |
 | 2026-07-16 | Use confirmed operator details | The owner supplied the legal identity, address, responsible person, and social profiles |
+| 2026-08-27 | Add the ebook sales route | The owner approved a static sales page using an existing external Stripe Checkout link; payment data stays outside the site |

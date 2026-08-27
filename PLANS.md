@@ -205,20 +205,50 @@ verified before production deployment:
 - 2026-07-16: Added Vercel Speed Insights once in the shared Astro layout, documented its anonymous Web Vitals collection, and verified one injector on every generated HTML page without personal form values.
 - 2026-07-16: Added Vercel Web Analytics once in the shared document head while retaining Cloudflare edge injection for comparison; updated privacy disclosures and verified one Vercel analytics injector on every generated HTML page.
 - 2026-07-16: Added no-index unconfirmed and confirmed newsletter utility pages, verified their metadata and sitemap exclusion, and checked both routes at desktop and mobile sizes with clean browser consoles and working recovery navigation.
+- 2026-08-27: Added the owner-approved *Why Do I Keep Doing This?* ebook sales
+  page with the owner-supplied cover, a centrally configured Stripe Checkout
+  link, and two purchase calls to action. Production-preview checks confirmed
+  desktop and mobile presentation, keyboard focus order, and no Stripe request
+  before activation.
 
 ## Future commerce preparation (not MVP)
 
 - [x] Keep the initial fulfillment/refund policy draft outside `src/pages`.
-- [ ] Confirm the first product, delivery method, access period, sales regions,
-  currency, taxes, checkout provider, and customer-support timing.
+- [x] Confirm the first product, price, currency, and checkout provider: *Why
+  Do I Keep Doing This?* at $21 USD through Stripe Checkout.
+- [ ] Confirm ebook delivery method, access period, sales regions, taxes, and
+  customer-support timing.
 - [ ] Approve a voluntary refund position and any product-specific exceptions.
 - [ ] Add legally reviewed checkout terms, express digital-delivery consent
   where required, and an electronic order-confirmation record.
 - [ ] Update privacy disclosures for payment, course, support, and recordkeeping
   providers before collecting purchase data.
-- [ ] Treat commerce as a separately approved scope change; update
+- [x] Treat the ebook page as an approved commerce scope change; update
   `OVERVIEW.md`, `PROJECT.md`, routes, tests, and release checks before making
-  any sales page or policy public.
+  the sales page public.
+
+## Ebook sales page
+
+### 15. [x] Chunk: add *Why Do I Keep Doing This?* sales page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/the-hidden-load.astro`, `src/pages/privacy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`,
+  `public/images/wkd-book-cover.png`, `CHANGELOG.md`
+- **Change:** Add a public, one-column ebook sales page using owner-supplied
+  copy, one owner-supplied book mockup, two direct central-config Stripe Checkout
+  links, route metadata and sitemap coverage. Disclose the external payment
+  boundary accurately without inventing delivery, refund, tax, access, or
+  sales-region terms; do not link to the unfinished `/fulfillment` route.
+- **Verify:** Run format, lint, Astro/type checks, tests, and the production
+  build. Inspect the page and book asset at desktop and mobile widths, follow
+  both checkout links with keyboard focus, confirm the sitemap and metadata,
+  and verify no Stripe script or payment data is present in output.
+- **Risk/rollback:** The public page precedes a reviewed fulfilment/refund
+  policy. Keep the checkout link external and revert this focused change if
+  legal, tax, delivery, or support details prove unsuitable for launch.
+- **Commit:** `feat(ebook): add sales page`
 
 ## Completion
 

@@ -7,13 +7,13 @@ the preserved source brief and remains authoritative for detailed copy.
 
 - **Status:** Approved
 - **Owner:** Cyrus
-- **Last reviewed:** 2026-07-16
+- **Last reviewed:** 2026-08-27
 - **Source documents or links:** `PROJECT-BRIEF.md`
 
 ## 1. Project
 
 - **Working name:** Letters from Cyrus
-- **One-sentence description:** A small, newsletter-first website that moves visitors onto the Letters from Cyrus email list and directs appropriate men toward the Freeze-to-Command Scorecard.
+- **One-sentence description:** A small, newsletter-first website that moves visitors onto the Letters from Cyrus email list, directs appropriate men toward the Freeze-to-Command Scorecard, and offers one practical ebook through a hosted checkout.
 - **Why should this exist?** To name the pattern of emotional shutdown in responsible men, explain its cost, establish Cyrus's beliefs, earn trust through useful writing, and give readers an appropriate first action.
 - **Project stage:** MVP
 
@@ -41,6 +41,8 @@ women standing beside them.
 5. An appropriate man visits the Freeze-to-Command Scorecard page and chooses to complete the Tally scorecard.
 6. Cyrus may review the submission and privately invite selected men to a Freeze Diagnostic Audit when it appears appropriate.
 7. Mentorship may follow outside the public website.
+8. A reader who needs a practical self-guided resource can purchase *Why Do I
+   Keep Doing This?* through Stripe Checkout.
 
 There is no public call-booking link. Completing the scorecard does not
 guarantee an invitation to a Freeze Diagnostic Audit.
@@ -49,6 +51,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
+- A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
+  mockup and two direct Stripe Checkout calls to action.
 - A plain-language Privacy Policy at `/privacy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
@@ -63,7 +67,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - Clear explanation of what happens after scorecard completion, including that an Audit invitation is discretionary and not guaranteed.
 - Header and footer navigation defined in the brief, with optional social links rendered only when valid URLs exist.
 - Unique titles, descriptions, canonical URLs, Open Graph and Twitter/X text metadata, an XML sitemap, `robots.txt`, and truthful basic structured data.
-- A responsive, black-and-white, text-only editorial design using native system fonts.
+- A responsive, black-and-white, text-led editorial design using native system
+  fonts, with one ebook product mockup.
 - Semantic HTML, keyboard access, a skip link, visible focus states, labelled forms, accessible validation, sufficient contrast, and reduced-motion support.
 - A clear implementation README covering installation, local development, builds, integrations, legal configuration, and Vercel deployment.
 - Static Astro output with minimal JavaScript and no unnecessary third-party requests.
@@ -76,9 +81,12 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - Public booking, application, contact form, or Freeze Diagnostic Audit page
 - Community, course, media, gallery, or developer portfolio
 - User accounts, authentication, database, or administrative dashboard
-- Payments or booking on the website
+- On-site payments or booking; ebook checkout is handled by Stripe outside the
+  website
 - Testimonials, subscriber counts, results, credentials, or urgency that have not been supplied and verified
-- Pop-ups, exit-intent forms, carousels, content images, stock photography, decorative icons, or generic coaching visuals
+- Pop-ups, exit-intent forms, carousels, stock photography, decorative icons,
+  or generic coaching visuals; the ebook page may use its one owner-supplied book
+  mockup
 - Custom analytics dashboard, Google Analytics, Google Fonts, Meta Pixel, Hotjar, or cookie-heavy tracking
 - React, Vue, another client-side UI framework, component library, animation library, or unnecessary JavaScript
 
@@ -86,8 +94,11 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - **User accounts:** No
 - **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard answers/contact details are submitted to Tally; Cloudflare and Vercel supply basic website analytics; Vercel also supplies anonymous performance measurements.
-- **Payments:** No
-- **External services:** Buttondown, Tally, Cloudflare Web Analytics, Vercel hosting, Web Analytics and Speed Insights; Cloudflare may also manage domain/DNS.
+- **Payments:** No on-site payments. Stripe Checkout handles the ebook purchase
+  externally.
+- **External services:** Buttondown, Tally, Stripe Checkout, Cloudflare Web
+  Analytics, Vercel hosting, Web Analytics and Speed Insights; Cloudflare may
+  also manage domain/DNS.
 - **Notifications or email:** Letters from Cyrus is sent through Buttondown two to three times each week. Tally may use an email address to deliver scorecard results. Scorecard participation must not automatically subscribe a person to the newsletter.
 - **Administrative tools:** None in the website. Buttondown, Tally, and manual records remain external.
 
@@ -103,10 +114,13 @@ Measurement ownership:
 
 - **Product type:** Website
 - **Required devices or browsers:** Responsive mobile and desktop experience in current evergreen browsers; the core content and forms must remain usable with JavaScript unavailable.
-- **Visual direction:** Black and white, text-only, serious, calm, editorial, minimal, highly readable, and closer to a private letter or short manifesto than a conventional coaching website.
+- **Visual direction:** Black and white, text-led, serious, calm, editorial,
+  minimal, highly readable, and closer to a private letter or short manifesto
+  than a conventional coaching website. The ebook page may use its one product
+  mockup.
 - **Brand/design references:** `PROJECT-BRIEF.md`; no external design file supplied.
 - **Accessibility needs:** Target WCAG 2.2 AA, including semantic landmarks, correct heading order, keyboard navigation, strong focus indicators, labelled forms, understandable validation, high contrast, descriptive links, comfortable mobile text, suitable touch targets, reduced-motion respect, and no reliance on color, hover, or motion alone.
-- **Content or assets already available:** Complete baseline page copy and metadata guidance in `PROJECT-BRIEF.md`; no content imagery or custom fonts are required.
+- **Content or assets already available:** Complete baseline page copy and metadata guidance in `PROJECT-BRIEF.md`; owner-supplied ebook sales copy and one owner-supplied book mockup; no custom fonts are required.
 
 The primary reading width should remain around 65 characters. A restrained
 system serif may be used for major headings or quotations, with a system
@@ -128,6 +142,8 @@ Known production inputs not yet supplied:
 - Cloudflare and Vercel Web Analytics verification on the deployed domain
 - Vercel Speed Insights verification on the deployed domain
 - Owner and appropriate Swiss/EU privacy/legal review
+- Ebook delivery, refund, tax, sales-region, customer-support, and legal-review
+  decisions before a public commerce release
 
 These are launch inputs, not reasons to invent data or expand scope.
 
@@ -145,10 +161,14 @@ It is ready for handoff or release when:
 - `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes,
   and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
+- `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two
+  direct Stripe Checkout links, and no dead fulfilment-policy link.
 - All links, form labels, validation states, focus states, keyboard paths, and consent statements work.
 - Unique metadata, sitemap, robots, and truthful structured data are present.
 - There is no public booking link, prohibited page, dead placeholder link, fake claim, console error, avoidable layout shift, or unnecessary client framework code.
 - Newsletter and scorecard consent remain separate.
+- Stripe Checkout remains external, and payment information never enters the
+  website, source control, or analytics.
 - The design remains black, white, text-led, responsive, and highly readable.
 - Lighthouse performance, accessibility, best-practices, and SEO scores ideally exceed 95 without sacrificing usability.
 - Legal and service configuration has been supplied and reviewed for production.
