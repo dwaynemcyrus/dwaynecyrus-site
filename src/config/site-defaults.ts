@@ -11,3 +11,5 @@ export const DEFAULT_SUBSTACK_URL = "https://dwaynemcyrus.substack.com";
 export const DEFAULT_BUTTONDOWN_FORM_ACTION =
   "https://buttondown.com/api/emails/embed-subscribe/lettersfromcyrus";
 export const DEFAULT_TALLY_SCORECARD_URL = "https://tally.so/r/1A5J5b";
+export const DEFAULT_HIDDEN_LOAD_CHECKOUT_URL =
+  "https://buy.stripe.com/9B63co04xcBZdvw4yM2Ry00";

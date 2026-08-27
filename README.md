@@ -60,6 +60,12 @@ The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
 separate from newsletter consent.
 
+`HIDDEN_LOAD_CHECKOUT_URL` controls the direct Stripe Checkout link for the
+*Why Do I Keep Doing This?* ebook. The site only links to the hosted checkout:
+it does not load Stripe scripts or collect payment details. Confirm delivery,
+refund, tax, sales-region, support, and consumer-law terms before release, and
+do not link a fulfilment policy until it has been reviewed and published.
+
 The newsletter flow includes `/unconfirmed-subscription` for the post-signup
 email prompt and `/subscription-confirmed` for the confirmation destination.
 Configure Buttondown to use those public URLs at the appropriate stages of its

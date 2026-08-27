@@ -1,6 +1,7 @@
 export {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
   DEFAULT_RESPONSIBLE_PERSON,
@@ -14,6 +15,7 @@ export {
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
   DEFAULT_RESPONSIBLE_PERSON,
@@ -31,6 +33,7 @@ export interface SiteConfig {
   siteUrl: string;
   buttondownFormAction: string;
   tallyScorecardUrl: string;
+  hiddenLoadCheckoutUrl: string;
   contactEmail: string;
   xUrl: string;
   youtubeUrl: string;
@@ -49,6 +52,7 @@ const HTTPS_URL_FIELDS = [
   "siteUrl",
   "buttondownFormAction",
   "tallyScorecardUrl",
+  "hiddenLoadCheckoutUrl",
   "xUrl",
   "youtubeUrl",
   "substackUrl",
@@ -82,6 +86,9 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
       DEFAULT_BUTTONDOWN_FORM_ACTION,
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
+    hiddenLoadCheckoutUrl:
+      value(environment, "HIDDEN_LOAD_CHECKOUT_URL") ||
+      DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
     contactEmail: value(environment, "CONTACT_EMAIL") || DEFAULT_CONTACT_EMAIL,
     xUrl: value(environment, "X_URL") || DEFAULT_X_URL,
     youtubeUrl: value(environment, "YOUTUBE_URL") || DEFAULT_YOUTUBE_URL,

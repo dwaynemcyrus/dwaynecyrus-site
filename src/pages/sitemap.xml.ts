@@ -4,7 +4,13 @@ import { siteConfig } from "../config/site";
 
 export const prerender = true;
 
-const PUBLIC_PATHS = ["/", "/scorecard", "/privacy", "/legal"] as const;
+const PUBLIC_PATHS = [
+  "/",
+  "/scorecard",
+  "/the-hidden-load",
+  "/privacy",
+  "/legal",
+] as const;
 
 function escapeXml(value: string): string {
   return value

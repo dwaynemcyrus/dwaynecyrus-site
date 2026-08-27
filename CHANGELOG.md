@@ -10,6 +10,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Added
 
+- A one-column sales page for *Why Do I Keep Doing This?* with a book mockup
+  and direct Stripe Checkout links for the $21 USD ebook.
 - Static Astro website with homepage, scorecard, privacy, legal, and custom
   not-found experiences.
 - Accessible editorial layout, navigation, newsletter forms, and responsive

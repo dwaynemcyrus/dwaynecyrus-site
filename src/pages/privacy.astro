@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Privacy Policy — Letters from Cyrus";
 const description =
-  "How Letters from Cyrus handles newsletter subscriptions, email engagement, scorecard responses and website analytics.";
+  "How Letters from Cyrus handles newsletter subscriptions, email engagement, scorecard responses, ebook checkout and website analytics.";
 const identityIsConfigured = Boolean(
   siteConfig.legalName && siteConfig.legalAddress && siteConfig.contactEmail,
 );
@@ -16,7 +16,7 @@ const identityIsConfigured = Boolean(
     <div class="container legal-copy">
       <p class="eyebrow">Letters from Cyrus</p>
       <h1>Privacy Policy</h1>
-      <p class="muted">Last updated: 16 July 2026</p>
+      <p class="muted">Last updated: 27 August 2026</p>
 
       <h2>Who runs this site</h2>
       {
@@ -83,6 +83,13 @@ const identityIsConfigured = Boolean(
           activity needed to operate and protect the form.
         </li>
       </ul>
+
+      <h3>Ebook checkout</h3>
+      <p>
+        Selecting an ebook purchase button takes you to Stripe Checkout, which
+        is hosted outside this website. This website does not collect payment
+        details or run the checkout form.
+      </p>
 
       <h3>Website use</h3>
       <ul>
@@ -179,6 +186,10 @@ const identityIsConfigured = Boolean(
           response destination.
         </li>
         <li>
+          <a href="https://stripe.com/privacy">Stripe</a> hosts ebook checkout and
+          processes payment information under its own privacy terms.
+        </li>
+        <li>
           <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>
           {" "}provides website delivery, security and privacy-focused Web
           Analytics.
@@ -208,7 +219,8 @@ const identityIsConfigured = Boolean(
         anonymous website performance. Newsletter emails use Buttondown's
         open-tracking pixel and tracked links as described above. The separately
         hosted Tally scorecard may use browser storage or other technology
-        needed for its form features under Tally's own privacy notice.
+        needed for its form features under Tally's own privacy notice. Stripe
+        Checkout may use its own technologies under Stripe's privacy terms.
       </p>
 
       <h2>Data retention</h2>

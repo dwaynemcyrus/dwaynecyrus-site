@@ -51,7 +51,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
-- A one-column ebook sales page at `/the-hidden-load` with a generated book
+- A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
 - A plain-language Privacy Policy at `/privacy`.
 - A short plain-language Legal Notice at `/legal`.
@@ -85,7 +85,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
   website
 - Testimonials, subscriber counts, results, credentials, or urgency that have not been supplied and verified
 - Pop-ups, exit-intent forms, carousels, stock photography, decorative icons,
-  or generic coaching visuals; the ebook page may use its one generated book
+  or generic coaching visuals; the ebook page may use its one owner-supplied book
   mockup
 - Custom analytics dashboard, Google Analytics, Google Fonts, Meta Pixel, Hotjar, or cookie-heavy tracking
 - React, Vue, another client-side UI framework, component library, animation library, or unnecessary JavaScript
@@ -120,7 +120,7 @@ Measurement ownership:
   mockup.
 - **Brand/design references:** `PROJECT-BRIEF.md`; no external design file supplied.
 - **Accessibility needs:** Target WCAG 2.2 AA, including semantic landmarks, correct heading order, keyboard navigation, strong focus indicators, labelled forms, understandable validation, high contrast, descriptive links, comfortable mobile text, suitable touch targets, reduced-motion respect, and no reliance on color, hover, or motion alone.
-- **Content or assets already available:** Complete baseline page copy and metadata guidance in `PROJECT-BRIEF.md`; owner-supplied ebook sales copy and one generated book mockup; no custom fonts are required.
+- **Content or assets already available:** Complete baseline page copy and metadata guidance in `PROJECT-BRIEF.md`; owner-supplied ebook sales copy and one owner-supplied book mockup; no custom fonts are required.
 
 The primary reading width should remain around 65 characters. A restrained
 system serif may be used for major headings or quotations, with a system

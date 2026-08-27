@@ -127,7 +127,7 @@ an Audit invitation.
 - [ ] Navigation, headings, landmarks, skip link, focus states, forms, validation, contrast, touch targets, zoom/reflow, and reduced-motion behavior meet the accessibility target.
 - [ ] The design is black, white, text-led, editorial, calm, and responsive,
   with no prohibited imagery or effects.
-- [ ] The ebook page uses its single generated book mockup without adding other
+- [ ] The ebook page uses its single owner-supplied book mockup without adding other
   imagery, client-side scripts, or on-site payment controls.
 - [ ] Each public page has a unique title, description, canonical URL, Open Graph text, and Twitter/X text.
 - [ ] Sitemap, robots, and truthful basic structured data are present; the 404 is excluded from indexing and the sitemap.
