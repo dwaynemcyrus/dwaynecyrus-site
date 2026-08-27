@@ -160,8 +160,8 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes,
-  and the custom 404 work on mobile and desktop.
+- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy`, `/legal`, both newsletter
+  confirmation routes, and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two
   direct Stripe Checkout links, and no dead fulfilment-policy link.

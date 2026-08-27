@@ -8,7 +8,7 @@ This technical contract derives from the completed overview and
 - **Overview:** `OVERVIEW.md`
 - **Overview status:** Approved on 2026-07-16
 - **Additional source documents:** `PROJECT-BRIEF.md`
-- **Contract last reviewed:** 2026-07-16
+- **Contract last reviewed:** 2026-08-27
 - **Blocking decisions:** None
 - **Current development version:** `0.1.0`
 

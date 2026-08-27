@@ -1,0 +1,78 @@
+---
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Freeze-to-Command Scorecard — Dwayne Cyrus";
+const description =
+  "Complete the Freeze-to-Command Scorecard to identify patterns of emotional shutdown, withdrawal and failed repair.";
+const embedUrl = siteConfig.f2cScorecardEmbedUrl;
+const scorecardUrl = siteConfig.tallyScorecardUrl;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/f2c-scorecard"
+>
+  <section class="f2c-scorecard">
+    <div class="f2c-scorecard__inner">
+      <h1 class="visually-hidden">Freeze-to-Command Scorecard</h1>
+      <iframe
+        class="f2c-scorecard__embed"
+        data-tally-src={embedUrl}
+        loading="lazy"
+        width="100%"
+        height="200"
+        title="Freeze-to-Command Scorecard"></iframe>
+      <noscript>
+        <p>
+          JavaScript is required to show the scorecard here. You can
+          <a href={scorecardUrl}
+            >open the Freeze-to-Command Scorecard in Tally</a
+          >
+          instead.
+        </p>
+      </noscript>
+    </div>
+  </section>
+  <script is:inline src="https://tally.so/widgets/embed.js"></script>
+  <script is:inline>
+    window.Tally?.loadEmbeds();
+  </script>
+</BaseLayout>
+
+<style>
+  .f2c-scorecard {
+    padding-block: var(--space-6) var(--space-7);
+  }
+
+  .f2c-scorecard__inner {
+    width: min(100% - 2rem, 52rem);
+    margin-inline: auto;
+  }
+
+  .f2c-scorecard__embed {
+    display: block;
+    width: 100%;
+    min-height: 12.5rem;
+    border: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .f2c-scorecard__inner {
+      width: min(100% - 4rem, 52rem);
+    }
+  }
+</style>

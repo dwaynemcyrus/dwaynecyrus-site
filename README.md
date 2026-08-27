@@ -60,6 +60,14 @@ The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
 separate from newsletter consent.
 
+`/f2c-scorecard` uses the owner-approved standard Tally embed. Its
+`F2C_SCORECARD_EMBED_URL` configuration includes the supplied left alignment,
+transparent background, dynamic-height and form-event-forwarding options.
+That route loads Tally's embed runtime and iframe; do not add event listeners
+or send Tally data anywhere else. The page retains a direct Tally fallback
+when JavaScript is unavailable. The embed forwards the host page path and query
+parameters to Tally, so the site must never place personal data in its URLs.
+
 `HIDDEN_LOAD_CHECKOUT_URL` controls the direct Stripe Checkout link for the
 *Why Do I Keep Doing This?* ebook. The site only links to the hosted checkout:
 it does not load Stripe scripts or collect payment details. Confirm delivery,
@@ -99,14 +107,17 @@ explicit overrides.
 
 ## External-service verification
 
-Before release, verify the Buttondown form and the direct Tally link using
+Before release, verify the Buttondown form, direct Tally link, and embedded
+scorecard using
 owner-approved test details. Confirm that:
 
 1. both audience choices add the intended Buttondown tag;
 2. first name, last name and email arrive in the expected fields;
 3. Buttondown confirmation and unsubscribe behavior is correct;
-4. Tally delivers results and does not silently add newsletter consent; and
-5. no personal form data appears in analytics or URLs.
+4. Tally delivers results and does not silently add newsletter consent;
+5. the embedded scorecard has an accurate title, dynamic height and a working
+   no-JavaScript fallback; and
+6. no personal form data appears in analytics or URLs.
 
 Do not submit real visitor data during automated or preview testing.
 

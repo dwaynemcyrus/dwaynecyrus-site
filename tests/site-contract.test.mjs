@@ -5,6 +5,7 @@ import test from "node:test";
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_F2C_SCORECARD_EMBED_URL,
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
@@ -32,6 +33,8 @@ const completeEnvironment = {
   BUTTONDOWN_FORM_ACTION:
     "https://buttondown.com/api/emails/embed-subscribe/example",
   TALLY_SCORECARD_URL: "https://tally.so/r/example",
+  F2C_SCORECARD_EMBED_URL:
+    "https://tally.so/embed/example?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1",
   HIDDEN_LOAD_CHECKOUT_URL: "https://buy.stripe.com/example",
   CONTACT_EMAIL: "privacy@example.com",
   X_URL: "https://x.com/example",
@@ -73,6 +76,7 @@ test("confirmed release fields are available by default", () => {
   assert.equal(config.hostingProvider, "Vercel");
   assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
   assert.equal(config.tallyScorecardUrl, DEFAULT_TALLY_SCORECARD_URL);
+  assert.equal(config.f2cScorecardEmbedUrl, DEFAULT_F2C_SCORECARD_EMBED_URL);
   assert.equal(config.hiddenLoadCheckoutUrl, DEFAULT_HIDDEN_LOAD_CHECKOUT_URL);
   assert.equal(
     issues.includes("buttondownFormAction is required for release"),
@@ -80,6 +84,10 @@ test("confirmed release fields are available by default", () => {
   );
   assert.equal(
     issues.includes("tallyScorecardUrl is required for release"),
+    false,
+  );
+  assert.equal(
+    issues.includes("f2cScorecardEmbedUrl is required for release"),
     false,
   );
   assert.equal(
@@ -96,6 +104,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
     ...completeEnvironment,
     SITE_URL: "http://letters.example",
     HIDDEN_LOAD_CHECKOUT_URL: "http://buy.stripe.com/example",
+    F2C_SCORECARD_EMBED_URL: "http://tally.so/embed/example",
     CONTACT_EMAIL: "not-an-email",
     WEBSITE_DOMAIN: "https://letters.example/path",
     X_URL: "javascript:alert(1)",
@@ -108,6 +117,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
   assert.equal(isEmailAddress("not-an-email"), false);
   assert.ok(issues.includes("siteUrl must be an HTTPS URL"));
   assert.ok(issues.includes("hiddenLoadCheckoutUrl must be an HTTPS URL"));
+  assert.ok(issues.includes("f2cScorecardEmbedUrl must be an HTTPS URL"));
   assert.ok(issues.includes("contactEmail must be a valid email address"));
   assert.ok(
     issues.includes(
@@ -141,6 +151,7 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
   const sourceFiles = [
     "../src/pages/index.astro",
     "../src/pages/scorecard.astro",
+    "../src/pages/f2c-scorecard.astro",
     "../src/components/NewsletterForm.astro",
   ];
   const source = (
@@ -180,6 +191,7 @@ test("required public routes have source files", async () => {
   const routes = [
     "index.astro",
     "scorecard.astro",
+    "f2c-scorecard.astro",
     "privacy.astro",
     "legal.astro",
     "404.astro",
@@ -251,6 +263,8 @@ test("privacy policy states confirmed data practices", async () => {
   assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
   assert.match(privacy, /Scorecard submissions are kept indefinitely/);
   assert.match(privacy, /Tally responses are not forwarded/);
+  assert.match(privacy, /embedded Tally scorecard at <code>\/f2c-scorecard/);
+  assert.match(privacy, /forwards\s+this page's path and query parameters/);
   assert.match(privacy, /Vercel Web\s+Analytics/);
   assert.match(privacy, /Vercel Speed\s+Insights/);
   assert.match(privacy, /Stripe Checkout/);
@@ -301,6 +315,27 @@ test("ebook sales page uses the configured Stripe Checkout URL", async () => {
   assert.match(ebook, /wkd-book-cover\.png/);
   assert.doesNotMatch(ebook, /\/fulfillment/);
   assert.match(sitemap, /"\/the-hidden-load"/);
+});
+
+test("embedded scorecard uses the configured standard Tally embed", async () => {
+  const scorecard = await readFile(
+    new URL("../src/pages/f2c-scorecard.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(scorecard, /const embedUrl = siteConfig\.f2cScorecardEmbedUrl/);
+  assert.match(scorecard, /data-tally-src=\{embedUrl\}/);
+  assert.match(scorecard, /https:\/\/tally\.so\/widgets\/embed\.js/);
+  assert.match(scorecard, /window\.Tally\?\.loadEmbeds\(\)/);
+  assert.match(scorecard, /title="Freeze-to-Command Scorecard"/);
+  assert.match(scorecard, /<noscript>/);
+  assert.match(scorecard, /href=\{scorecardUrl\}/);
+  assert.doesNotMatch(scorecard, /addEventListener\(/);
+  assert.match(sitemap, /"\/f2c-scorecard"/);
 });
 
 test("dependency contract excludes client UI frameworks", async () => {

@@ -210,6 +210,11 @@ verified before production deployment:
   link, and two purchase calls to action. Production-preview checks confirmed
   desktop and mobile presentation, keyboard focus order, and no Stripe request
   before activation.
+- 2026-08-27: Added the owner-approved standard Tally embed at
+  `/f2c-scorecard`, with central configuration, dynamic height, a direct-link
+  no-JavaScript fallback, sitemap coverage, and privacy disclosure. Production
+  preview confirmed the embedded form at desktop and mobile widths, no horizontal
+  overflow, and keyboard focus entering the iframe without a form submission.
 
 ## Future commerce preparation (not MVP)
 
@@ -252,7 +257,7 @@ verified before production deployment:
 
 ## Embedded scorecard page
 
-### 16. [ ] Chunk: add the Tally scorecard embed
+### 16. [x] Chunk: add the Tally scorecard embed
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
   `src/config/site-defaults.ts`, `src/config/site.ts`,
