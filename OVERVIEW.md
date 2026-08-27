@@ -51,6 +51,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
+- A focused embedded Tally scorecard at `/f2c-scorecard` using the
+  owner-supplied standard embed URL.
 - A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
 - A plain-language Privacy Policy at `/privacy`.
@@ -158,8 +160,8 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes,
-  and the custom 404 work on mobile and desktop.
+- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy`, `/legal`, both newsletter
+  confirmation routes, and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two
   direct Stripe Checkout links, and no dead fulfilment-policy link.
@@ -177,7 +179,9 @@ It is ready for handoff or release when:
 
 ### Assumptions
 
-- `[ASSUMPTION]` A direct link to Tally is the default because the brief prefers it unless embedding provides a clear benefit without meaningful complexity.
+- `[ASSUMPTION]` A direct link to Tally remains the default. The owner approved
+  a standard Tally embed for the dedicated `/f2c-scorecard` completion route
+  on 2026-08-27.
 - `[ASSUMPTION]` The initial implementation will start from this documentation-only repository and use npm, because no existing Astro project or lockfile is present.
 - `[ASSUMPTION]` Missing legal and service values may use unmistakable development placeholders or build-time omissions, but a production build must not publish fake or dead values.
 

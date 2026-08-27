@@ -210,6 +210,11 @@ verified before production deployment:
   link, and two purchase calls to action. Production-preview checks confirmed
   desktop and mobile presentation, keyboard focus order, and no Stripe request
   before activation.
+- 2026-08-27: Added the owner-approved standard Tally embed at
+  `/f2c-scorecard`, with central configuration, dynamic height, a direct-link
+  no-JavaScript fallback, sitemap coverage, and privacy disclosure. Production
+  preview confirmed the embedded form at desktop and mobile widths, no horizontal
+  overflow, and keyboard focus entering the iframe without a form submission.
 
 ## Future commerce preparation (not MVP)
 
@@ -249,6 +254,29 @@ verified before production deployment:
   policy. Keep the checkout link external and revert this focused change if
   legal, tax, delivery, or support details prove unsuitable for launch.
 - **Commit:** `feat(ebook): add sales page`
+
+## Embedded scorecard page
+
+### 16. [x] Chunk: add the Tally scorecard embed
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/f2c-scorecard.astro`, `src/pages/privacy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `README.md`,
+  `CHANGELOG.md`
+- **Change:** Add the owner-supplied Tally standard inline embed at
+  `/f2c-scorecard`, with left-aligned transparent styling, dynamic height, and
+  form-event forwarding. Keep the direct configured scorecard link available
+  as a no-JavaScript fallback; scope Tally's iframe and embed runtime to this
+  route, without listening to or forwarding form events.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the form route at mobile and desktop widths, verify the iframe title,
+  keyboard path and fallback, and confirm no form submission or personal-data
+  test is performed.
+- **Risk/rollback:** The embed introduces a Tally runtime and third-party
+  request before a visitor activates a CTA. Revert the focused feature commit
+  to return to the direct-link-only route.
+- **Commit:** `feat(scorecard): add Tally embed`
 
 ## Completion
 

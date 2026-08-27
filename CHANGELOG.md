@@ -10,6 +10,9 @@ changes that matter to users, integrators, or project operators.
 
 ### Added
 
+- An embedded Freeze-to-Command Scorecard at `/f2c-scorecard` using the
+  owner-approved Tally standard embed, with a no-JavaScript direct-link
+  fallback.
 - A one-column sales page for *Why Do I Keep Doing This?* with a book mockup
   and direct Stripe Checkout links for the $21 USD ebook.
 - Static Astro website with homepage, scorecard, privacy, legal, and custom

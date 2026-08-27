@@ -1,6 +1,7 @@
 export {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_F2C_SCORECARD_EMBED_URL,
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
@@ -15,6 +16,7 @@ export {
 import {
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
+  DEFAULT_F2C_SCORECARD_EMBED_URL,
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
@@ -33,6 +35,7 @@ export interface SiteConfig {
   siteUrl: string;
   buttondownFormAction: string;
   tallyScorecardUrl: string;
+  f2cScorecardEmbedUrl: string;
   hiddenLoadCheckoutUrl: string;
   contactEmail: string;
   xUrl: string;
@@ -52,6 +55,7 @@ const HTTPS_URL_FIELDS = [
   "siteUrl",
   "buttondownFormAction",
   "tallyScorecardUrl",
+  "f2cScorecardEmbedUrl",
   "hiddenLoadCheckoutUrl",
   "xUrl",
   "youtubeUrl",
@@ -86,6 +90,9 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
       DEFAULT_BUTTONDOWN_FORM_ACTION,
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
+    f2cScorecardEmbedUrl:
+      value(environment, "F2C_SCORECARD_EMBED_URL") ||
+      DEFAULT_F2C_SCORECARD_EMBED_URL,
     hiddenLoadCheckoutUrl:
       value(environment, "HIDDEN_LOAD_CHECKOUT_URL") ||
       DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,

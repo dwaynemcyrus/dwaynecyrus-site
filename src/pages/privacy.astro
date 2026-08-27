@@ -218,9 +218,12 @@ const identityIsConfigured = Boolean(
         says is discarded after 24 hours. Vercel Speed Insights measures
         anonymous website performance. Newsletter emails use Buttondown's
         open-tracking pixel and tracked links as described above. The separately
-        hosted Tally scorecard may use browser storage or other technology
-        needed for its form features under Tally's own privacy notice. Stripe
-        Checkout may use its own technologies under Stripe's privacy terms.
+        embedded Tally scorecard at <code>/f2c-scorecard</code> loads Tally's form
+        runtime and may use browser storage or other technology needed for its form
+        features under Tally's own privacy notice. The standard embed also forwards
+        this page's path and query parameters to Tally; matching hidden fields configured
+        in the form may save them with a response. Stripe Checkout may use its own
+        technologies under Stripe's privacy terms.
       </p>
 
       <h2>Data retention</h2>
