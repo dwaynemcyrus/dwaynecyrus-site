@@ -209,16 +209,41 @@ verified before production deployment:
 ## Future commerce preparation (not MVP)
 
 - [x] Keep the initial fulfillment/refund policy draft outside `src/pages`.
-- [ ] Confirm the first product, delivery method, access period, sales regions,
-  currency, taxes, checkout provider, and customer-support timing.
+- [x] Confirm the first product, price, currency, and checkout provider: *Why
+  Do I Keep Doing This?* at $21 USD through Stripe Checkout.
+- [ ] Confirm ebook delivery method, access period, sales regions, taxes, and
+  customer-support timing.
 - [ ] Approve a voluntary refund position and any product-specific exceptions.
 - [ ] Add legally reviewed checkout terms, express digital-delivery consent
   where required, and an electronic order-confirmation record.
 - [ ] Update privacy disclosures for payment, course, support, and recordkeeping
   providers before collecting purchase data.
-- [ ] Treat commerce as a separately approved scope change; update
+- [x] Treat the ebook page as an approved commerce scope change; update
   `OVERVIEW.md`, `PROJECT.md`, routes, tests, and release checks before making
-  any sales page or policy public.
+  the sales page public.
+
+## Ebook sales page
+
+### 15. [ ] Chunk: add *Why Do I Keep Doing This?* sales page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/the-hidden-load.astro`, `src/pages/privacy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`,
+  `public/images/why-do-i-keep-doing-this-book.png`, `CHANGELOG.md`
+- **Change:** Add a public, one-column ebook sales page using owner-supplied
+  copy, one generated book mockup, two direct central-config Stripe Checkout
+  links, route metadata and sitemap coverage. Disclose the external payment
+  boundary accurately without inventing delivery, refund, tax, access, or
+  sales-region terms; do not link to the unfinished `/fulfillment` route.
+- **Verify:** Run format, lint, Astro/type checks, tests, and the production
+  build. Inspect the page and book asset at desktop and mobile widths, follow
+  both checkout links with keyboard focus, confirm the sitemap and metadata,
+  and verify no Stripe script or payment data is present in output.
+- **Risk/rollback:** The public page precedes a reviewed fulfilment/refund
+  policy. Keep the checkout link external and revert this focused change if
+  legal, tax, delivery, or support details prove unsuitable for launch.
+- **Commit:** `feat(ebook): add sales page`
 
 ## Completion
 
