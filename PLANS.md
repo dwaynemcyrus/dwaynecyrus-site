@@ -278,6 +278,24 @@ verified before production deployment:
   to return to the direct-link-only route.
 - **Commit:** `feat(scorecard): add Tally embed`
 
+## Letters page
+
+### 17. [x] Chunk: add Letters editorial page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`,
+  `src/pages/letters.astro`, `src/pages/sitemap.xml.ts`,
+  `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add an indexable `/letters` page with the owner-supplied
+  editorial statement and a shared newsletter signup at the end. Use the shared
+  document shell, include route metadata and sitemap coverage, and do not add a
+  speculative navigation item.
+- **Verify:** Run format, lint, Astro/type checks, tests, and the production
+  build. Inspect the page at mobile and desktop widths, including heading
+  order, keyboard navigation, and browser-console output.
+- **Risk/rollback:** The page introduces a new discoverable route. Revert the
+  focused page commit to remove it from the public site and sitemap.
+- **Commit:** `feat(letters): add editorial page`
+
 ## Completion
 
 - **Checks run:** Format check, lint, Astro/type diagnostics, thirteen contract tests, dependency audit, seven-page static production build, configured sitemap/metadata build, Vercel Web Analytics and Speed Insights injector checks, browser page and interaction checks, responsive overflow checks, console checks, and HTTP status checks pass.

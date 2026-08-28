@@ -1,0 +1,93 @@
+---
+import NewsletterForm from "../components/NewsletterForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Letters from Cyrus — Dwayne Cyrus";
+const description =
+  "Essays, personal letters, and practical field notes for men carrying silent weight and the women who stand with them.";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/letters">
+  <article class="letters-page">
+    <header>
+      <h1>
+        Letters for men carrying silent weight — and for the women who stand
+        with them.
+      </h1>
+    </header>
+
+    <div class="letters-copy">
+      <p class="lede">
+        <strong>
+          Letters from Cyrus is for men carrying silent weight. The pressure to
+          provide, lead, protect, endure, and stay composed while fighting
+          battles few people see.
+        </strong>
+      </p>
+
+      <p>
+        These are essays, personal letters, and practical field notes on
+        emotional command, righteous manhood, marriage, fatherhood, and the
+        inner work required to carry responsibility without collapsing,
+        hardening, or losing yourself.
+      </p>
+
+      <p>
+        It is also for the women who love, challenge, and stand with these men —
+        those who want to understand the war beneath the silence without
+        excusing weakness, avoidance, or destruction.
+      </p>
+
+      <p>
+        No empty motivation. No soft excuses. Just clear, hard-earned
+        reflections on becoming a man who can carry responsibility well and
+        remain grounded, whole, and safe to stand beside.
+      </p>
+    </div>
+
+    <section class="letters-signup" aria-labelledby="receive-letters-heading">
+      <h2 id="receive-letters-heading">Receive the letters.</h2>
+      <p>
+        Subscribe below for essays, personal letters, and practical field notes.
+      </p>
+      <NewsletterForm id="letters-signup" />
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .letters-page {
+    width: min(100% - 2rem, var(--reading-width));
+    margin-inline: auto;
+    padding-block: var(--space-7);
+  }
+
+  .letters-page header {
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .letters-copy {
+    display: grid;
+    gap: var(--space-5);
+    padding-top: var(--space-6);
+  }
+
+  .letters-copy p {
+    max-width: none;
+    margin: 0;
+  }
+
+  .letters-signup {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .letters-signup h2,
+  .letters-signup p {
+    margin: 0;
+  }
+</style>

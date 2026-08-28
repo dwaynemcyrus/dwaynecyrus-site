@@ -32,9 +32,12 @@ changes that matter to users, integrators, or project operators.
   comparison with Cloudflare Web Analytics.
 - Newsletter email-confirmation and confirmed-subscription pages with clear
   inbox guidance and welcome-letter next steps.
+- A `/letters` editorial page explaining who Letters from Cyrus serves, with a
+  newsletter signup.
 
 ### Changed
 
+- Homepage and footer scorecard links now open the embedded scorecard route.
 - Homepage newsletter hero copy now reflects the owner-supplied editorial
   promise and emphasis.
 - Newsletter email fields now use an inline email-and-subscribe layout on all

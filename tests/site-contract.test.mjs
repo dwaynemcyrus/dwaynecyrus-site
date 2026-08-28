@@ -174,6 +174,7 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
     "../src/pages/subscription-confirmed.astro",
     "../src/pages/unconfirmed-subscription.astro",
     "../src/pages/the-hidden-load.astro",
+    "../src/pages/letters.astro",
     "../src/components/NewsletterForm.astro",
   ];
   const publicSource = (
@@ -192,6 +193,7 @@ test("required public routes have source files", async () => {
     "index.astro",
     "scorecard.astro",
     "f2c-scorecard.astro",
+    "letters.astro",
     "privacy.astro",
     "legal.astro",
     "404.astro",
@@ -205,6 +207,30 @@ test("required public routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("letters page uses the approved copy and is discoverable", async () => {
+  const letters = await readFile(
+    new URL("../src/pages/letters.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    letters,
+    /Letters for men carrying silent weight — and for the women who stand\s+with them\./,
+  );
+  assert.match(
+    letters,
+    /The pressure to\s+provide, lead, protect, endure, and stay composed while fighting/,
+  );
+  assert.match(letters, /No empty motivation\. No soft excuses\./);
+  assert.match(letters, /Receive the letters\./);
+  assert.match(letters, /<NewsletterForm id="letters-signup" \/>/);
+  assert.match(sitemap, /"\/letters"/);
 });
 
 test("newsletter confirmation routes are noindex utility pages", async () => {
@@ -291,15 +317,20 @@ test("newsletter form submits email with the Unconfirmed tag", async () => {
   assert.match(source, /grid-template-columns: minmax\(0, 1fr\) auto/);
 });
 
-test("homepage scorecard links use the configured Tally URL", async () => {
+test("homepage and footer scorecard links use the embedded route", async () => {
   const home = await readFile(
     new URL("../src/pages/index.astro", import.meta.url),
     "utf8",
   );
+  const footer = await readFile(
+    new URL("../src/components/SiteFooter.astro", import.meta.url),
+    "utf8",
+  );
 
-  assert.match(home, /const scorecardUrl = siteConfig\.tallyScorecardUrl/);
-  assert.equal(home.match(/<SecondaryLink href=\{scorecardUrl\}/g)?.length, 2);
-  assert.doesNotMatch(home, /<SecondaryLink href="\/scorecard"/);
+  assert.match(home, /const scorecardPath = "\/f2c-scorecard"/);
+  assert.equal(home.match(/<SecondaryLink href=\{scorecardPath\}/g)?.length, 2);
+  assert.doesNotMatch(home, /tallyScorecardUrl/);
+  assert.match(footer, /<a href="\/f2c-scorecard">Scorecard<\/a>/);
 });
 
 test("homepage hero uses the approved newsletter copy", async () => {
@@ -320,7 +351,7 @@ test("homepage hero uses the approved newsletter copy", async () => {
     home,
     /<strong>No empty motivation\. No soft excuses\.<\/strong>/,
   );
-  assert.match(home, /Sent two to three times each week\./);
+  assert.match(home, /Sent two\s+to three times each week\./);
 });
 
 test("ebook sales page uses the configured Stripe Checkout URL", async () => {

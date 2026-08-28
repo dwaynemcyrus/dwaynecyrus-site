@@ -8,6 +8,7 @@ const PUBLIC_PATHS = [
   "/",
   "/scorecard",
   "/f2c-scorecard",
+  "/letters",
   "/the-hidden-load",
   "/privacy",
   "/legal",

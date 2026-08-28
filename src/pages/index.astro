@@ -2,14 +2,13 @@
 import NewsletterForm from "../components/NewsletterForm.astro";
 import SecondaryLink from "../components/SecondaryLink.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-import { siteConfig } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title =
   "Letters from Cyrus — Emotional Command, Manhood, Marriage and Fatherhood";
 const description =
   "Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood, and the inner work required to carry responsibility without losing yourself.";
-const scorecardUrl = siteConfig.tallyScorecardUrl;
+const scorecardPath = "/f2c-scorecard";
 ---
 
 <BaseLayout title={title} description={description} canonicalPath="/">
@@ -27,9 +26,9 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
           required to carry responsibility without losing yourself.
         </p>
         <p class="hero-statement">
-          <strong>No empty motivation. No soft excuses.</strong>
+          <strong>No empty motivation. No soft excuses.</strong><br />Sent two
+          to three times each week.
         </p>
-        <p class="frequency">Sent two to three times each week.</p>
       </div>
       <NewsletterForm id="hero-signup" />
     </div>
@@ -171,7 +170,7 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
           You will receive a clearer picture of where you are now and what may
           need your attention next.
         </p>
-        <SecondaryLink href={scorecardUrl}>Take the Scorecard</SecondaryLink>
+        <SecondaryLink href={scorecardPath}>Take the Scorecard</SecondaryLink>
       </div>
     </div>
   </section>
@@ -191,7 +190,7 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
           If I believe a Freeze Diagnostic Audit may serve you, I may invite you
           to one.
         </p>
-        <SecondaryLink href={scorecardUrl}
+        <SecondaryLink href={scorecardPath}
           >Begin with the Scorecard</SecondaryLink
         >
       </div>

@@ -53,6 +53,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
 - A focused embedded Tally scorecard at `/f2c-scorecard` using the
   owner-supplied standard embed URL.
+- A standalone editorial page at `/letters` explaining who Letters from Cyrus
+  serves.
 - A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
 - A plain-language Privacy Policy at `/privacy`.

@@ -62,6 +62,7 @@ suppression, numbness, or control over other people.
 | `/` | Homepage and newsletter landing page | Join the Letters |
 | `/scorecard` | Freeze-to-Command Scorecard landing page | Begin the Scorecard |
 | `/f2c-scorecard` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
+| `/letters` | Letters from Cyrus editorial statement | Read the editorial promise |
 | `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
 | `/privacy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
