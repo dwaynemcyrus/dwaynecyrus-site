@@ -302,6 +302,27 @@ test("homepage scorecard links use the configured Tally URL", async () => {
   assert.doesNotMatch(home, /<SecondaryLink href="\/scorecard"/);
 });
 
+test("homepage hero uses the approved newsletter copy", async () => {
+  const home = await readFile(
+    new URL("../src/pages/index.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    home,
+    /Letters for men carrying silent weight — and for the women who stand/,
+  );
+  assert.match(
+    home,
+    /required to carry responsibility without losing yourself\./,
+  );
+  assert.match(
+    home,
+    /<strong>No empty motivation\. No soft excuses\.<\/strong>/,
+  );
+  assert.match(home, /Sent two to three times each week\./);
+});
+
 test("ebook sales page uses the configured Stripe Checkout URL", async () => {
   const ebook = await readFile(
     new URL("../src/pages/the-hidden-load.astro", import.meta.url),

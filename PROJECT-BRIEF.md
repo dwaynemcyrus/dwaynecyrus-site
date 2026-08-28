@@ -101,7 +101,7 @@ Newsletter promise
 
 Use this wording:
 
-Letters for men carrying silent weight—and for the women who stand with them. Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood and the inner work required to lead well. Sent two to three times each week.
+Letters for men carrying silent weight — and for the women who stand with them. Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood, and the inner work required to carry responsibility without losing yourself. No empty motivation. No soft excuses. Sent two to three times each week.
 
 Publishing rhythm
 
@@ -380,11 +380,15 @@ Letters from Cyrus
 
 Headline
 
-Letters for men carrying silent weight—and for the women who stand with them.
+Letters for men carrying silent weight — and for the women who stand with them.
 
 Supporting copy
 
-Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood and the inner work required to lead well.
+Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood, and the inner work required to carry responsibility without losing yourself.
+
+Statement
+
+No empty motivation. No soft excuses.
 
 Frequency
 
@@ -945,7 +949,7 @@ Letters from Cyrus — Emotional Command, Manhood, Marriage and Fatherhood
 
 Suggested homepage description:
 
-Letters for men carrying silent weight—and for the women who stand with them. Essays and field notes on emotional command, righteous manhood, marriage and fatherhood.
+Essays, personal letters and practical field notes on emotional command, righteous manhood, marriage, fatherhood, and the inner work required to carry responsibility without losing yourself.
 
 Suggested scorecard title:
 

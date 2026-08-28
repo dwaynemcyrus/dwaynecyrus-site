@@ -1,6 +1,6 @@
 export const requiredExactCopy = [
   "Letters from Cyrus",
-  "Letters for men carrying silent weight—and for the women who stand with them.",
+  "Letters for men carrying silent weight — and for the women who stand with them.",
   "Sent two to three times each week.",
   "Move from emotional shutdown to calm, steady leadership—so your children never have to recover from you.",
   "By subscribing, you agree to receive Letters from Cyrus two to three times each week. Unsubscribe at any time. Read the Privacy Policy.",
