@@ -273,19 +273,19 @@ test("privacy policy states confirmed data practices", async () => {
   assert.doesNotMatch(privacy, /Payment or booking information/);
 });
 
-test("newsletter form preserves Buttondown metadata and audience tags", async () => {
+test("newsletter form submits email with the Unconfirmed tag", async () => {
   const source = await readFile(
     new URL("../src/components/NewsletterForm.astro", import.meta.url),
     "utf8",
   );
 
-  assert.match(source, /name="metadata__gender"/);
-  assert.match(source, /name="metadata__first_name"/);
-  assert.match(source, /name="metadata__last_name"/);
   assert.match(source, /name="email"/);
-  assert.match(source, /sub_tag_44xcvqncep9mm890nrr7skdczv/);
-  assert.match(source, /sub_tag_7pzyd0fh9q8jfscxt76vkfzseg/);
-  assert.match(source, /name = "tag"/);
+  assert.match(source, /sub_tag_5ja83svvwp8s7brh1cm8ed8kwk/);
+  assert.match(source, /name="tag"/);
+  assert.doesNotMatch(source, /metadata__gender/);
+  assert.doesNotMatch(source, /metadata__first_name/);
+  assert.doesNotMatch(source, /metadata__last_name/);
+  assert.doesNotMatch(source, /addEventListener\("submit"/);
 });
 
 test("homepage scorecard links use the configured Tally URL", async () => {

@@ -6,10 +6,6 @@ interface Props {
 }
 
 const { id } = Astro.props;
-const manId = `${id}-man`;
-const womanId = `${id}-woman`;
-const firstNameId = `${id}-first-name`;
-const lastNameId = `${id}-last-name`;
 const emailId = `${id}-email`;
 ---
 
@@ -20,80 +16,27 @@ const emailId = `${id}-email`;
     class="embeddable-buttondown-form newsletter-form"
     aria-describedby={`${id}-consent ${id}-status`}
   >
-    <fieldset>
-      <legend>Which best describes you?</legend>
-
-      <div class="choice-list">
-        <div class="choice">
-          <input
-            type="radio"
-            name="metadata__gender"
-            id={manId}
-            value="man"
-            required
-          />
-          <label for={manId}>I am a man carrying silent weight.</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="radio"
-            name="metadata__gender"
-            id={womanId}
-            value="woman"
-            required
-          />
-          <label for={womanId}
-            >I am a woman standing with men who carry silent weight.</label
-          >
-        </div>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Contact Details</legend>
-
-      <div class="contact-fields">
-        <div class="field">
-          <label for={firstNameId}>First Name</label>
-          <input
-            type="text"
-            name="metadata__first_name"
-            id={firstNameId}
-            autocomplete="given-name"
-            required
-          />
-        </div>
-
-        <div class="field">
-          <label for={lastNameId}>Last Name</label>
-          <input
-            type="text"
-            name="metadata__last_name"
-            id={lastNameId}
-            autocomplete="family-name"
-            required
-          />
-        </div>
-
-        <div class="field email-field">
-          <label for={emailId}>Enter your email</label>
-          <input
-            type="email"
-            name="email"
-            id={emailId}
-            autocomplete="email"
-            inputmode="email"
-            required
-          />
-        </div>
-      </div>
-    </fieldset>
+    <div class="field email-field">
+      <label for={emailId}>Enter your email</label>
+      <input
+        type="email"
+        name="email"
+        id={emailId}
+        autocomplete="email"
+        inputmode="email"
+        required
+      />
+    </div>
 
     <input
       class="button submit-button"
       type="submit"
       value="Subscribe me to the Letters"
+    />
+    <input
+      type="hidden"
+      name="tag"
+      value="sub_tag_5ja83svvwp8s7brh1cm8ed8kwk"
     />
   </form>
 
@@ -108,85 +51,18 @@ const emailId = `${id}-email`;
   </p>
 </div>
 
-<script>
-  const subscriberTags = {
-    woman: "sub_tag_44xcvqncep9mm890nrr7skdczv",
-    man: "sub_tag_7pzyd0fh9q8jfscxt76vkfzseg",
-  } as const;
-
-  for (const form of document.querySelectorAll<HTMLFormElement>(
-    ".embeddable-buttondown-form",
-  )) {
-    form.addEventListener("submit", () => {
-      const gender = form.querySelector<HTMLInputElement>(
-        'input[name="metadata__gender"]:checked',
-      );
-      if (!gender || !(gender.value in subscriberTags)) return;
-
-      let hidden = form.querySelector<HTMLInputElement>('input[name="tag"]');
-      if (!hidden) {
-        hidden = document.createElement("input");
-        hidden.type = "hidden";
-        hidden.name = "tag";
-        form.appendChild(hidden);
-      }
-
-      hidden.value =
-        subscriberTags[gender.value as keyof typeof subscriberTags];
-    });
-  }
-</script>
-
 <style>
   .newsletter-form-wrap {
     max-width: 46rem;
   }
 
   .newsletter-form,
-  fieldset,
-  .contact-fields,
-  .field,
-  .choice-list {
+  .field {
     display: grid;
   }
 
   .newsletter-form {
     gap: var(--space-5);
-  }
-
-  fieldset {
-    gap: var(--space-3);
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  legend {
-    margin-bottom: var(--space-3);
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    font-weight: 500;
-    line-height: 1.2;
-  }
-
-  .choice-list,
-  .contact-fields {
-    gap: var(--space-3);
-  }
-
-  .choice {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-2);
-    align-items: start;
-  }
-
-  .choice input {
-    width: 1.1rem;
-    height: 1.1rem;
-    margin-top: 0.32rem;
-    accent-color: var(--color-ink);
   }
 
   .field {
@@ -228,15 +104,5 @@ const emailId = `${id}-email`;
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     white-space: nowrap;
-  }
-
-  @media (min-width: 42rem) {
-    .contact-fields {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .email-field {
-      grid-column: 1 / -1;
-    }
   }
 </style>

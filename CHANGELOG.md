@@ -35,6 +35,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Changed
 
+- Newsletter signup now requests only an email address and applies Buttondown's
+  hidden `Unconfirmed` tag for subscription-flow handling.
 - Canonical site identity and public contact now default to
   `dwaynecyrus.com` and `hey@dwaynecyrus.com`.
 - Sitemap generation now uses a project-owned static endpoint compatible with

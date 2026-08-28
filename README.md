@@ -50,11 +50,8 @@ ignored by Git. Configure the same values in Vercel for preview and production.
 The Buttondown endpoint is confirmed and built in. `BUTTONDOWN_FORM_ACTION`
 remains available as an explicit override. The form sends:
 
-- `metadata__gender` with `man` or `woman`
-- `metadata__first_name`
-- `metadata__last_name`
 - `email`
-- `tag`, selected from the confirmed audience tag IDs in the form script
+- the hidden `Unconfirmed` tag (`sub_tag_5ja83svvwp8s7brh1cm8ed8kwk`)
 
 The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
@@ -111,13 +108,12 @@ Before release, verify the Buttondown form, direct Tally link, and embedded
 scorecard using
 owner-approved test details. Confirm that:
 
-1. both audience choices add the intended Buttondown tag;
-2. first name, last name and email arrive in the expected fields;
-3. Buttondown confirmation and unsubscribe behavior is correct;
-4. Tally delivers results and does not silently add newsletter consent;
-5. the embedded scorecard has an accurate title, dynamic height and a working
+1. email and the `Unconfirmed` tag arrive in the expected fields;
+2. Buttondown confirmation and unsubscribe behavior is correct;
+3. Tally delivers results and does not silently add newsletter consent;
+4. the embedded scorecard has an accurate title, dynamic height and a working
    no-JavaScript fallback; and
-6. no personal form data appears in analytics or URLs.
+5. no personal form data appears in analytics or URLs.
 
 Do not submit real visitor data during automated or preview testing.
 
