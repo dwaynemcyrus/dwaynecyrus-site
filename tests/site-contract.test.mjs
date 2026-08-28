@@ -280,12 +280,15 @@ test("newsletter form submits email with the Unconfirmed tag", async () => {
   );
 
   assert.match(source, /name="email"/);
+  assert.match(source, /placeholder="Enter your email\.\.\."/);
+  assert.match(source, /class="visually-hidden" for=\{emailId\}/);
   assert.match(source, /sub_tag_5ja83svvwp8s7brh1cm8ed8kwk/);
   assert.match(source, /name="tag"/);
   assert.doesNotMatch(source, /metadata__gender/);
   assert.doesNotMatch(source, /metadata__first_name/);
   assert.doesNotMatch(source, /metadata__last_name/);
   assert.doesNotMatch(source, /addEventListener\("submit"/);
+  assert.match(source, /grid-template-columns: minmax\(0, 1fr\) auto/);
 });
 
 test("homepage scorecard links use the configured Tally URL", async () => {

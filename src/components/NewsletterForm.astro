@@ -17,13 +17,14 @@ const emailId = `${id}-email`;
     aria-describedby={`${id}-consent ${id}-status`}
   >
     <div class="field email-field">
-      <label for={emailId}>Enter your email</label>
+      <label class="visually-hidden" for={emailId}>Enter your email</label>
       <input
         type="email"
         name="email"
         id={emailId}
         autocomplete="email"
         inputmode="email"
+        placeholder="Enter your email..."
         required
       />
     </div>
@@ -62,16 +63,14 @@ const emailId = `${id}-email`;
   }
 
   .newsletter-form {
-    gap: var(--space-5);
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: var(--space-2);
   }
 
   .field {
     gap: var(--space-1);
-  }
-
-  label {
-    font-size: var(--step--1);
-    font-weight: 750;
+    min-width: 0;
   }
 
   .field input {
@@ -84,8 +83,20 @@ const emailId = `${id}-email`;
   }
 
   .submit-button {
-    justify-self: start;
     cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .consent,

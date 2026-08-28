@@ -35,6 +35,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Changed
 
+- Newsletter email fields now use an inline email-and-subscribe layout on all
+  viewports, with an email placeholder and a screen-reader-only label.
 - Newsletter signup now requests only an email address and applies Buttondown's
   hidden `Unconfirmed` tag for subscription-flow handling.
 - Canonical site identity and public contact now default to
