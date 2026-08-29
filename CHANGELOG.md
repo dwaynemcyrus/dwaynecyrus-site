@@ -37,6 +37,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Changed
 
+- The confirmed-subscription welcome now uses clearer, more personal reply
+  guidance for new readers.
 - Homepage and footer scorecard links now open the embedded scorecard route.
 - Homepage newsletter hero copy now reflects the owner-supplied editorial
   promise and emphasis.
