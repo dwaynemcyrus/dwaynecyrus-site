@@ -194,6 +194,7 @@ test("required public routes have source files", async () => {
     "scorecard.astro",
     "f2c-scorecard.astro",
     "letters.astro",
+    "diagnostic-audit-complete.astro",
     "privacy-policy.astro",
     "terms-of-use.astro",
     "legal.astro",
@@ -208,6 +209,26 @@ test("required public routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("diagnostic audit completion route is a noindex newsletter follow-up", async () => {
+  const completionPage = await readFile(
+    new URL("../src/pages/diagnostic-audit-complete.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(completionPage, /robots="noindex, follow"/);
+  assert.match(completionPage, /Your Diagnostic Audit is complete\./);
+  assert.match(completionPage, /within 48 hours/);
+  assert.match(
+    completionPage,
+    /<NewsletterForm id="diagnostic-audit-complete-signup" \/>/,
+  );
+  assert.doesNotMatch(sitemap, /diagnostic-audit-complete/);
 });
 
 test("terms-of-use page is discoverable and includes the supplied policy", async () => {

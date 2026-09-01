@@ -1,0 +1,45 @@
+---
+import NewsletterForm from "../components/NewsletterForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Diagnostic Audit Complete — Dwayne Cyrus";
+const description =
+  "Your Diagnostic Audit is complete. Your written diagnostic and recommendation will arrive privately by email within 48 hours.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/diagnostic-audit-complete"
+  robots="noindex, follow"
+>
+  <section class="section">
+    <div class="container reading">
+      <p class="eyebrow">Dwayne Cyrus</p>
+      <h1>Your Diagnostic Audit is complete.</h1>
+
+      <p>Thank you for showing up honestly for the conversation.</p>
+
+      <p>
+        I’ll now review our discussion and prepare your written diagnostic and
+        recommendation. You’ll receive it privately by email within 48 hours.
+      </p>
+
+      <p>
+        Your report will identify the core patterns I see, what is driving the
+        problem, and what I recommend you do next.
+      </p>
+
+      <p>For now, there is nothing else you need to do.</p>
+
+      <h2>Keep receiving the writing</h2>
+      <p>
+        If you’d like to receive my ongoing writing on emotional command,
+        responsibility, leadership, fatherhood, and becoming a more capable,
+        righteous man, join the free newsletter below.
+      </p>
+
+      <NewsletterForm id="diagnostic-audit-complete-signup" />
+    </div>
+  </section>
+</BaseLayout>
