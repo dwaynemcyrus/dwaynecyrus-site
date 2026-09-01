@@ -195,6 +195,7 @@ test("required public routes have source files", async () => {
     "f2c-scorecard.astro",
     "letters.astro",
     "privacy.astro",
+    "terms-of-use.astro",
     "legal.astro",
     "404.astro",
     "subscription-confirmed.astro",
@@ -207,6 +208,29 @@ test("required public routes have source files", async () => {
       access(new URL(`../src/pages/${route}`, import.meta.url)),
     ),
   );
+});
+
+test("terms-of-use page is discoverable and includes the supplied policy", async () => {
+  const terms = await readFile(
+    new URL("../src/pages/terms-of-use.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+  const footer = await readFile(
+    new URL("../src/components/SiteFooter.astro", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(terms, /Terms of Use/);
+  assert.match(terms, /Last updated: August 30, 2026/);
+  assert.match(terms, /Diagnostic Audit Rescheduling Policy/);
+  assert.match(terms, /Basel-Stadt, Switzerland/);
+  assert.match(terms, /mailto:cyrus@dwaynecyrus\.com/);
+  assert.match(sitemap, /"\/terms-of-use"/);
+  assert.match(footer, /<a href="\/terms-of-use">Terms of Use<\/a>/);
 });
 
 test("letters page uses the approved copy and is discoverable", async () => {

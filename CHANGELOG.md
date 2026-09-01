@@ -10,6 +10,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Added
 
+- A public Terms of Use page covering website use, services, payments,
+  Diagnostic Audit scheduling, mentorship, digital products, and governing law.
 - An embedded Freeze-to-Command Scorecard at `/f2c-scorecard` using the
   owner-approved Tally standard embed, with a no-JavaScript direct-link
   fallback.

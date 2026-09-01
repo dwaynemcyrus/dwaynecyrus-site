@@ -11,6 +11,7 @@ const PUBLIC_PATHS = [
   "/letters",
   "/the-hidden-load",
   "/privacy",
+  "/terms-of-use",
   "/legal",
 ] as const;
 
