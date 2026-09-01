@@ -57,7 +57,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
   serves.
 - A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
-- A plain-language Privacy Policy at `/privacy`.
+- A plain-language Privacy Policy at `/privacy-policy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
 - A no-index email-confirmation prompt at `/unconfirmed-subscription`.
@@ -162,7 +162,7 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy`, `/legal`, both newsletter
+- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy-policy`, `/legal`, both newsletter
   confirmation routes, and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two

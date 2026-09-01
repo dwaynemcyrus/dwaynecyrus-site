@@ -35,7 +35,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ## Acceptance criteria
 
 - [ ] Every acceptance criterion in `PROJECT.md` is met.
-- [x] The generated site contains `/`, `/scorecard`, `/privacy`, `/legal`, both newsletter confirmation routes, and the custom 404.
+- [x] The generated site contains `/`, `/scorecard`, `/privacy-policy`, `/legal`, both newsletter confirmation routes, and the custom 404.
 - [x] Newsletter signup is the dominant conversion and scorecard participation remains secondary.
 - [x] Required wording and approved baseline copy from `PROJECT-BRIEF.md` are implemented accurately.
 - [x] Buttondown, Tally, analytics, contact, social, and legal values are centrally configured with safe missing-value behavior.
@@ -95,7 +95,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 
 ### 7. [x] Chunk: add legal and recovery pages
 
-- **Files:** `src/pages/privacy.astro`, `src/pages/legal.astro`, `src/pages/404.astro`
+- **Files:** `src/pages/privacy-policy.astro`, `src/pages/legal.astro`, `src/pages/404.astro`
 - **Change:** Add concise plain-language privacy and legal pages using verified configuration fields, include the required source-only Swiss/EU review comment, and add an on-tone custom 404 with valid recovery links.
 - **Verify:** Configured checks and build pass; the comment exists in source but is not visible; no invented legal facts render; unresolved production fields fail release readiness; 404 returns correct hosting behavior and is not indexed.
 - **Risk/rollback:** Publishing incomplete or inaccurate legal details. Keep preview states unmistakable and block release until the owner supplies/reviews values.
@@ -135,7 +135,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 
 ### 12. [x] Chunk: add Vercel Speed Insights
 
-- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy.astro`, `tests/site-contract.test.mjs`, `OVERVIEW.md`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
+- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy-policy.astro`, `tests/site-contract.test.mjs`, `OVERVIEW.md`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
 - **Change:** Add the official Astro Speed Insights component once in the shared layout, document its operation, and disclose anonymous real-user performance measurement accurately.
 - **Verify:** Run format, lint, Astro/type checks, tests, and the production build; inspect generated pages for one Speed Insights injector and no personal form values in its configuration.
 - **Risk/rollback:** Duplicate scripts or inaccurate privacy disclosure. Revert this focused chunk and disable Speed Insights in the Vercel project if necessary.
@@ -143,7 +143,7 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 
 ### 13. [x] Chunk: add Vercel Web Analytics
 
-- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy.astro`, `tests/site-contract.test.mjs`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
+- **Files:** `package.json`, `package-lock.json`, `src/layouts/BaseLayout.astro`, `src/pages/privacy-policy.astro`, `tests/site-contract.test.mjs`, `README.md`, `PROJECT.md`, `PLANS.md`, `CHANGELOG.md`
 - **Change:** Add the official Astro Web Analytics component once in the shared document head, retain Cloudflare edge injection for a temporary provider comparison, and disclose both services accurately.
 - **Verify:** Run format, lint, Astro/type checks, tests, and the production build; inspect every generated page for one Vercel Analytics injector and no personal form values in its configuration.
 - **Risk/rollback:** Parallel analytics adds two page-view measurement scripts and may produce different totals because providers use different methods. Remove the Vercel component and package or disable either dashboard service after the comparison.
@@ -238,7 +238,7 @@ verified before production deployment:
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
   `src/config/site-defaults.ts`, `src/config/site.ts`,
-  `src/pages/the-hidden-load.astro`, `src/pages/privacy.astro`,
+  `src/pages/the-hidden-load.astro`, `src/pages/privacy-policy.astro`,
   `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`,
   `public/images/wkd-book-cover.png`, `CHANGELOG.md`
 - **Change:** Add a public, one-column ebook sales page using owner-supplied
@@ -261,7 +261,7 @@ verified before production deployment:
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
   `src/config/site-defaults.ts`, `src/config/site.ts`,
-  `src/pages/f2c-scorecard.astro`, `src/pages/privacy.astro`,
+  `src/pages/f2c-scorecard.astro`, `src/pages/privacy-policy.astro`,
   `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `README.md`,
   `CHANGELOG.md`
 - **Change:** Add the owner-supplied Tally standard inline embed at

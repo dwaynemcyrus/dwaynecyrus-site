@@ -64,7 +64,7 @@ suppression, numbness, or control over other people.
 | `/f2c-scorecard` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
 | `/letters` | Letters from Cyrus editorial statement | Read the editorial promise |
 | `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
-| `/privacy` | Plain-language Privacy Policy | Understand data handling |
+| `/privacy-policy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
 | `/unconfirmed-subscription` | Email confirmation prompt | Confirm the submitted email address |
 | `/subscription-confirmed` | Confirmed-subscription welcome | Open and reply to the welcome letter |
@@ -126,7 +126,7 @@ an Audit invitation.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
 - [ ] The Audit invitation process, non-guarantee, and no-public-booking rule are explicit.
-- [ ] `/privacy` and `/legal` use verified configuration values and contain no invented facts.
+- [ ] `/privacy-policy` and `/legal` use verified configuration values and contain no invented facts.
 - [ ] Optional social links are omitted when their URLs are absent; production contains no dead placeholder links.
 - [ ] Navigation, headings, landmarks, skip link, focus states, forms, validation, contrast, touch targets, zoom/reflow, and reduced-motion behavior meet the accessibility target.
 - [ ] The design is black, white, text-led, editorial, calm, and responsive,
@@ -203,7 +203,7 @@ Planned ownership after scaffolding:
 │   │   ├── 404.astro
 │   │   ├── index.astro
 │   │   ├── legal.astro
-│   │   ├── privacy.astro
+│   │   ├── privacy-policy.astro
 │   │   ├── subscription-confirmed.astro
 │   │   ├── the-hidden-load.astro
 │   │   ├── unconfirmed-subscription.astro

@@ -168,7 +168,7 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
   const publicSourceFiles = [
     "../src/pages/index.astro",
     "../src/pages/scorecard.astro",
-    "../src/pages/privacy.astro",
+    "../src/pages/privacy-policy.astro",
     "../src/pages/legal.astro",
     "../src/pages/404.astro",
     "../src/pages/subscription-confirmed.astro",
@@ -194,7 +194,7 @@ test("required public routes have source files", async () => {
     "scorecard.astro",
     "f2c-scorecard.astro",
     "letters.astro",
-    "privacy.astro",
+    "privacy-policy.astro",
     "terms-of-use.astro",
     "legal.astro",
     "404.astro",
@@ -305,7 +305,7 @@ test("analytics integrations are explicit and singular", async () => {
 
 test("privacy policy states confirmed data practices", async () => {
   const privacy = await readFile(
-    new URL("../src/pages/privacy.astro", import.meta.url),
+    new URL("../src/pages/privacy-policy.astro", import.meta.url),
     "utf8",
   );
 

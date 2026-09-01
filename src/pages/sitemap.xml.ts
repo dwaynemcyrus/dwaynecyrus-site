@@ -10,7 +10,7 @@ const PUBLIC_PATHS = [
   "/f2c-scorecard",
   "/letters",
   "/the-hidden-load",
-  "/privacy",
+  "/privacy-policy",
   "/terms-of-use",
   "/legal",
 ] as const;
