@@ -88,8 +88,8 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ### 6. [x] Chunk: build scorecard landing page
 
 - **Files:** `src/pages/scorecard.astro`
-- **Change:** Implement the scorecard hero, emotional-freeze explanation, identification points, numbered next steps, exact non-guarantee/no-booking statement, separate consent explanation, and two direct Tally CTAs.
-- **Verify:** Configured checks and build pass; CTA uses only central configuration; no Tally request occurs before activation; all clinical/guarantee language searches are reviewed; keyboard and responsive checks pass.
+- **Change:** Implement the scorecard hero, emotional-freeze explanation, identification points, numbered next steps, exact non-guarantee/no-booking statement, separate consent explanation, and two CTAs to the embedded assessment route.
+- **Verify:** Configured checks and build pass; CTAs use the internal assessment route; no Tally request occurs before activation; all clinical/guarantee language searches are reviewed; keyboard and responsive checks pass.
 - **Risk/rollback:** Implying diagnosis, therapy, automatic newsletter consent, or guaranteed Audit access. Revert the page and compare every section with the brief.
 - **Commit:** `feat(scorecard): add landing page`
 
@@ -281,6 +281,59 @@ verified before production deployment:
 ## Letters page
 
 ## Ask Cyrus pages
+
+## Membership page
+
+## Start page
+
+## Scorecard assessment route
+
+### 21. [x] Chunk: rename embedded assessment route
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `README.md`,
+  `src/components/SiteFooter.astro`, `src/pages/index.astro`,
+  `src/pages/scorecard.astro`, `src/pages/scorecard/assessment.astro`,
+  `src/pages/privacy-policy.astro`, `src/pages/sitemap.xml.ts`,
+  `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Move the embedded Freeze-to-Command Scorecard from
+  `/f2c-scorecard` to `/scorecard/assessment` and direct all completion CTAs,
+  including both Begin the Scorecard buttons, to the internal assessment route.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Confirm the old route is absent, the assessment route is in the sitemap, and
+  the scorecard landing-page CTAs target the assessment route.
+- **Risk/rollback:** Existing external links to the former route will no longer
+  resolve. Revert the focused route commit to restore the prior public path.
+- **Commit:** `refactor(scorecard): rename assessment route`
+
+### 20. [x] Chunk: add route-selection page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `src/pages/start.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add the owner-supplied Start Here page as a concise route selector
+  using only approved internal links. Keep the navigation static and do not add
+  a form, client-side routing, or new external service.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the page at desktop and mobile widths; confirm every CTA destination,
+  page metadata, and sitemap output.
+- **Risk/rollback:** The page may influence how visitors discover existing
+  offers. Revert the focused page commit to remove the public route.
+- **Commit:** `feat(start): add route selection`
+
+### 19. [x] Chunk: add the Sovereign Society page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/membership.astro`, `src/pages/privacy-policy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add the owner-supplied Sovereign Society membership copy and a
+  central Buttondown purchase link. Keep checkout external; do not add payment
+  fields, scripts, local state, or user accounts.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the page at desktop and mobile widths, confirm the external CTA and
+  route metadata/sitemap output, and do not initiate a membership purchase.
+- **Risk/rollback:** Membership benefits and purchase terms are operated
+  outside the site. Revert the focused page commit to remove the public offer.
+- **Commit:** `feat(membership): add society page`
 
 ### 18. [x] Chunk: add the Ask Cyrus flow
 

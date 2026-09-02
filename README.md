@@ -57,7 +57,7 @@ The confirmed direct Tally scorecard URL is built in. `TALLY_SCORECARD_URL`
 remains available as an explicit override. Completing Tally must remain
 separate from newsletter consent.
 
-`/f2c-scorecard` uses the owner-approved standard Tally embed. Its
+`/scorecard/assessment` uses the owner-approved standard Tally embed. Its
 `F2C_SCORECARD_EMBED_URL` configuration includes the supplied left alignment,
 transparent background, dynamic-height and form-event-forwarding options.
 That route loads Tally's embed runtime and iframe; do not add event listeners

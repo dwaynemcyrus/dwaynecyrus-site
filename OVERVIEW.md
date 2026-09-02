@@ -51,7 +51,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
-- A focused embedded Tally scorecard at `/f2c-scorecard` using the
+- A focused embedded Tally scorecard at `/scorecard/assessment` using the
   owner-supplied standard embed URL.
 - A standalone editorial page at `/letters` explaining who Letters from Cyrus
   serves.
@@ -59,6 +59,10 @@ guarantee an invitation to a Freeze Diagnostic Audit.
   mockup and two direct Stripe Checkout calls to action.
 - A public Ask Cyrus page at `/ask`, a Tally-powered private-question form at
   `/ask/submit`, and a no-index submission confirmation at `/ask/thank-you`.
+- A public Sovereign Society membership page at `/membership` with an
+  owner-supplied Buttondown checkout link.
+- A public `/start` page that helps visitors choose between the scorecard,
+  private questions, book, newsletter, and membership paths.
 - A plain-language Privacy Policy at `/privacy-policy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
@@ -101,7 +105,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 - **User accounts:** No
 - **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard and Ask Cyrus answers/contact details are submitted to Tally; Cloudflare and Vercel supply basic website analytics; Vercel also supplies anonymous real-user performance measurements.
 - **Payments:** No on-site payments. Stripe Checkout handles the ebook purchase
-  externally; the Ask Cyrus form and its checkout are handled by Tally.
+  externally; the Ask Cyrus form and its checkout are handled by Tally; the
+  Sovereign Society membership checkout is handled by Buttondown.
 - **External services:** Buttondown, Tally, Stripe Checkout, Cloudflare Web
   Analytics, Vercel hosting, Web Analytics and Speed Insights; Cloudflare may
   also manage domain/DNS.
@@ -164,7 +169,7 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy-policy`, `/legal`, both newsletter
+- `/`, `/scorecard`, `/scorecard/assessment`, `/privacy-policy`, `/legal`, both newsletter
   confirmation routes, and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two
@@ -184,7 +189,7 @@ It is ready for handoff or release when:
 ### Assumptions
 
 - `[ASSUMPTION]` A direct link to Tally remains the default. The owner approved
-  a standard Tally embed for the dedicated `/f2c-scorecard` completion route
+  a standard Tally embed for the dedicated `/scorecard/assessment` completion route
   on 2026-08-27.
 - `[ASSUMPTION]` The initial implementation will start from this documentation-only repository and use npm, because no existing Astro project or lockfile is present.
 - `[ASSUMPTION]` Missing legal and service values may use unmistakable development placeholders or build-time omissions, but a production build must not publish fake or dead values.
