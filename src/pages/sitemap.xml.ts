@@ -12,6 +12,7 @@ const PUBLIC_PATHS = [
   "/the-hidden-load",
   "/ask",
   "/membership",
+  "/start",
   "/privacy-policy",
   "/terms-of-use",
   "/legal",

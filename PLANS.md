@@ -284,6 +284,22 @@ verified before production deployment:
 
 ## Membership page
 
+## Start page
+
+### 20. [x] Chunk: add route-selection page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `src/pages/start.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add the owner-supplied Start Here page as a concise route selector
+  using only approved internal links. Keep the navigation static and do not add
+  a form, client-side routing, or new external service.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the page at desktop and mobile widths; confirm every CTA destination,
+  page metadata, and sitemap output.
+- **Risk/rollback:** The page may influence how visitors discover existing
+  offers. Revert the focused page commit to remove the public route.
+- **Commit:** `feat(start): add route selection`
+
 ### 19. [x] Chunk: add the Sovereign Society page
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,

@@ -10,6 +10,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Added
 
+- A Start Here page that directs visitors to the scorecard, Ask Cyrus, ebook,
+  newsletter, and Sovereign Society paths.
 - A Sovereign Society membership page with an external Buttondown checkout
   link for the $12/month membership.
 - An Ask Cyrus offering page, Tally-powered private-question form, and

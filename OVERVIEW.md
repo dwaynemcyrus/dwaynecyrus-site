@@ -61,6 +61,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
   `/ask/submit`, and a no-index submission confirmation at `/ask/thank-you`.
 - A public Sovereign Society membership page at `/membership` with an
   owner-supplied Buttondown checkout link.
+- A public `/start` page that helps visitors choose between the scorecard,
+  private questions, book, newsletter, and membership paths.
 - A plain-language Privacy Policy at `/privacy-policy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.

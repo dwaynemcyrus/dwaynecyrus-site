@@ -1,0 +1,97 @@
+---
+import PrimaryButton from "../components/PrimaryButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Start Here — Dwayne Cyrus";
+const description =
+  "Choose the next step: take the scorecard, ask Cyrus a question, read the book, join the newsletter, or support the Sovereign Society.";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/start">
+  <article class="start-page">
+    <section class="start-hero">
+      <p class="eyebrow">Dwayne Cyrus</p>
+      <h1>Start Here</h1>
+      <p class="lede">Choose the path that best fits where you are now.</p>
+    </section>
+
+    <section class="start-option" aria-labelledby="scorecard-heading">
+      <h2 id="scorecard-heading">Take the Scorecard</h2>
+      <p>
+        See where you may be losing command, clarity, or control—and what
+        deserves your attention next.
+      </p>
+      <PrimaryButton href="/scorecard">Take the Scorecard</PrimaryButton>
+    </section>
+
+    <section class="start-option" aria-labelledby="ask-heading">
+      <h2 id="ask-heading">Ask Me a Question</h2>
+      <p>
+        Send me a specific situation, problem, or question and receive a private
+        written or video response.
+      </p>
+      <PrimaryButton href="/ask">Ask a Question</PrimaryButton>
+    </section>
+
+    <section class="start-option" aria-labelledby="book-heading">
+      <h2 id="book-heading">Read <em>Why Do I Keep Doing This?</em></h2>
+      <p>
+        A short guide to understanding the patterns you keep repeating, what may
+        be driving them, and what to examine next.
+      </p>
+      <PrimaryButton href="/the-hidden-load">Get the Book</PrimaryButton>
+    </section>
+
+    <section class="start-option" aria-labelledby="newsletter-heading">
+      <h2 id="newsletter-heading">Join the Newsletter</h2>
+      <p>
+        Essays, observations, and practical guidance on self-command,
+        responsibility, relationships, fatherhood, leadership, and manhood.
+      </p>
+      <PrimaryButton href="/letters">Join the Newsletter</PrimaryButton>
+    </section>
+
+    <section
+      class="start-option start-option--last"
+      aria-labelledby="society-heading"
+    >
+      <h2 id="society-heading">Sovereign Society</h2>
+      <p>
+        Become a Sovereign Society member, support independent work for men, and
+        gain access to the private side of the Society.
+      </p>
+      <PrimaryButton href="/membership">Become a Member</PrimaryButton>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .start-page {
+    width: min(100% - 2rem, var(--reading-width));
+    margin-inline: auto;
+    padding-block: var(--space-7);
+  }
+
+  .start-hero,
+  .start-option {
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .start-hero h1,
+  .start-option h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .start-option {
+    padding-top: var(--space-7);
+  }
+
+  .start-option p {
+    margin-bottom: var(--space-5);
+  }
+
+  .start-option--last {
+    border-bottom: 0;
+  }
+</style>

@@ -217,6 +217,7 @@ test("required public routes have source files", async () => {
     "subscription-confirmed.astro",
     "the-hidden-load.astro",
     "membership.astro",
+    "start.astro",
     "ask.astro",
     "ask/submit.astro",
     "ask/thank-you.astro",
@@ -463,6 +464,41 @@ test("membership page uses the configured Buttondown checkout URL", async () => 
     /<PrimaryButton href=\{checkoutUrl\}>Become a Member<\/PrimaryButton>/,
   );
   assert.match(sitemap, /"\/membership"/);
+});
+
+test("Start Here page uses the approved internal routes", async () => {
+  const start = await readFile(
+    new URL("../src/pages/start.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(start, /<h1>Start Here<\/h1>/);
+  assert.match(start, /Choose the path that best fits where you are now\./);
+  assert.match(
+    start,
+    /<PrimaryButton href="\/scorecard">Take the Scorecard<\/PrimaryButton>/,
+  );
+  assert.match(
+    start,
+    /<PrimaryButton href="\/ask">Ask a Question<\/PrimaryButton>/,
+  );
+  assert.match(
+    start,
+    /<PrimaryButton href="\/the-hidden-load">Get the Book<\/PrimaryButton>/,
+  );
+  assert.match(
+    start,
+    /<PrimaryButton href="\/letters">Join the Newsletter<\/PrimaryButton>/,
+  );
+  assert.match(
+    start,
+    /<PrimaryButton href="\/membership">Become a Member<\/PrimaryButton>/,
+  );
+  assert.match(sitemap, /"\/start"/);
 });
 
 test("embedded scorecard uses the configured standard Tally embed", async () => {
