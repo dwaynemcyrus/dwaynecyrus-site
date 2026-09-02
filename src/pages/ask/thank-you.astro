@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Question Received — Dwayne Cyrus";
+const description =
+  "Your Ask Cyrus question has been received and will be answered privately by email within two business days.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/ask/thank-you"
+  robots="noindex, follow"
+>
+  <section class="section">
+    <div class="container reading">
+      <h1>Your question has been received.</h1>
+      <p>
+        I’ll review what you sent and deliver your response by email within 2
+        business days.
+      </p>
+      <p>If you don’t see the email, check your spam or promotions folder.</p>
+      <p>— Cyrus</p>
+    </div>
+  </section>
+</BaseLayout>

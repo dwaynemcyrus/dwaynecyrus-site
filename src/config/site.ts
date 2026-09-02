@@ -1,4 +1,6 @@
 export {
+  DEFAULT_ASK_FORM_EMBED_URL,
+  DEFAULT_ASK_FORM_URL,
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
   DEFAULT_F2C_SCORECARD_EMBED_URL,
@@ -14,6 +16,8 @@ export {
   DEFAULT_YOUTUBE_URL,
 } from "./site-defaults.ts";
 import {
+  DEFAULT_ASK_FORM_EMBED_URL,
+  DEFAULT_ASK_FORM_URL,
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
   DEFAULT_F2C_SCORECARD_EMBED_URL,
@@ -34,6 +38,8 @@ export interface SiteConfig {
   authorName: "Dwayne M Cyrus";
   siteUrl: string;
   buttondownFormAction: string;
+  askFormEmbedUrl: string;
+  askFormUrl: string;
   tallyScorecardUrl: string;
   f2cScorecardEmbedUrl: string;
   hiddenLoadCheckoutUrl: string;
@@ -54,6 +60,8 @@ type Environment = Record<string, string | undefined>;
 const HTTPS_URL_FIELDS = [
   "siteUrl",
   "buttondownFormAction",
+  "askFormEmbedUrl",
+  "askFormUrl",
   "tallyScorecardUrl",
   "f2cScorecardEmbedUrl",
   "hiddenLoadCheckoutUrl",
@@ -88,6 +96,9 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
     buttondownFormAction:
       value(environment, "BUTTONDOWN_FORM_ACTION") ||
       DEFAULT_BUTTONDOWN_FORM_ACTION,
+    askFormEmbedUrl:
+      value(environment, "ASK_FORM_EMBED_URL") || DEFAULT_ASK_FORM_EMBED_URL,
+    askFormUrl: value(environment, "ASK_FORM_URL") || DEFAULT_ASK_FORM_URL,
     tallyScorecardUrl:
       value(environment, "TALLY_SCORECARD_URL") || DEFAULT_TALLY_SCORECARD_URL,
     f2cScorecardEmbedUrl:

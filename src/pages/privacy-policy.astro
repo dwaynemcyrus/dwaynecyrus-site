@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Privacy Policy — Letters from Cyrus";
 const description =
-  "How Letters from Cyrus handles newsletter subscriptions, email engagement, scorecard responses, ebook checkout and website analytics.";
+  "How Letters from Cyrus handles newsletter subscriptions, Tally forms, ebook checkout and website analytics.";
 const identityIsConfigured = Boolean(
   siteConfig.legalName && siteConfig.legalAddress && siteConfig.contactEmail,
 );
@@ -72,15 +72,20 @@ const identityIsConfigured = Boolean(
         </li>
       </ul>
 
-      <h3>Scorecard</h3>
+      <h3>Tally forms</h3>
       <ul>
         <li>
-          The answers and contact details you choose to submit through Tally.
+          The answers and contact details you choose to submit through the
+          Freeze-to-Command Scorecard or Ask Cyrus form in Tally.
         </li>
         <li>
           Your answers may include personal information about your emotional
           life, relationships, family, beliefs and other circumstances you
           choose to describe.
+        </li>
+        <li>
+          For Ask Cyrus, your focused question, selected response type, and
+          information needed for Tally to operate its form and checkout.
         </li>
         <li>
           Tally-generated submission and respondent identifiers and basic form
@@ -139,6 +144,10 @@ const identityIsConfigured = Boolean(
         <li>Deliver and explain scorecard results.</li>
         <li>Review scorecard submissions and their context over time.</li>
         <li>
+          Review Ask Cyrus questions and deliver the selected private response
+          by email.
+        </li>
+        <li>
           Decide through human review whether a private Freeze Diagnostic Audit
           invitation may be appropriate. Completing the scorecard does not
           guarantee an invitation.
@@ -184,10 +193,10 @@ const identityIsConfigured = Boolean(
         </li>
         <li>
           <a href="https://tally.so/help/privacy-policy">Tally</a> hosts the scorecard
-          and stores responses on behalf of Dwayne M Cyrus. Tally is based in Belgium
-          and states that form data is stored in Europe. Tally responses are not forwarded
-          by Dwayne M Cyrus to email, spreadsheets, automation tools, a CRM or another
-          response destination.
+          and Ask Cyrus forms, stores responses on behalf of Dwayne M Cyrus, and operates
+          the Ask Cyrus checkout. Tally is based in Belgium and states that form data
+          is stored in Europe. Tally responses are not forwarded by Dwayne M Cyrus
+          to email, spreadsheets, automation tools, a CRM or another response destination.
         </li>
         <li>
           <a href="https://stripe.com/privacy">Stripe</a> hosts ebook checkout and
@@ -222,12 +231,13 @@ const identityIsConfigured = Boolean(
         says is discarded after 24 hours. Vercel Speed Insights measures
         anonymous website performance. Newsletter emails use Buttondown's
         open-tracking pixel and tracked links as described above. The separately
-        embedded Tally scorecard at <code>/f2c-scorecard</code> loads Tally's form
-        runtime and may use browser storage or other technology needed for its form
-        features under Tally's own privacy notice. The standard embed also forwards
-        this page's path and query parameters to Tally; matching hidden fields configured
-        in the form may save them with a response. Stripe Checkout may use its own
-        technologies under Stripe's privacy terms.
+        embedded Tally forms at <code>/f2c-scorecard</code> and
+        <code>/ask/submit</code> load Tally's form runtime and may use browser storage
+        or other technology needed for their form features under Tally's own privacy
+        notice. The standard embeds also forward each page's path and query parameters
+        to Tally; matching hidden fields configured in the form may save them with
+        a response. Stripe Checkout may use its own technologies under Stripe's privacy
+        terms.
       </p>
 
       <h2>Data retention</h2>
@@ -244,6 +254,10 @@ const identityIsConfigured = Boolean(
           may request deletion. Tally states that responses deleted from the
           account are permanently removed from its backups within 90 days,
           unless the account trash is emptied sooner.
+        </li>
+        <li>
+          Ask Cyrus submission retention must be confirmed before public
+          release. You may request deletion through the privacy contact above.
         </li>
         <li>
           Website security, request and aggregate analytics information is kept
