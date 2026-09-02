@@ -280,6 +280,28 @@ verified before production deployment:
 
 ## Letters page
 
+## Ask Cyrus pages
+
+### 18. [x] Chunk: add the Ask Cyrus flow
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`, `src/pages/ask.astro`,
+  `src/pages/ask/submit.astro`, `src/pages/ask/thank-you.astro`,
+  `src/pages/privacy-policy.astro`, `src/pages/sitemap.xml.ts`,
+  `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add the owner-approved public Ask Cyrus offer, a centrally
+  configured Tally form embed, and a no-index confirmation page. Keep all
+  question collection and checkout inside Tally; do not listen for form events
+  or persist submitted data in the site.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect `/ask`, `/ask/submit`, and `/ask/thank-you` on desktop and mobile;
+  verify page metadata, sitemap inclusion/exclusion, keyboard flow, and no
+  form submission with personal or payment data.
+- **Risk/rollback:** The Ask form handles personal and payment information in
+  Tally. Revert the focused feature commit to remove the offer and form routes;
+  Tally-side data and checkout settings remain outside the repository.
+- **Commit:** `feat(ask): add private question flow`
+
 ### 17. [x] Chunk: add Letters editorial page
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`,

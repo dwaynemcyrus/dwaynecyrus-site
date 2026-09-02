@@ -1,0 +1,76 @@
+---
+import { siteConfig } from "../../config/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Ask Your Question — Dwayne Cyrus";
+const description =
+  "Send Cyrus one focused question through the private Ask Cyrus form.";
+const embedUrl = siteConfig.askFormEmbedUrl;
+const formUrl = siteConfig.askFormUrl;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/ask/submit"
+  robots="noindex, follow"
+>
+  <section class="ask-form">
+    <div class="ask-form__inner">
+      <h1 class="visually-hidden">Ask Your Question</h1>
+      <iframe
+        class="ask-form__embed"
+        data-tally-src={embedUrl}
+        loading="lazy"
+        width="100%"
+        height="200"
+        title="Ask Cyrus private question form"></iframe>
+      <noscript>
+        <p>
+          JavaScript is required to show the private question form here. You can
+          <a href={formUrl}>open the Ask Cyrus form in Tally</a> instead.
+        </p>
+      </noscript>
+    </div>
+  </section>
+  <script is:inline src="https://tally.so/widgets/embed.js"></script>
+  <script is:inline>
+    window.Tally?.loadEmbeds();
+  </script>
+</BaseLayout>
+
+<style>
+  .ask-form {
+    padding-block: var(--space-6) var(--space-7);
+  }
+
+  .ask-form__inner {
+    width: min(100% - 2rem, 52rem);
+    margin-inline: auto;
+  }
+
+  .ask-form__embed {
+    display: block;
+    width: 100%;
+    min-height: 12.5rem;
+    border: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .ask-form__inner {
+      width: min(100% - 4rem, 52rem);
+    }
+  }
+</style>

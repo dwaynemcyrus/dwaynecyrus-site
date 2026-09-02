@@ -7,7 +7,7 @@ the preserved source brief and remains authoritative for detailed copy.
 
 - **Status:** Approved
 - **Owner:** Cyrus
-- **Last reviewed:** 2026-08-27
+- **Last reviewed:** 2026-09-02
 - **Source documents or links:** `PROJECT-BRIEF.md`
 
 ## 1. Project
@@ -57,6 +57,8 @@ guarantee an invitation to a Freeze Diagnostic Audit.
   serves.
 - A one-column ebook sales page at `/the-hidden-load` with an owner-supplied book
   mockup and two direct Stripe Checkout calls to action.
+- A public Ask Cyrus page at `/ask`, a Tally-powered private-question form at
+  `/ask/submit`, and a no-index submission confirmation at `/ask/thank-you`.
 - A plain-language Privacy Policy at `/privacy-policy`.
 - A short plain-language Legal Notice at `/legal`.
 - A custom, useful 404 page.
@@ -97,9 +99,9 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 ## 6. Product behavior
 
 - **User accounts:** No
-- **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard answers/contact details are submitted to Tally; Cloudflare and Vercel supply basic website analytics; Vercel also supplies anonymous performance measurements.
+- **Stored data:** No first-party database. Newsletter details are submitted to Buttondown; scorecard and Ask Cyrus answers/contact details are submitted to Tally; Cloudflare and Vercel supply basic website analytics; Vercel also supplies anonymous real-user performance measurements.
 - **Payments:** No on-site payments. Stripe Checkout handles the ebook purchase
-  externally.
+  externally; the Ask Cyrus form and its checkout are handled by Tally.
 - **External services:** Buttondown, Tally, Stripe Checkout, Cloudflare Web
   Analytics, Vercel hosting, Web Analytics and Speed Insights; Cloudflare may
   also manage domain/DNS.

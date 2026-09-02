@@ -8,7 +8,7 @@ This technical contract derives from the completed overview and
 - **Overview:** `OVERVIEW.md`
 - **Overview status:** Approved on 2026-07-16
 - **Additional source documents:** `PROJECT-BRIEF.md`
-- **Contract last reviewed:** 2026-08-27
+- **Contract last reviewed:** 2026-09-02
 - **Blocking decisions:** None
 - **Current development version:** `0.1.0`
 
@@ -19,7 +19,7 @@ configuration states.
 ## Identity
 
 - **Name:** Letters from Cyrus
-- **One-sentence purpose:** Move visitors onto the Letters from Cyrus email list and direct appropriate men toward the Freeze-to-Command Scorecard.
+- **One-sentence purpose:** Move visitors onto the Letters from Cyrus email list, direct appropriate men toward the Freeze-to-Command Scorecard, and offer paid private Ask Cyrus responses.
 - **Stage:** MVP
 - **Owner:** Cyrus
 
@@ -52,6 +52,8 @@ suppression, numbness, or control over other people.
 - Keep newsletter consent separate from scorecard participation.
 - Offer *Why Do I Keep Doing This?* as a static, one-column ebook sales page
   with direct Stripe Checkout calls to action.
+- Offer a focused Ask Cyrus page and a Tally-powered form for private paid
+  questions without collecting question or payment data on this website.
 - Provide accurate, plain-language privacy and legal information.
 - Deliver an extremely light, accessible, responsive static website.
 
@@ -64,13 +66,16 @@ suppression, numbness, or control over other people.
 | `/f2c-scorecard` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
 | `/letters` | Letters from Cyrus editorial statement | Read the editorial promise |
 | `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
+| `/ask` | Ask Cyrus offer page | Ask Your Question |
+| `/ask/submit` | Tally-powered private-question form | Submit through Tally |
+| `/ask/thank-you` | Private-question confirmation | Check email for the response |
 | `/privacy-policy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
 | `/unconfirmed-subscription` | Email confirmation prompt | Confirm the submitted email address |
 | `/subscription-confirmed` | Confirmed-subscription welcome | Open and reply to the welcome letter |
 | custom 404 | Recover from an invalid route | Return home |
 
-The two newsletter confirmation routes are transactional utility pages. They
+The two newsletter confirmation routes and the Ask Cyrus confirmation route are transactional utility pages. They
 must use canonical metadata but remain `noindex, follow` and outside the
 sitemap.
 
@@ -123,6 +128,8 @@ an Audit invitation.
 - [ ] `/f2c-scorecard` uses the owner-approved, centrally configured standard
   Tally embed and offers a direct-link fallback when JavaScript is unavailable.
 - [ ] Ebook purchase CTAs use only the centrally configured Stripe Checkout URL.
+- [ ] Ask Cyrus CTAs and its Tally embed use only centrally configured URLs;
+  `/ask/thank-you` is no-index and excluded from the sitemap.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
 - [ ] The Audit invitation process, non-guarantee, and no-public-booking rule are explicit.
@@ -149,7 +156,8 @@ an Audit invitation.
 - **Package manager:** npm
 - **Database:** None
 - **Hosting:** Vercel; domain/DNS may be managed through Cloudflare
-- **External services:** Buttondown, Tally, Stripe Checkout, Cloudflare Web
+- **External services:** Buttondown, Tally (including the Ask Cyrus form and
+  checkout), Stripe Checkout, Cloudflare Web
   Analytics, Vercel hosting, Web Analytics and Speed Insights
 
 The expected direct production dependencies are Astro and the official Vercel

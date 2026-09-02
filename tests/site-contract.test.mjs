@@ -3,6 +3,8 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
+  DEFAULT_ASK_FORM_EMBED_URL,
+  DEFAULT_ASK_FORM_URL,
   DEFAULT_BUTTONDOWN_FORM_ACTION,
   DEFAULT_CONTACT_EMAIL,
   DEFAULT_F2C_SCORECARD_EMBED_URL,
@@ -32,6 +34,9 @@ const completeEnvironment = {
   SITE_URL: "https://letters.example",
   BUTTONDOWN_FORM_ACTION:
     "https://buttondown.com/api/emails/embed-subscribe/example",
+  ASK_FORM_URL: "https://tally.so/r/ask-example",
+  ASK_FORM_EMBED_URL:
+    "https://tally.so/embed/ask-example?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1",
   TALLY_SCORECARD_URL: "https://tally.so/r/example",
   F2C_SCORECARD_EMBED_URL:
     "https://tally.so/embed/example?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1",
@@ -75,6 +80,8 @@ test("confirmed release fields are available by default", () => {
   assert.equal(config.businessName, "Dwayne M Cyrus");
   assert.equal(config.hostingProvider, "Vercel");
   assert.equal(config.buttondownFormAction, DEFAULT_BUTTONDOWN_FORM_ACTION);
+  assert.equal(config.askFormUrl, DEFAULT_ASK_FORM_URL);
+  assert.equal(config.askFormEmbedUrl, DEFAULT_ASK_FORM_EMBED_URL);
   assert.equal(config.tallyScorecardUrl, DEFAULT_TALLY_SCORECARD_URL);
   assert.equal(config.f2cScorecardEmbedUrl, DEFAULT_F2C_SCORECARD_EMBED_URL);
   assert.equal(config.hiddenLoadCheckoutUrl, DEFAULT_HIDDEN_LOAD_CHECKOUT_URL);
@@ -104,6 +111,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
     ...completeEnvironment,
     SITE_URL: "http://letters.example",
     HIDDEN_LOAD_CHECKOUT_URL: "http://buy.stripe.com/example",
+    ASK_FORM_URL: "http://tally.so/r/ask-example",
     F2C_SCORECARD_EMBED_URL: "http://tally.so/embed/example",
     CONTACT_EMAIL: "not-an-email",
     WEBSITE_DOMAIN: "https://letters.example/path",
@@ -117,6 +125,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
   assert.equal(isEmailAddress("not-an-email"), false);
   assert.ok(issues.includes("siteUrl must be an HTTPS URL"));
   assert.ok(issues.includes("hiddenLoadCheckoutUrl must be an HTTPS URL"));
+  assert.ok(issues.includes("askFormUrl must be an HTTPS URL"));
   assert.ok(issues.includes("f2cScorecardEmbedUrl must be an HTTPS URL"));
   assert.ok(issues.includes("contactEmail must be a valid email address"));
   assert.ok(
@@ -201,6 +210,9 @@ test("required public routes have source files", async () => {
     "404.astro",
     "subscription-confirmed.astro",
     "the-hidden-load.astro",
+    "ask.astro",
+    "ask/submit.astro",
+    "ask/thank-you.astro",
     "unconfirmed-subscription.astro",
   ];
 
@@ -334,8 +346,9 @@ test("privacy policy states confirmed data practices", async () => {
   assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
   assert.match(privacy, /Scorecard submissions are kept indefinitely/);
   assert.match(privacy, /Tally responses are not forwarded/);
-  assert.match(privacy, /embedded Tally scorecard at <code>\/f2c-scorecard/);
-  assert.match(privacy, /forwards\s+this page's path and query parameters/);
+  assert.match(privacy, /embedded Tally forms at <code>\/f2c-scorecard/);
+  assert.match(privacy, /<code>\/ask\/submit<\/code>/);
+  assert.match(privacy, /forwards?\s+each page's path and query parameters/);
   assert.match(privacy, /Vercel Web\s+Analytics/);
   assert.match(privacy, /Vercel Speed\s+Insights/);
   assert.match(privacy, /Stripe Checkout/);
@@ -436,6 +449,55 @@ test("embedded scorecard uses the configured standard Tally embed", async () => 
   assert.match(scorecard, /href=\{scorecardUrl\}/);
   assert.doesNotMatch(scorecard, /addEventListener\(/);
   assert.match(sitemap, /"\/f2c-scorecard"/);
+});
+
+test("Ask Cyrus pages use the approved copy and Tally form boundary", async () => {
+  const ask = await readFile(
+    new URL("../src/pages/ask.astro", import.meta.url),
+    "utf8",
+  );
+  const submit = await readFile(
+    new URL("../src/pages/ask/submit.astro", import.meta.url),
+    "utf8",
+  );
+  const thankYou = await readFile(
+    new URL("../src/pages/ask/thank-you.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(ask, /<h1>Ask Cyrus<\/h1>/);
+  assert.match(ask, /Written Response — \$49/);
+  assert.match(ask, /Video Response — \$99/);
+  assert.match(ask, /Delivered within 2 business days\./);
+  assert.match(
+    ask,
+    /One question\. One response\. No ongoing correspondence is included\./,
+  );
+  assert.match(
+    ask,
+    /<PrimaryButton href="\/ask\/submit">Ask Your Question<\/PrimaryButton>/,
+  );
+  assert.match(submit, /const embedUrl = siteConfig\.askFormEmbedUrl/);
+  assert.match(submit, /data-tally-src=\{embedUrl\}/);
+  assert.match(submit, /title="Ask Cyrus private question form"/);
+  assert.match(submit, /<noscript>/);
+  assert.match(submit, /href=\{formUrl\}/);
+  assert.match(submit, /window\.Tally\?\.loadEmbeds\(\)/);
+  assert.doesNotMatch(submit, /addEventListener\(/);
+  assert.match(thankYou, /robots="noindex, follow"/);
+  assert.match(thankYou, /Your question has been received\./);
+  assert.match(
+    thankYou,
+    /deliver your response by email within 2\s+business days\./,
+  );
+  assert.match(thankYou, /spam or promotions folder/);
+  assert.match(sitemap, /"\/ask"/);
+  assert.doesNotMatch(sitemap, /ask\/submit/);
+  assert.doesNotMatch(sitemap, /ask\/thank-you/);
 });
 
 test("dependency contract excludes client UI frameworks", async () => {

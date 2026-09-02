@@ -15,3 +15,6 @@ export const DEFAULT_F2C_SCORECARD_EMBED_URL =
   "https://tally.so/embed/1A5J5b?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
 export const DEFAULT_HIDDEN_LOAD_CHECKOUT_URL =
   "https://buy.stripe.com/9B63co04xcBZdvw4yM2Ry00";
+export const DEFAULT_ASK_FORM_EMBED_URL =
+  "https://tally.so/embed/dWyjZo?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
+export const DEFAULT_ASK_FORM_URL = "https://tally.so/r/dWyjZo";

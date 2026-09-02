@@ -10,6 +10,7 @@ const PUBLIC_PATHS = [
   "/f2c-scorecard",
   "/letters",
   "/the-hidden-load",
+  "/ask",
   "/privacy-policy",
   "/terms-of-use",
   "/legal",

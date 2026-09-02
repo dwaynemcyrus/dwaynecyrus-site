@@ -1,0 +1,109 @@
+---
+import PrimaryButton from "../components/PrimaryButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Ask Cyrus — Dwayne Cyrus";
+const description =
+  "Send Cyrus one focused question and receive a private written or video response within two business days.";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/ask">
+  <article class="ask-page">
+    <section class="ask-hero">
+      <p class="eyebrow">Private perspective</p>
+      <h1>Ask Cyrus</h1>
+      <p class="lede">Have a situation you want my perspective on?</p>
+      <p>
+        Send me one focused question about something you’re dealing
+        with—yourself, your relationships, fatherhood, responsibility,
+        leadership, or a difficult decision.
+      </p>
+      <p>
+        I’ll review what you send and respond privately with my analysis and
+        what I believe you should consider or do next.
+      </p>
+    </section>
+
+    <section class="ask-responses" aria-labelledby="response-heading">
+      <h2 id="response-heading">Choose your response</h2>
+      <div class="response-options">
+        <article class="response-option">
+          <h3>Written Response — $49</h3>
+          <p>
+            A private written response with my analysis, perspective, and
+            recommended next steps.
+          </p>
+        </article>
+        <article class="response-option">
+          <h3>Video Response — $99</h3>
+          <p>
+            A private 6–12 minute video response addressing your situation
+            directly.
+          </p>
+        </article>
+      </div>
+      <p class="delivery">Delivered within 2 business days.</p>
+      <PrimaryButton href="/ask/submit">Ask Your Question</PrimaryButton>
+    </section>
+
+    <p class="ask-note">
+      One question. One response. No ongoing correspondence is included.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .ask-page {
+    width: min(100% - 2rem, var(--reading-width));
+    margin-inline: auto;
+    padding-block: var(--space-7);
+  }
+
+  .ask-hero,
+  .ask-responses {
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .ask-hero h1,
+  .ask-responses h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .ask-responses {
+    padding-top: var(--space-7);
+  }
+
+  .response-options {
+    display: grid;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .response-option {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .response-option h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  .response-option p,
+  .delivery,
+  .ask-note {
+    max-width: none;
+  }
+
+  .delivery {
+    margin-bottom: var(--space-5);
+    font-weight: 700;
+  }
+
+  .ask-note {
+    margin: var(--space-6) 0 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    line-height: 1.35;
+  }
+</style>
