@@ -1,6 +1,6 @@
 ---
-import { siteConfig } from "../config/site";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const title = "Freeze-to-Command Scorecard — Dwayne Cyrus";
 const description =
@@ -12,13 +12,13 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
 <BaseLayout
   title={title}
   description={description}
-  canonicalPath="/f2c-scorecard"
+  canonicalPath="/scorecard/assessment"
 >
-  <section class="f2c-scorecard">
-    <div class="f2c-scorecard__inner">
+  <section class="scorecard-assessment">
+    <div class="scorecard-assessment__inner">
       <h1 class="visually-hidden">Freeze-to-Command Scorecard</h1>
       <iframe
-        class="f2c-scorecard__embed"
+        class="scorecard-assessment__embed"
         data-tally-src={embedUrl}
         loading="lazy"
         width="100%"
@@ -42,16 +42,16 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
 </BaseLayout>
 
 <style>
-  .f2c-scorecard {
+  .scorecard-assessment {
     padding-block: var(--space-6) var(--space-7);
   }
 
-  .f2c-scorecard__inner {
+  .scorecard-assessment__inner {
     width: min(100% - 2rem, 52rem);
     margin-inline: auto;
   }
 
-  .f2c-scorecard__embed {
+  .scorecard-assessment__embed {
     display: block;
     width: 100%;
     min-height: 12.5rem;
@@ -71,7 +71,7 @@ const scorecardUrl = siteConfig.tallyScorecardUrl;
   }
 
   @media (min-width: 48rem) {
-    .f2c-scorecard__inner {
+    .scorecard-assessment__inner {
       width: min(100% - 4rem, 52rem);
     }
   }

@@ -65,7 +65,7 @@ suppression, numbness, or control over other people.
 |---|---|---|
 | `/` | Homepage and newsletter landing page | Join the Letters |
 | `/scorecard` | Freeze-to-Command Scorecard landing page | Begin the Scorecard |
-| `/f2c-scorecard` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
+| `/scorecard/assessment` | Embedded Freeze-to-Command Scorecard | Complete the scorecard |
 | `/letters` | Letters from Cyrus editorial statement | Read the editorial promise |
 | `/the-hidden-load` | *Why Do I Keep Doing This?* ebook sales page | Buy the eBook — $21 USD |
 | `/ask` | Ask Cyrus offer page | Ask Your Question |
@@ -128,8 +128,9 @@ an Audit invitation.
 - [ ] The homepage makes joining Letters from Cyrus visually and semantically primary.
 - [ ] Both homepage newsletter forms post to the verified Buttondown endpoint, request only required fields, use unique labelled controls, and show the required consent statement.
 - [ ] The unconfirmed and confirmed subscription routes render the approved flow copy, remain outside the sitemap, and use `noindex, follow`.
-- [ ] Scorecard CTAs use only the centrally configured Tally URL.
-- [ ] `/f2c-scorecard` uses the owner-approved, centrally configured standard
+- [ ] Scorecard completion CTAs use `/scorecard/assessment`; only that route's
+  no-JavaScript fallback uses the centrally configured Tally URL.
+- [ ] `/scorecard/assessment` uses the owner-approved, centrally configured standard
   Tally embed and offers a direct-link fallback when JavaScript is unavailable.
 - [ ] Ebook purchase CTAs use only the centrally configured Stripe Checkout URL.
 - [ ] Ask Cyrus CTAs and its Tally embed use only centrally configured URLs;
@@ -312,14 +313,15 @@ functional dead controls.
 
 ### Tally
 
-- Prefer a direct same-tab link using only `tallyScorecardUrl`.
+- Use `/scorecard/assessment` for site scorecard CTAs. Keep the direct
+  `tallyScorecardUrl` link only as that route's no-JavaScript fallback.
 - Do not load Tally scripts before CTA activation.
 - Do not duplicate its optional newsletter-consent checkbox on the website.
 - Keep scorecard submissions indefinitely in the Tally account archive unless
   a valid deletion request or legal requirement changes that handling.
 - Do not forward Tally responses to email, spreadsheets, automation tools, a
   CRM, or another response destination without a new privacy review.
-- The owner approved a standard inline embed at `/f2c-scorecard` on
+- The owner approved a standard inline embed at `/scorecard/assessment` on
   2026-08-27. It may load Tally's embed runtime and iframe only on that route
   to allow form completion without leaving the site. Keep a direct-link
   fallback for people browsing without JavaScript, do not add form-event

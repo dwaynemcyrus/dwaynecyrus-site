@@ -7,7 +7,7 @@ export const prerender = true;
 const PUBLIC_PATHS = [
   "/",
   "/scorecard",
-  "/f2c-scorecard",
+  "/scorecard/assessment",
   "/letters",
   "/the-hidden-load",
   "/ask",

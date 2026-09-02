@@ -165,7 +165,7 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
   const sourceFiles = [
     "../src/pages/index.astro",
     "../src/pages/scorecard.astro",
-    "../src/pages/f2c-scorecard.astro",
+    "../src/pages/scorecard/assessment.astro",
     "../src/components/NewsletterForm.astro",
   ];
   const source = (
@@ -207,7 +207,7 @@ test("required public routes have source files", async () => {
   const routes = [
     "index.astro",
     "scorecard.astro",
-    "f2c-scorecard.astro",
+    "scorecard/assessment.astro",
     "letters.astro",
     "diagnostic-audit-complete.astro",
     "privacy-policy.astro",
@@ -354,7 +354,10 @@ test("privacy policy states confirmed data practices", async () => {
   assert.match(privacy, /Buttondown\s+click tracking is also enabled/);
   assert.match(privacy, /Scorecard submissions are kept indefinitely/);
   assert.match(privacy, /Tally responses are not forwarded/);
-  assert.match(privacy, /embedded Tally forms at <code>\/f2c-scorecard/);
+  assert.match(
+    privacy,
+    /embedded Tally forms at <code>\/scorecard\/assessment/,
+  );
   assert.match(privacy, /<code>\/ask\/submit<\/code>/);
   assert.match(privacy, /forwards?\s+each page's path and query parameters/);
   assert.match(privacy, /Vercel Web\s+Analytics/);
@@ -383,9 +386,13 @@ test("newsletter form submits email with the Unconfirmed tag", async () => {
   assert.match(source, /grid-template-columns: minmax\(0, 1fr\) auto/);
 });
 
-test("homepage and footer scorecard links use the embedded route", async () => {
+test("scorecard CTAs use the embedded assessment route", async () => {
   const home = await readFile(
     new URL("../src/pages/index.astro", import.meta.url),
+    "utf8",
+  );
+  const scorecard = await readFile(
+    new URL("../src/pages/scorecard.astro", import.meta.url),
     "utf8",
   );
   const footer = await readFile(
@@ -393,10 +400,18 @@ test("homepage and footer scorecard links use the embedded route", async () => {
     "utf8",
   );
 
-  assert.match(home, /const scorecardPath = "\/f2c-scorecard"/);
+  assert.match(home, /const scorecardPath = "\/scorecard\/assessment"/);
   assert.equal(home.match(/<SecondaryLink href=\{scorecardPath\}/g)?.length, 2);
   assert.doesNotMatch(home, /tallyScorecardUrl/);
-  assert.match(footer, /<a href="\/f2c-scorecard">Scorecard<\/a>/);
+  assert.match(scorecard, /const assessmentPath = "\/scorecard\/assessment"/);
+  assert.equal(
+    scorecard.match(
+      /<PrimaryButton href=\{assessmentPath\}>Begin the Scorecard<\/PrimaryButton>/g,
+    )?.length,
+    2,
+  );
+  assert.doesNotMatch(scorecard, /tallyScorecardUrl/);
+  assert.match(footer, /<a href="\/scorecard\/assessment">Scorecard<\/a>/);
 });
 
 test("homepage hero uses the approved newsletter copy", async () => {
@@ -503,7 +518,7 @@ test("Start Here page uses the approved internal routes", async () => {
 
 test("embedded scorecard uses the configured standard Tally embed", async () => {
   const scorecard = await readFile(
-    new URL("../src/pages/f2c-scorecard.astro", import.meta.url),
+    new URL("../src/pages/scorecard/assessment.astro", import.meta.url),
     "utf8",
   );
   const sitemap = await readFile(
@@ -519,7 +534,8 @@ test("embedded scorecard uses the configured standard Tally embed", async () => 
   assert.match(scorecard, /<noscript>/);
   assert.match(scorecard, /href=\{scorecardUrl\}/);
   assert.doesNotMatch(scorecard, /addEventListener\(/);
-  assert.match(sitemap, /"\/f2c-scorecard"/);
+  assert.match(sitemap, /"\/scorecard\/assessment"/);
+  assert.doesNotMatch(sitemap, /f2c-scorecard/);
 });
 
 test("Ask Cyrus pages use the approved copy and Tally form boundary", async () => {

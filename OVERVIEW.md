@@ -51,7 +51,7 @@ guarantee an invitation to a Freeze Diagnostic Audit.
 
 - A static homepage at `/` that prioritises joining Letters from Cyrus.
 - A focused scorecard landing page at `/scorecard` that links to Tally.
-- A focused embedded Tally scorecard at `/f2c-scorecard` using the
+- A focused embedded Tally scorecard at `/scorecard/assessment` using the
   owner-supplied standard embed URL.
 - A standalone editorial page at `/letters` explaining who Letters from Cyrus
   serves.
@@ -169,7 +169,7 @@ The first version is successful when:
 It is ready for handoff or release when:
 
 - Dependency installation, local development, checks, and the static production build succeed.
-- `/`, `/scorecard`, `/f2c-scorecard`, `/privacy-policy`, `/legal`, both newsletter
+- `/`, `/scorecard`, `/scorecard/assessment`, `/privacy-policy`, `/legal`, both newsletter
   confirmation routes, and the custom 404 work on mobile and desktop.
 - Buttondown and Tally destinations use verified central configuration.
 - `/the-hidden-load` has accurate ebook copy, an honest $21 USD price, two
@@ -189,7 +189,7 @@ It is ready for handoff or release when:
 ### Assumptions
 
 - `[ASSUMPTION]` A direct link to Tally remains the default. The owner approved
-  a standard Tally embed for the dedicated `/f2c-scorecard` completion route
+  a standard Tally embed for the dedicated `/scorecard/assessment` completion route
   on 2026-08-27.
 - `[ASSUMPTION]` The initial implementation will start from this documentation-only repository and use npm, because no existing Astro project or lockfile is present.
 - `[ASSUMPTION]` Missing legal and service values may use unmistakable development placeholders or build-time omissions, but a production build must not publish fake or dead values.

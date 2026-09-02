@@ -20,7 +20,7 @@ changes that matter to users, integrators, or project operators.
   an optional newsletter signup.
 - A public Terms of Use page covering website use, services, payments,
   Diagnostic Audit scheduling, mentorship, digital products, and governing law.
-- An embedded Freeze-to-Command Scorecard at `/f2c-scorecard` using the
+- An embedded Freeze-to-Command Scorecard at `/scorecard/assessment` using the
   owner-approved Tally standard embed, with a no-JavaScript direct-link
   fallback.
 - A one-column sales page for *Why Do I Keep Doing This?* with a book mockup
@@ -47,6 +47,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Changed
 
+- The embedded Freeze-to-Command Scorecard now lives at
+  `/scorecard/assessment`, and all completion CTAs use that route.
 - The Privacy Policy is now available at `/privacy-policy`.
 - The confirmed-subscription welcome now uses clearer, more personal reply
   guidance for new readers.

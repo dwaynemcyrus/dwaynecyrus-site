@@ -88,8 +88,8 @@ Scorecard as the secondary path, and is ready for a verified Vercel preview.
 ### 6. [x] Chunk: build scorecard landing page
 
 - **Files:** `src/pages/scorecard.astro`
-- **Change:** Implement the scorecard hero, emotional-freeze explanation, identification points, numbered next steps, exact non-guarantee/no-booking statement, separate consent explanation, and two direct Tally CTAs.
-- **Verify:** Configured checks and build pass; CTA uses only central configuration; no Tally request occurs before activation; all clinical/guarantee language searches are reviewed; keyboard and responsive checks pass.
+- **Change:** Implement the scorecard hero, emotional-freeze explanation, identification points, numbered next steps, exact non-guarantee/no-booking statement, separate consent explanation, and two CTAs to the embedded assessment route.
+- **Verify:** Configured checks and build pass; CTAs use the internal assessment route; no Tally request occurs before activation; all clinical/guarantee language searches are reviewed; keyboard and responsive checks pass.
 - **Risk/rollback:** Implying diagnosis, therapy, automatic newsletter consent, or guaranteed Audit access. Revert the page and compare every section with the brief.
 - **Commit:** `feat(scorecard): add landing page`
 
@@ -285,6 +285,25 @@ verified before production deployment:
 ## Membership page
 
 ## Start page
+
+## Scorecard assessment route
+
+### 21. [x] Chunk: rename embedded assessment route
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `README.md`,
+  `src/components/SiteFooter.astro`, `src/pages/index.astro`,
+  `src/pages/scorecard.astro`, `src/pages/scorecard/assessment.astro`,
+  `src/pages/privacy-policy.astro`, `src/pages/sitemap.xml.ts`,
+  `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Move the embedded Freeze-to-Command Scorecard from
+  `/f2c-scorecard` to `/scorecard/assessment` and direct all completion CTAs,
+  including both Begin the Scorecard buttons, to the internal assessment route.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Confirm the old route is absent, the assessment route is in the sitemap, and
+  the scorecard landing-page CTAs target the assessment route.
+- **Risk/rollback:** Existing external links to the former route will no longer
+  resolve. Revert the focused route commit to restore the prior public path.
+- **Commit:** `refactor(scorecard): rename assessment route`
 
 ### 20. [x] Chunk: add route-selection page
 
