@@ -7,6 +7,7 @@ export {
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
+  DEFAULT_MEMBERSHIP_CHECKOUT_URL,
   DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
   DEFAULT_SUBSTACK_URL,
@@ -24,6 +25,7 @@ import {
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
+  DEFAULT_MEMBERSHIP_CHECKOUT_URL,
   DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
   DEFAULT_SUBSTACK_URL,
@@ -43,6 +45,7 @@ export interface SiteConfig {
   tallyScorecardUrl: string;
   f2cScorecardEmbedUrl: string;
   hiddenLoadCheckoutUrl: string;
+  membershipCheckoutUrl: string;
   contactEmail: string;
   xUrl: string;
   youtubeUrl: string;
@@ -65,6 +68,7 @@ const HTTPS_URL_FIELDS = [
   "tallyScorecardUrl",
   "f2cScorecardEmbedUrl",
   "hiddenLoadCheckoutUrl",
+  "membershipCheckoutUrl",
   "xUrl",
   "youtubeUrl",
   "substackUrl",
@@ -107,6 +111,9 @@ export function createSiteConfig(environment: Environment = {}): SiteConfig {
     hiddenLoadCheckoutUrl:
       value(environment, "HIDDEN_LOAD_CHECKOUT_URL") ||
       DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
+    membershipCheckoutUrl:
+      value(environment, "MEMBERSHIP_CHECKOUT_URL") ||
+      DEFAULT_MEMBERSHIP_CHECKOUT_URL,
     contactEmail: value(environment, "CONTACT_EMAIL") || DEFAULT_CONTACT_EMAIL,
     xUrl: value(environment, "X_URL") || DEFAULT_X_URL,
     youtubeUrl: value(environment, "YOUTUBE_URL") || DEFAULT_YOUTUBE_URL,

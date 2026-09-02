@@ -18,3 +18,5 @@ export const DEFAULT_HIDDEN_LOAD_CHECKOUT_URL =
 export const DEFAULT_ASK_FORM_EMBED_URL =
   "https://tally.so/embed/dWyjZo?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
 export const DEFAULT_ASK_FORM_URL = "https://tally.so/r/dWyjZo";
+export const DEFAULT_MEMBERSHIP_CHECKOUT_URL =
+  "https://buttondown.com/lettersfromcyrus/buy";

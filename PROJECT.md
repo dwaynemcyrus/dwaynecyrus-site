@@ -54,6 +54,8 @@ suppression, numbness, or control over other people.
   with direct Stripe Checkout calls to action.
 - Offer a focused Ask Cyrus page and a Tally-powered form for private paid
   questions without collecting question or payment data on this website.
+- Offer a Sovereign Society membership page with a direct external Buttondown
+  checkout link and no on-site payment controls.
 - Provide accurate, plain-language privacy and legal information.
 - Deliver an extremely light, accessible, responsive static website.
 
@@ -69,6 +71,7 @@ suppression, numbness, or control over other people.
 | `/ask` | Ask Cyrus offer page | Ask Your Question |
 | `/ask/submit` | Tally-powered private-question form | Submit through Tally |
 | `/ask/thank-you` | Private-question confirmation | Check email for the response |
+| `/membership` | Sovereign Society membership page | Become a Member |
 | `/privacy-policy` | Plain-language Privacy Policy | Understand data handling |
 | `/legal` | Plain-language Legal Notice | Read legal details |
 | `/unconfirmed-subscription` | Email confirmation prompt | Confirm the submitted email address |
@@ -130,6 +133,8 @@ an Audit invitation.
 - [ ] Ebook purchase CTAs use only the centrally configured Stripe Checkout URL.
 - [ ] Ask Cyrus CTAs and its Tally embed use only centrally configured URLs;
   `/ask/thank-you` is no-index and excluded from the sitemap.
+- [ ] The Sovereign Society CTA uses only the centrally configured Buttondown
+  checkout URL without collecting payment details on the site.
 - [ ] Scorecard participation, result-delivery email, and optional newsletter consent are accurately separated.
 - [ ] The scorecard is not described as therapy, treatment, diagnosis, or a clinical assessment.
 - [ ] The Audit invitation process, non-guarantee, and no-public-booking rule are explicit.
@@ -157,7 +162,7 @@ an Audit invitation.
 - **Database:** None
 - **Hosting:** Vercel; domain/DNS may be managed through Cloudflare
 - **External services:** Buttondown, Tally (including the Ask Cyrus form and
-  checkout), Stripe Checkout, Cloudflare Web
+  checkout), Buttondown membership checkout, Stripe Checkout, Cloudflare Web
   Analytics, Vercel hosting, Web Analytics and Speed Insights
 
 The expected direct production dependencies are Astro and the official Vercel

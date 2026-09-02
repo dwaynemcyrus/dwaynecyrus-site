@@ -11,6 +11,7 @@ import {
   DEFAULT_HIDDEN_LOAD_CHECKOUT_URL,
   DEFAULT_LEGAL_ADDRESS,
   DEFAULT_LEGAL_NAME,
+  DEFAULT_MEMBERSHIP_CHECKOUT_URL,
   DEFAULT_RESPONSIBLE_PERSON,
   DEFAULT_SITE_URL,
   DEFAULT_SUBSTACK_URL,
@@ -41,6 +42,7 @@ const completeEnvironment = {
   F2C_SCORECARD_EMBED_URL:
     "https://tally.so/embed/example?alignLeft=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1",
   HIDDEN_LOAD_CHECKOUT_URL: "https://buy.stripe.com/example",
+  MEMBERSHIP_CHECKOUT_URL: "https://buttondown.com/example/buy",
   CONTACT_EMAIL: "privacy@example.com",
   X_URL: "https://x.com/example",
   YOUTUBE_URL: "https://youtube.com/@example",
@@ -85,6 +87,7 @@ test("confirmed release fields are available by default", () => {
   assert.equal(config.tallyScorecardUrl, DEFAULT_TALLY_SCORECARD_URL);
   assert.equal(config.f2cScorecardEmbedUrl, DEFAULT_F2C_SCORECARD_EMBED_URL);
   assert.equal(config.hiddenLoadCheckoutUrl, DEFAULT_HIDDEN_LOAD_CHECKOUT_URL);
+  assert.equal(config.membershipCheckoutUrl, DEFAULT_MEMBERSHIP_CHECKOUT_URL);
   assert.equal(
     issues.includes("buttondownFormAction is required for release"),
     false,
@@ -111,6 +114,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
     ...completeEnvironment,
     SITE_URL: "http://letters.example",
     HIDDEN_LOAD_CHECKOUT_URL: "http://buy.stripe.com/example",
+    MEMBERSHIP_CHECKOUT_URL: "http://buttondown.com/example/buy",
     ASK_FORM_URL: "http://tally.so/r/ask-example",
     F2C_SCORECARD_EMBED_URL: "http://tally.so/embed/example",
     CONTACT_EMAIL: "not-an-email",
@@ -125,6 +129,7 @@ test("URLs, email addresses, and domains are validated at the boundary", () => {
   assert.equal(isEmailAddress("not-an-email"), false);
   assert.ok(issues.includes("siteUrl must be an HTTPS URL"));
   assert.ok(issues.includes("hiddenLoadCheckoutUrl must be an HTTPS URL"));
+  assert.ok(issues.includes("membershipCheckoutUrl must be an HTTPS URL"));
   assert.ok(issues.includes("askFormUrl must be an HTTPS URL"));
   assert.ok(issues.includes("f2cScorecardEmbedUrl must be an HTTPS URL"));
   assert.ok(issues.includes("contactEmail must be a valid email address"));
@@ -183,6 +188,7 @@ test("implemented pages contain locked copy and exclude prohibited copy", async 
     "../src/pages/subscription-confirmed.astro",
     "../src/pages/unconfirmed-subscription.astro",
     "../src/pages/the-hidden-load.astro",
+    "../src/pages/membership.astro",
     "../src/pages/letters.astro",
     "../src/components/NewsletterForm.astro",
   ];
@@ -210,6 +216,7 @@ test("required public routes have source files", async () => {
     "404.astro",
     "subscription-confirmed.astro",
     "the-hidden-load.astro",
+    "membership.astro",
     "ask.astro",
     "ask/submit.astro",
     "ask/thank-you.astro",
@@ -428,6 +435,34 @@ test("ebook sales page uses the configured Stripe Checkout URL", async () => {
   assert.match(ebook, /wkd-book-cover\.png/);
   assert.doesNotMatch(ebook, /\/fulfillment/);
   assert.match(sitemap, /"\/the-hidden-load"/);
+});
+
+test("membership page uses the configured Buttondown checkout URL", async () => {
+  const membership = await readFile(
+    new URL("../src/pages/membership.astro", import.meta.url),
+    "utf8",
+  );
+  const sitemap = await readFile(
+    new URL("../src/pages/sitemap.xml.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    membership,
+    /const checkoutUrl = siteConfig\.membershipCheckoutUrl/,
+  );
+  assert.match(membership, /<h1>Support the Work<\/h1>/);
+  assert.match(membership, /Sovereign Society for \$12\/month/);
+  assert.match(membership, /Private Monthly Live/);
+  assert.match(membership, /Monthly Behind-the-Scenes Update/);
+  assert.match(membership, /Private Telegram Chat/);
+  assert.match(membership, /What Membership Is Not/);
+  assert.match(membership, /Sovereign Society Membership — \$12\/month/);
+  assert.match(
+    membership,
+    /<PrimaryButton href=\{checkoutUrl\}>Become a Member<\/PrimaryButton>/,
+  );
+  assert.match(sitemap, /"\/membership"/);
 });
 
 test("embedded scorecard uses the configured standard Tally embed", async () => {

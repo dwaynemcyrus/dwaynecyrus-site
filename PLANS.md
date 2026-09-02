@@ -282,6 +282,24 @@ verified before production deployment:
 
 ## Ask Cyrus pages
 
+## Membership page
+
+### 19. [x] Chunk: add the Sovereign Society page
+
+- **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,
+  `src/config/site-defaults.ts`, `src/config/site.ts`,
+  `src/pages/membership.astro`, `src/pages/privacy-policy.astro`,
+  `src/pages/sitemap.xml.ts`, `tests/site-contract.test.mjs`, `CHANGELOG.md`
+- **Change:** Add the owner-supplied Sovereign Society membership copy and a
+  central Buttondown purchase link. Keep checkout external; do not add payment
+  fields, scripts, local state, or user accounts.
+- **Verify:** Run format, lint, Astro/type checks, tests, and production build.
+  Inspect the page at desktop and mobile widths, confirm the external CTA and
+  route metadata/sitemap output, and do not initiate a membership purchase.
+- **Risk/rollback:** Membership benefits and purchase terms are operated
+  outside the site. Revert the focused page commit to remove the public offer.
+- **Commit:** `feat(membership): add society page`
+
 ### 18. [x] Chunk: add the Ask Cyrus flow
 
 - **Files:** `OVERVIEW.md`, `PROJECT.md`, `PLANS.md`, `.env.example`,

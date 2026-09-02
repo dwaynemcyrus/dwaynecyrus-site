@@ -1,0 +1,126 @@
+---
+import PrimaryButton from "../components/PrimaryButton.astro";
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Support the Work — Dwayne Cyrus";
+const description =
+  "Join the Sovereign Society for $12 per month to support Cyrus's independent work and receive member-only connection and updates.";
+const checkoutUrl = siteConfig.membershipCheckoutUrl;
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/membership">
+  <article class="membership-page">
+    <section class="membership-hero">
+      <p class="eyebrow">Sovereign Society</p>
+      <h1>Support the Work</h1>
+      <p>
+        If my writing, videos, conversations, art, or live work have been useful
+        to you, you can support the continued development of the work by joining
+        the <strong>Sovereign Society for $12/month</strong>.
+      </p>
+      <p>
+        Your membership helps fund the time, tools, research, and production
+        behind what I publish—and makes more independent work possible.
+      </p>
+    </section>
+
+    <section class="membership-section" aria-labelledby="society-heading">
+      <h2 id="society-heading">Join the Sovereign Society</h2>
+      <p>
+        The <strong>Sovereign Society</strong> is a small group of Sovereign Voyagers
+        who directly support the work and have a closer relationship with its development.
+      </p>
+      <p>As a member, you receive:</p>
+      <ul class="membership-benefits">
+        <li>
+          <h3>Private Monthly Live</h3>
+          <p>
+            A Society-only live session for discussion, Q&amp;A, reflection, and
+            a closer look at the ideas I’m currently exploring.
+          </p>
+        </li>
+        <li>
+          <h3>Monthly Behind-the-Scenes Update</h3>
+          <p>
+            A short update on what I’m working on, what I’m learning, what is
+            changing, and what I’m building next.
+          </p>
+        </li>
+        <li>
+          <h3>Private Telegram Chat</h3>
+          <p>
+            Access to the Sovereign Society’s private community space, where I
+            initiate discussions, share voice notes, and interact more directly
+            with members.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="membership-section" aria-labelledby="not-heading">
+      <h2 id="not-heading">What Membership Is Not</h2>
+      <p>This is not private coaching, mentorship, or a diagnostic service.</p>
+      <p>
+        It is a simple way to directly support work you believe should
+        continue—and to be closer to its development.
+      </p>
+    </section>
+
+    <section class="membership-cta" aria-labelledby="membership-heading">
+      <h2 id="membership-heading">Sovereign Society Membership — $12/month</h2>
+      <PrimaryButton href={checkoutUrl}>Become a Member</PrimaryButton>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .membership-page {
+    width: min(100% - 2rem, var(--reading-width));
+    margin-inline: auto;
+    padding-block: var(--space-7);
+  }
+
+  .membership-hero,
+  .membership-section,
+  .membership-cta {
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .membership-hero h1,
+  .membership-section h2,
+  .membership-cta h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .membership-section,
+  .membership-cta {
+    padding-top: var(--space-7);
+  }
+
+  .membership-benefits {
+    display: grid;
+    gap: var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .membership-benefits li {
+    max-width: none;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .membership-benefits h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  .membership-benefits p {
+    max-width: none;
+  }
+
+  .membership-cta {
+    border-bottom: 0;
+  }
+</style>

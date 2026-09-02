@@ -10,6 +10,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Added
 
+- A Sovereign Society membership page with an external Buttondown checkout
+  link for the $12/month membership.
 - An Ask Cyrus offering page, Tally-powered private-question form, and
   no-index submission confirmation page.
 - A no-index Diagnostic Audit completion page with private-report guidance and
