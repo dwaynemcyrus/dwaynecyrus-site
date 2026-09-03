@@ -47,6 +47,8 @@ changes that matter to users, integrators, or project operators.
 
 ### Changed
 
+- The Freeze-to-Command Scorecard landing page now uses clearer language about
+  emotional pressure, private assessment results, and possible follow-up.
 - The embedded Freeze-to-Command Scorecard now lives at
   `/scorecard/assessment`, and all completion CTAs use that route.
 - The Privacy Policy is now available at `/privacy-policy`.

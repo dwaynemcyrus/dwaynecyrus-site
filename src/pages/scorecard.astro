@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Freeze-to-Command Scorecard — Cyrus";
 const description =
-  "A private scorecard for marriage- and father-minded men who want to recognise patterns of emotional shutdown, withdrawal and failed repair.";
+  "A short private assessment to help you identify where pressure may be costing you emotional command.";
 const assessmentPath = "/scorecard/assessment";
 ---
 
@@ -13,11 +13,22 @@ const assessmentPath = "/scorecard/assessment";
   <section class="section">
     <div class="container hero">
       <div class="hero-copy">
-        <p class="eyebrow">The Freeze-to-Command Scorecard</p>
-        <h1>See the pattern before it costs you more.</h1>
+        <h1>Where are you actually losing command?</h1>
         <p class="lede">
-          A private assessment for men who are married, fathers or preparing
-          seriously for either.
+          A man can look functional from the outside and still know something is
+          slipping underneath.
+        </p>
+        <p>Pressure becomes irritability.</p>
+        <p>Responsibility becomes resentment.</p>
+        <p>Silence becomes withdrawal.</p>
+        <p>
+          Stress starts affecting how you lead, communicate, father, love, and
+          carry yourself.
+        </p>
+        <p>
+          The Freeze-to-Command Scorecard is a short private assessment designed
+          to help you see where that breakdown may be happening—and where the
+          greatest pressure points are.
         </p>
       </div>
       <div class="cta-block">
@@ -30,31 +41,53 @@ const assessmentPath = "/scorecard/assessment";
     <div class="container section-grid section-grid--two">
       <SectionHeader heading="What emotional freeze can look like" />
       <div class="reading">
-        <p>Emotional freeze does not always look like fear.</p>
         <p>
-          It can look like silence, withdrawal, irritation, overwork, avoidance,
-          contained rage or the inability to return after conflict.
+          You may still be handling your responsibilities while noticing that:
         </p>
-        <p>
-          A man may still be productive while becoming increasingly absent from
-          himself, his marriage and his family.
-        </p>
+        <ul class="points">
+          <li>you shut down when conversations become emotionally charged;</li>
+          <li>small pressures trigger disproportionate irritation;</li>
+          <li>
+            you withdraw instead of saying what actually needs to be said;
+          </li>
+          <li>
+            responsibility increasingly feels like weight rather than purpose;
+          </li>
+          <li>
+            you feel less patient with your partner, children, or the people
+            depending on you;
+          </li>
+          <li>
+            you know something is wrong, but you cannot clearly identify the
+            pattern.
+          </li>
+        </ul>
+        <p>The problem is not simply that you are stressed.</p>
+        <p>The question is what happens to you under that stress.</p>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container section-grid section-grid--two">
-      <SectionHeader heading="What the scorecard will help you identify" />
-      <ul class="reading points">
-        <li>Where you shut down under pressure</li>
-        <li>How conflict changes your behaviour</li>
-        <li>Whether you withdraw instead of making repair</li>
-        <li>How emotional pressure affects your leadership</li>
-        <li>
-          Where you may be repeating patterns your family has learned to survive
-        </li>
-      </ul>
+      <SectionHeader heading="What the Scorecard will help you identify" />
+      <div class="reading">
+        <p>The assessment is designed to give you a clearer picture of:</p>
+        <ul class="points">
+          <li>where you are currently losing emotional command;</li>
+          <li>which pressure points are affecting you most;</li>
+          <li>
+            how those patterns may be showing up in your relationships,
+            leadership, fatherhood, and decision-making;
+          </li>
+          <li>
+            whether the issue appears situational or part of a deeper recurring
+            pattern.
+          </li>
+        </ul>
+        <p>This is not a personality test or a diagnosis.</p>
+        <p>It is a way to make the pattern more visible.</p>
+      </div>
     </div>
   </section>
 
@@ -62,53 +95,34 @@ const assessmentPath = "/scorecard/assessment";
     <div class="container section-grid section-grid--two">
       <SectionHeader heading="What happens next" />
       <div class="reading">
-        <ol class="numbered-list">
-          <li>You complete the scorecard.</li>
-          <li>
-            You receive the results or report described in the Tally form.
-          </li>
-          <li>Cyrus reviews submissions that may require deeper support.</li>
-          <li>
-            If Cyrus believes a Freeze Diagnostic Audit may benefit you, you may
-            receive a private invitation.
-          </li>
-          <li>
-            Completing the scorecard does not guarantee an Audit invitation.
-          </li>
-        </ol>
-        <p class="notice">
-          There is no public call-booking link. Invitations are based on the
-          scorecard results and whether the Audit appears appropriate.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container section-grid section-grid--two">
-      <SectionHeader heading="Your email and the letters remain separate" />
-      <div class="reading">
+        <p>Complete the assessment as accurately as you can.</p>
+        <p>You will receive your results after submitting it.</p>
         <p>
-          An email address may be required to deliver your scorecard results.
+          I also review submissions personally where I believe deeper feedback
+          may be useful.
         </p>
         <p>
-          Receiving results does not automatically subscribe you to Letters from
-          Cyrus.
-        </p>
-        <p>
-          Newsletter consent is optional and handled separately inside the Tally
-          form. If you subscribe, you can unsubscribe from the newsletter at any
-          time.
+          If I believe your situation warrants a closer look, I may invite you
+          to a private Sovereign Diagnostic to examine what is happening, what
+          is driving it, and what may need to change.
         </p>
       </div>
     </div>
   </section>
 
   <section class="section final-cta">
-    <div class="container section-grid section-grid--two">
-      <h2>Answer honestly. Clarity begins there.</h2>
-      <div class="cta-block">
-        <PrimaryButton href={assessmentPath}>Begin the Scorecard</PrimaryButton>
+    <div class="container">
+      <div class="reading">
+        <div class="cta-block">
+          <PrimaryButton href={assessmentPath}
+            >Take the Freeze-to-Command Scorecard</PrimaryButton
+          >
+        </div>
+        <p class="privacy-note">
+          Your responses are treated as private and are used to evaluate your
+          current situation and determine what next step, if any, may be
+          appropriate.
+        </p>
       </div>
     </div>
   </section>
@@ -127,11 +141,10 @@ const assessmentPath = "/scorecard/assessment";
     padding-left: 1.2rem;
   }
 
-  .notice {
+  .privacy-note {
     margin-top: var(--space-5);
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-ink);
-    font-weight: 750;
   }
 
   .final-cta {
