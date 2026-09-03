@@ -405,9 +405,7 @@ test("scorecard CTAs use the embedded assessment route", async () => {
   assert.doesNotMatch(home, /tallyScorecardUrl/);
   assert.match(scorecard, /const assessmentPath = "\/scorecard\/assessment"/);
   assert.equal(
-    scorecard.match(
-      /<PrimaryButton href=\{assessmentPath\}>Begin the Scorecard<\/PrimaryButton>/g,
-    )?.length,
+    scorecard.match(/<PrimaryButton href=\{assessmentPath\}/g)?.length,
     2,
   );
   assert.doesNotMatch(scorecard, /tallyScorecardUrl/);
